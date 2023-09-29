@@ -35,8 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    
-    
     'base.apps.BaseConfig',
     'authy.apps.AuthyConfig',
     'chat.apps.ChatConfig',
@@ -107,6 +105,17 @@ DATABASES = {
 
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Omolabake1',
+#         'HOST': 'localhost',
+#         # 'PORT': '7954'
+
+#     }
+# }
 
 
 # Password validation
@@ -148,12 +157,12 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static')),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 #  forever-cacheable files and compression support..
-# STORAGES = {
-#     # ...
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-#     },
-# }
+STORAGES = {
+    # ...
+    # "staticfiles": {
+    #     "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    # },
+}
 
 STORAGES = {
     "default": {
@@ -191,7 +200,7 @@ EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 
 
 # link expres
-EXPIRE_AFTER = "7d" # Will expire after one day from link generation
+EXPIRE_AFTER = "7d" # Will expire after seven day from link generation
 MAX_RETRIES = 100
 
 SUBJECT = f'Activate Your DRKAYMD account'

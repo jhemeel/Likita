@@ -94,28 +94,28 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': env('DATABASE_PW'),
-#         'HOST': 'containers-us-west-47.railway.app',
-#         'PORT': '7954'
-
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'Omolabake1',
-        'HOST': 'localhost',
-        # 'PORT': '7954'
+        'PASSWORD': env('DATABASE_PW'),
+        'HOST': 'containers-us-west-47.railway.app',
+        'PORT': '7954'
 
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Omolabake1',
+#         'HOST': 'localhost',
+#         # 'PORT': '7954'
+
+#     }
+# }
 
 
 # Password validation

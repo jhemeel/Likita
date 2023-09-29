@@ -2,10 +2,13 @@
 <header>
     <div class="navbar">
         <div class="page-logo">
-            <div class="icon">
-            <img src="{% static 'images/brand.png' %}" alt="">
-            </div>
-            <a href="{% url 'home' %}" class="nav-brand">Dokto</a>
+           
+            <a href="{% url 'home' %}" class="nav-brand">
+                <div class="icon">
+                    <img src="{% static 'images/pill.png' %}" alt="">
+                </div>
+                     Dokto
+            </a>
 
         </div>
         <ul class="menu">

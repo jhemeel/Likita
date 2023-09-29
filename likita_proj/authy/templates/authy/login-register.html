@@ -1,63 +1,63 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-<article>  
-        
-    <div id="login-register-form">
-        {% if page == 'register' %}
+<div id="login-register-form">
+  {% if page == 'register' %}
+  <div>
+    <form action="" method="post">
+      {% csrf_token %}
+      <h3>Register with us</h3>
+
+      {% for field in form %}
+      <label for=""> {{field.label_tag}} </label>
+      {{field}}
+      
+      {% endfor %}
+      <ul>
+        <li class="submit">
+          <input type="submit" value="Sign Up" />
+          <p>
+            I am registered
+            <i>
+              <a href="{% url 'login' %}" style="text-transform: uppercase"
+                >Login</a
+              ></i
+            >
+          </p>
+        </li>
+      </ul>
+    </form>
+  </div>
+  {% else %}
+  <div>
+    <form action="" method="post" class="forms">
+      {% csrf_token %}
+
+      <h3>Login</h3>
+      
         <div>
-            <form action="" method="post" class="inline-form">
-                {% csrf_token %}
-                <h3>Register</h3>
-
-            {% for field in form %}
-                <ul>
-                    <li>
-                       <label for="">
-                        {{field.label_tag}}
-                       </label> 
-                       {{field}} 
-                    </li>
-                    <li></li>
-                </ul>
-            {% endfor %}
-                <ul>
-                    <li class="submit">
-                        <input type="submit" value="Sign Up" />
-                        <p>I am registered <i> <a href="{% url 'login' %}" style="text-transform: uppercase">Login</a></i></p>
-                    </li>
-                </ul>
-            </form>
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" />
         </div>
-        {% else %}
         <div>
-            <form action="" method="post" class="forms">
-                {% csrf_token %}
-                
-                <h3>Login</h3>
-                <ul>
-                  <li>
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" />
-                  </li>
-                  <li>
-                    <label for="pwd">Password:</label>
-                    <input type="password" name="password" id="pwd" />
-                  </li>
-                  <li>
-                    <input type="submit" value="Login" />
-                    <p>I am not registered <a href="{% url 'register' %}" style="text-transform: uppercase">Sign Up</a></p>
-                  </li>
-                  <li>
-                    <a href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
-                  </li>
-                </ul>
-              </form>
+          <label for="pwd">Password:</label>
+          <input type="password" name="password" id="pwd" />
         </div>
-        {% endif %}
-    </div>
-</article>
-
+        <div>
+          <input type="submit" value="Login" />
+          <p>
+            I am not registered
+            <a href="{% url 'register' %}" style="text-transform: uppercase"
+              >Sign Up</a
+            >
+          </p>
+        </div>
+        <div>
+          <a href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
+        </div>
+    
+    </form>
+  </div>
+  {% endif %}
+</div>
 
 {% endblock content %}

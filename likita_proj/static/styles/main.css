@@ -482,6 +482,18 @@ article.feeds .topics.active {
   animation: anim-topic-active 0.3s ease;
 }
 
+article.feeds .topics > h2{
+  font-family: "hey-comic";
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--btn-bg-teal);
+  padding-bottom: 0.5rem;
+
+
+}
+
 article.feeds .topics > h3 {
   padding: 2px 5px;
   margin-bottom: 10px;
@@ -1716,7 +1728,6 @@ article#services {
     display: grid;
     grid-template-columns: 1.5fr 3.5fr 1.5fr;
     gap: 20px;
-    /* top: 0; */
   }
 
   article.feeds .topics {
@@ -1730,6 +1741,7 @@ article#services {
   }
 
   #search-form {
+    flex-direction: row;
     background-color: transparent;
     padding: 0;
     margin: auto;
@@ -1741,7 +1753,7 @@ article#services {
   }
 
   #search-form input[type="search"] {
-    width: 80%;
+    width: 70%;
     padding-right: unset;
   }
   #search-form input[type="submit"] {

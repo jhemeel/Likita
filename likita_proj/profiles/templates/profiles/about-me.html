@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<article class="about" id="about">
+<div class="about" id="about">
   <div class="box-container">
     <div class="box">
       <div class="image">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="content">
-      <h1 class="heading About">About <span>me</span></h1>
+      <h1 class="heading About">My <span>Story</span></h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quidem harum
         veniam vel consequatur in praesentium dolores distinctio, nulla ut?
@@ -26,9 +26,13 @@
         itaque voluptatem, laboriosam hic distinctio fuga, expedita, obcaecati
         id dignissimos voluptates!
       </p>
-      <a href="#" class="btn">hire me</a>
-      <a href="" class="btn">download cv</a>
+
+      <div class="btn-wrapper">
+        <a href="#" class="">hire me</a>
+        <a href="" class="">download cv</a>
+      </div>
+     
     </div>
   </div>
-</article>
+</div>
 {% endblock content %}

@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="setting-form-container">
-  <form action="" method="post" enctype="multipart/form-data" class="inline-form">
-    <h3>settings</h3>
+  <form action="" method="post" enctype="multipart/form-data">
+    <h3>Edit Your Profile</h3>
 
     {% csrf_token %}
     <div class="image" style="text-align: center">
@@ -16,18 +16,20 @@
       />
     </div>
 
-    <ul>
+    <div class="settings-form-fields">
       {% for fields in form %}
 
-      <li>
-        <label for=""> {{fields.label_tag}} </label>
+        <label for=""> {{fields.label_tag}}
         {{fields}}
-      </li>
+        </label>
+       
+    
       {% endfor %}
-      <li>
+    </div>
+    
         <input type="submit" value="Save Changes" />
-      </li>
-    </ul>
+    
+    </div>
   </form>
 </div>
 {% endblock content %}

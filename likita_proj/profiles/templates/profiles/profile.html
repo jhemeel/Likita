@@ -3,7 +3,7 @@
 {% block content %}
 
 <section class='profile'>
-  <article>
+
       <div class="profile-container">
         <div class="left-side col col-3">
           <div class="credentials">
@@ -81,9 +81,9 @@
           {% comment %} new end {% endcomment %}
         </div>
       </div> 
-  </article>
   
-  <article class='staff-pannel'>
+  
+  <div class='staff-pannel'>
       
     {% if request.user.is_staff %}
   
@@ -127,7 +127,7 @@
     </div>
     
     {% endif %}
-  </article>
+  </div>
   
   <article>
       {% if not user_profile.comment_set.all %}

@@ -397,7 +397,7 @@ header .navbar .nav-link:hover {
 
 .hero-section {
   position: relative;
-  top: -110px;
+  top: -160px;
   width: 100%;
   height: 100vh;
   margin: 0 auto;
@@ -408,7 +408,7 @@ header .navbar .nav-link:hover {
 }
 
 .hero-page {
-  padding-top: 110px;
+  padding-top: 120px;
   padding-left: 5%;
   padding-right: 5%;
   color: var(--tertiary-color);

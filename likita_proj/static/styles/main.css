@@ -563,7 +563,7 @@ article {
   color: var(--secondary-color-darker);
   font-family: "handwritten-2";
   font-weight: 700;
-  letter-spacing: 0.2ch;
+  letter-spacing: 0.1ch;
   border: 1px transparent;
   font-size: 18px;
   padding-right: 30px; /* remove pc*/
@@ -627,7 +627,7 @@ body::-webkit-scrollbar-thumb,
   color: var(--heading-color);
   font-size: var(--font-size-md);
   font-family: "hey-comic", "Poppins", sans-serif;
-  letter-spacing: 0.2ch;
+  letter-spacing: 0.1ch;
   padding-bottom: 4vh;
 }
 
@@ -821,7 +821,7 @@ textarea {
   font-size: 18px;
   font-family: "handwritten-2";
   font-weight: 700;
-  letter-spacing: 0.2ch;
+  letter-spacing: 0.1ch;
   color: var(--primary-bg);
   padding: 0 0.5rem;
 }
@@ -1474,7 +1474,7 @@ article#services {
   display: grid;
   gap: 50px;
   font-family: "handwritten-2";
-  letter-spacing: 0.2ch;
+  letter-spacing: 0.1ch;
   font-weight: 600;
 }
 
@@ -1624,7 +1624,7 @@ article#services {
 
 #doctors .section-title {
   font-family: "handwritten-2";
-  letter-spacing: 0.2ch;
+  letter-spacing: 0.1ch;
   font-weight: 600;
 }
 

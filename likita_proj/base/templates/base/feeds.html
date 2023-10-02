@@ -35,10 +35,10 @@
        <div class="post post1">
         <h3>{{post.topic.title.upper}} : <span>{{post.heading}}</span></h3>
         <div class="image-box">
-            <a href="{{post.image.url}}">
+            {% comment %} <a href="{{post.image.url}}"> {% endcomment %}
                 <img src="{{post.image.url}}" alt="" loading="lazy">
                 {% comment %} <i class="fa fa-multiply minimize"></i> {% endcomment %}
-            </a>
+            {% comment %} </a> {% endcomment %}
         </div>
         <p>
            {{post.body | truncatewords:30}}

@@ -1473,7 +1473,7 @@ article#services {
 #services .containers {
   display: grid;
   gap: 50px;
-  font-family: "handwritten-2";
+  font-family: "handwritten-2", "Poppins", sans-serif;
   letter-spacing: 0.1ch;
   font-weight: 600;
 }
@@ -1623,7 +1623,8 @@ article#services {
 /* service animation***************************************** */
 
 #doctors .section-title {
-  font-family: "handwritten-2";
+  font-family: "handwritten-2", "Poppins", sans-serif;
+
   letter-spacing: 0.1ch;
   font-weight: 600;
 }

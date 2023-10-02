@@ -1633,6 +1633,8 @@ article#services {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  font-family: "handwritten-2", "Poppins", sans-serif;
+
 }
 
 #doctors .doctors .member {

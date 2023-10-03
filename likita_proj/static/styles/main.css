@@ -1331,7 +1331,7 @@ aside #chat-box small {
   color: var(--ink);
   margin-bottom: 2rem;
   font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
-  font-size: var(--big-font-size);
+  font-size: var(--font-size);
   font-weight: 400;
   letter-spacing: 0.1ch;
   line-height: 1.5;

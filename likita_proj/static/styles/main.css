@@ -3,6 +3,17 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Catamaran:400,800");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.cdnfonts.com/css/handwriting?styles=22253');
+@import url('https://fonts.cdnfonts.com/css/aubade?styles=164288,164290,164286,164287,164289');
+@import url('https://fonts.cdnfonts.com/css/bluebird-3?styles=163678');
+@import url('https://fonts.cdnfonts.com/css/type-ra?styles=4703');
+
+
+
+
+
+
+
 
 :root {
   --primary-bg: #9f9f9f;
@@ -21,11 +32,6 @@
   --nav-pad: 0 5%;
   --article-shadow: 0px 2px 12px 2px rgba(91, 102, 140, 1);
   --box-shadow: 0px 1px 5px 3px rgba(7, 1, 61, 0.75);
-  --font-family-1: "Poppins", sans-serif;
-  --font-family-2: "Catamaran", sans-serif;
-  --font-family-3: "Montserrat", sans-serif;
-  --font-family-4: "Lora", sans-serif;
-  --font-family-5: "Lobster", sans-serif;
   --font-size-sm: clamp(0.5rem, calc(1vw + 0.15rem), 0.8rem);
   --font-size: clamp(1rem, calc(1.25vw + 0.45rem), 2rem);
   --font-size-md: clamp(1rem, calc(1.4vw + 0.7rem), 2.3rem);
@@ -68,42 +74,6 @@
   font-stretch: extra-expanded;
 }
 
-@font-face {
-  font-family: "vanilla-whale";
-  src: url("/static/fonts/vanilla_whale/vanilla\ whale.otf") format("truetype");
-  font-stretch: extra-expanded;
-}
-
-@font-face {
-  font-family: "hey-comic";
-  src: url("/static/fonts/hey_comic/Hey\ Comic.jpg"),
-    url("/static/fonts/hey_comic/Hey\ Comic.otf"),
-    url("/static/fonts/hey_comic/Hey\ Comic.ttf");
-  font-stretch: extra-expanded;
-}
-
-@font-face {
-  font-family: "typewriter";
-  src: url("/static/fonts/moms_typewriter/Mom«t___.ttf") format("truetype"),
-    url("/static/fonts/moms_typewriter/Mom«t___.woff") format("woff"),
-    url("/static/fonts/moms_typewriter/Mom«t___.woff2") format("woff2");
-  font-weight: 400;
-  font-stretch: extra-expanded;
-}
-
-@font-face {
-  font-family: "handwritten-1";
-  src: url("/static/fonts/daughter_of_fortune/Daughter\ of\ Fortune.ttf")
-    format("truetype");
-  font-stretch: extra-expanded;
-}
-
-@font-face {
-  font-family: "handwritten-2";
-  src: url("/static/fonts/please_write_me_a_song/Please\ write\ me\ a\ song.ttf")
-    format("truetype");
-  font-stretch: extra-expanded;
-}
 
 @font-face {
   font-family: "brush";
@@ -111,29 +81,9 @@
       format("woff"),
     url("/static/fonts/paint_brush_script/PaintBrushScript-Regular.woff2")
       format("woff2"),
-    url("/static/fonts/paint_brush_script/PaintBrushScript-Regular.otf")
-      format("otf"),
+    url("/static/fonts/paint_brush_script/PaintBrushScript-Regular.otf") format("otf"),
     url("/static/fonts/paint_brush_script/PaintBrushScript-Regular.ttf")
       format("truetype");
-}
-
-@font-face {
-  font-family: "angella-white";
-  src: url("/static/fonts/angella_white/Angella\ White.otf") format("truetype");
-  font-stretch: extra-expanded;
-}
-
-@font-face {
-  font-family: "garlic-salt";
-  src: url("/static/fonts/garlic_salt_extras/GarlicSaltExtras-Regular.otf")
-    format("truetype");
-  font-stretch: extra-expanded;
-}
-@font-face {
-  font-family: "mercy_christole";
-  src: url("/static/fonts/mercy_christole/Mercy\ Christole.ttf")
-    format("truetype");
-  font-stretch: extra-expanded;
 }
 
 /* global styles starts */
@@ -159,7 +109,7 @@ a {
 .navbar a {
   color: var(--heading-color);
   cursor: pointer;
-  font-family: "typewriter";
+  
 }
 
 /* messages styling starts */
@@ -283,10 +233,7 @@ header .navbar.active {
   background-color: var(--secondary-color);
 }
 
-header .navbar .page-logo {
-  /* display: flex;
-  align-items: center; */
-}
+
 
 .page-logo .icon {
   width: 40px;
@@ -310,7 +257,7 @@ header .navbar .nav-brand {
 header .navbar .menu {
   position: fixed;
   left: -100%;
-  top: 70px;
+  top: 60px;
   background-color: var(--secondary-color);
   padding-bottom: 20px;
   width: 100%;
@@ -339,7 +286,7 @@ header .navbar .nav-link {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   width: fit-content;
-  font-family: "typewriter";
+  font-family: "Aubade", "Catamaran", "Montserrat", "Poppins", sans-serif;
   font-size: var(--font-siz);
   border-bottom: 2px transparent;
 }
@@ -425,7 +372,7 @@ header .navbar .nav-link:hover {
 }
 
 .hero-page {
-  padding-top: 120px;
+  padding-top: 150px;
   padding-left: 5%;
   padding-right: 5%;
   color: var(--tertiary-color);
@@ -435,6 +382,9 @@ header .navbar .nav-link:hover {
 
 .hero-page h2 {
   font-size: var(--big-font-size);
+  font-family:'Bluebird', 'Handwriting',  "Catamaran", "Montserrat", "Poppins", sans-serif;
+font-weight: 800;
+letter-spacing: 0.3ch;
   text-align: left;
   margin: auto;
   max-width: 480px;
@@ -443,6 +393,7 @@ header .navbar .nav-link:hover {
 }
 .hero-page h2 a {
   color: var(--primary-color);
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
   text-align: left;
   margin-left: 8ch;
 }
@@ -451,8 +402,10 @@ header .navbar .nav-link:hover {
 }
 .hero-page .blog {
   position: absolute;
+  font-family:'Bluebird', 'Aubade',  "Catamaran", "Montserrat", "Poppins", sans-serif;
+
   /* right: 5%; */
-  bottom: 5%;
+  bottom: 15%;
 }
 
 .hero-page .blog a {
@@ -499,8 +452,9 @@ article {
 }
 
 .feeds .topics > h2 {
-  font-family: "hey-comic";
-  font-weight: 300;
+  font-family: "Bluebird", "Aubade", "Poppins", sans-serif;
+  letter-spacing: 0.4ch;
+  font-weight: 800;
   text-transform: uppercase;
   color: #04639a;
   background-color: var(--primary-bg);
@@ -518,6 +472,8 @@ article {
   justify-content: space-between;
   gap: 10px;
   align-items: center;
+  font-family: "Aubade", "Poppins", sans-serif;
+  letter-spacing: 0.4ch;
 }
 
 .feeds .topics > h3:hover {
@@ -561,7 +517,9 @@ article {
   width: 100%;
   background-color: var(--primary-color);
   color: var(--secondary-color-darker);
-  font-family: "handwritten-2";
+  
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
+
   font-weight: 700;
   letter-spacing: 0.1ch;
   border: 1px transparent;
@@ -619,14 +577,18 @@ body::-webkit-scrollbar-thumb,
   color: var(--ink);
   border-bottom: 1px solid;
   padding: 1rem 0;
-  font-family: "handwritten-2";
+
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
+
   letter-spacing: 0.1ch;
   font-weight: 700;
 }
 .feeds .posts .post h3 {
   color: var(--heading-color);
   font-size: var(--font-size-md);
-  font-family: "hey-comic", "Poppins", sans-serif;
+
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
+
   letter-spacing: 0.1ch;
   padding-bottom: 4vh;
 }
@@ -784,7 +746,10 @@ form {
 
 form h2,
 form h3 {
-  font-family: "hey-comic";
+  font-family: "Bluebird", "Aubade", "Poppins", sans-serif;
+text-transform: uppercase;
+word-spacing: 0.5ch;
+letter-spacing: 0.3ch;
   font-size: var(--big-font-size);
   font-weight: 300;
   color: var(--input-btn-color);
@@ -802,8 +767,8 @@ form h3 {
 
 form label {
   display: inline-block;
-  font-size: 18px;
-  font-family: "typewriter", "Poppins", sans-serif;
+  font-size: var(--font-size);
+  font-family: "Type-Ra", "Poppins", sans-serif;
   color: var(--input-btn-color);
   align-self: flex-start;
   width: 100%;
@@ -819,8 +784,8 @@ textarea {
   border: 1px solid transparent;
   background-color: #ffffff;
   font-size: 18px;
-  font-family: "handwritten-2";
-  font-weight: 700;
+  font-family: "Handwriting";
+  font-weight: 800;
   letter-spacing: 0.1ch;
   color: var(--primary-bg);
   padding: 0 0.5rem;
@@ -942,7 +907,7 @@ aside #chat-box input[type="text"] {
   border: 1px solid transparent;
   padding: 0 8px;
   transition: none;
-  font-family: var(--font-family);
+  font-family: "Handwriting";
   /* font-size: var(--font-size); */
 }
 aside #chat-box input[type="text"]:focus {
@@ -1335,7 +1300,9 @@ aside #chat-box small {
 .about .box-container .content .heading.About {
   color: var(--tertiary-bg);
   font-size: var(--big-font-size);
-  font-family: "brush", "Catamaran", "Lora", sans-serif;
+  font-family: "brush", "Bluebird", "Catamaran", "Lora", sans-serif;
+  letter-spacing: 0.2ch;
+
   border-bottom: 2px solid var(--btn-bg-teal);
 }
 .about .box-container .content .heading.About span {
@@ -1363,13 +1330,13 @@ aside #chat-box small {
 .about .content p {
   color: var(--ink);
   margin-bottom: 2rem;
-  font-family: "handwritten-1";
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
   font-size: var(--big-font-size);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.1ch;
-  /* line-height: 1.5; */
+  line-height: 1.5;
   text-transform: none;
-  text-align: justify;
+  /* text-align: justify; */
 }
 
 .about .btn-wrapper {
@@ -1391,7 +1358,8 @@ aside #chat-box small {
   padding: 0.7rem 2rem;
   border-radius: 5px;
   font-size: 16px;
-  font-family: "hey-comic";
+  font-family: "Bluebird", "Aubade", "Poppins", sans-serif;
+
 }
 
 /* contact us */
@@ -1473,9 +1441,10 @@ article#services {
 #services .containers {
   display: grid;
   gap: 50px;
-  font-family: "handwritten-2", "Poppins", sans-serif;
-  letter-spacing: 0.1ch;
-  font-weight: 600;
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
+  
+  letter-spacing: 0.12ch;
+  font-weight: 500;
 }
 
 #services .containers .service-box {
@@ -1609,8 +1578,8 @@ article#services {
 
 @keyframes fade-in-bottom {
   0% {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
+    -webkit-transform: translateY(150px);
+    transform: translateY(150px);
     opacity: 0;
   }
   100% {
@@ -1631,19 +1600,16 @@ article#services {
 
 
 /* service animation***************************************** */
-
-#doctors .section-title {
-  font-family: "handwritten-2", "Poppins", sans-serif;
-
-  letter-spacing: 0.1ch;
-  font-weight: 600;
+#doctors{
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
+  letter-spacing: 0.12ch;
+  font-weight: 500;
 }
 
 #doctors .doctors-wrapper {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  font-family: "handwritten-2", "Poppins", sans-serif;
 
 }
 
@@ -1896,7 +1862,8 @@ article#services {
     border: 1px transparent;
     color: var(--tertiary-color);
     background-color: var(--tertiary-bg);
-    font-family: "handwritten-2";
+  font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
+
   }
 
   #search-form input[type="submit"]:hover {

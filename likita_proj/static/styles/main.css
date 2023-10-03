@@ -403,7 +403,7 @@ letter-spacing: 0.3ch;
 .hero-page .blog {
   position: absolute;
   font-family:'Bluebird', 'Aubade',  "Catamaran", "Montserrat", "Poppins", sans-serif;
-
+  letter-spacing: 0.3ch;
   /* right: 5%; */
   bottom: 15%;
 }
@@ -1448,7 +1448,8 @@ article#services {
 }
 
 #services .containers .service-box {
-  display: grid;
+display: grid;
+/* grid-template-rows: 380px; */
  gap: 30px;
 }
 
@@ -1462,6 +1463,7 @@ article#services {
   text-align: center;
   padding: 1rem;
   transform: scale(0.95);
+  min-height: 350px;
 }
 
 .services .icon-box:hover {
@@ -2010,6 +2012,11 @@ article#services {
     row-gap: 50px;
 
   }
+  .services .icon-box {
+    min-height: initial;
+  }
+
+
 
 
   #doctors .doctors-wrapper {

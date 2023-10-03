@@ -434,11 +434,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   font-family:'Bluebird', 'Aubade',  "Catamaran", "Montserrat", "Poppins", sans-serif;
   letter-spacing: 0.3ch;
   right: 5%;
-  bottom: 32vh;
+  bottom: 35vh;
 }
 
 .hero-page .blog a {
-  font-size: var(--big-font-size);
+  font-size: var(--font-size-md);
   border: 2px solid transparent;
   padding: 0.5rem;
   border-radius: 5px;
@@ -1871,6 +1871,12 @@ display: grid;
     object-position: center center;
     border-top-left-radius: 50%;
   }
+
+  .hero-page .blog {
+  left: 5%;
+  bottom: 10%;
+  right: initial;
+}
 
 
   .feeds {

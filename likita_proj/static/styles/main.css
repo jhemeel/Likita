@@ -355,9 +355,13 @@ header .navbar .nav-link:hover {
 .social-nav .fa-whatsapp {
   color: green;
 }
-.social-nav .fa-instagram {
-  color: tomato;
-}
+.social-nav .fa-instagram{
+  background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  }
 
 .hero-section {
   position: relative;
@@ -1358,7 +1362,8 @@ aside #chat-box small {
   padding: 0.7rem 2rem;
   border-radius: 5px;
   font-size: 16px;
-  font-family: "Bluebird", "Aubade", "Poppins", sans-serif;
+  font-weight: 800;
+  font-family: "Handwriting", "Aubade", "Poppins", sans-serif;
 
 }
 

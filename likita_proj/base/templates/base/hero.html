@@ -1,17 +1,22 @@
+{% load static %}
 
  <div class="hero-section">
   <div class="hero-page">
-      <h2>Welcome! <i role="img" aria-label="woman dancing" class="fa fa-hands" ></i> <br/> We Offer: <br/>
-          <a
+     <div class="hero-page-wrapper">
+      <h2 >Welcome! <i role="img" aria-label="woman dancing" class="fa fa-hands" ></i> <br/> We Offer: <br/>
+        <a
           href=""
           class="typewrite"
           data-period="2000"
           data-type='[ "Health Journals", "Free Health Tips", "Free Consultations", "Free Counselling" ]'
-          data-color='["red", "green", "blue", "yellow", "purple"]'
-        >
+          data-color='["red", "green", "blue", "yellow", "purple"]'>
           <span class="wrap"></span>
         </a>
       </h2>
+      <div id="scene-box">
+            <img src="{% static "images/hero3.jpg" %} " alt="hero-image">
+      </div>
+     </div>
 
       <div class="blog">
         <p><a href="{% url 'blog' %}">GO TO BLOG <i class="fa fa-arrow-right "></i></a></p>

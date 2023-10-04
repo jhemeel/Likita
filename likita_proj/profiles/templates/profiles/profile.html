@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<section class='profile'>
+<div class='profile'>
 
       <div class="profile-container">
         <div class="left-side col col-3">
@@ -64,13 +64,17 @@
           <div class="edit-btn">
             {% if request.user.username == user_profile.username or request.user.is_superuser %}
             <a href="{% url 'settings' user_profile.username %}">
-              <button type="button">Edit Profile</button></a
-            >
-            <a href="{% url 'create-post' %}"><button>Create Post</button></a>
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="{% url 'create-post' %}">
+              <i class="fa fa-pen"></i>
+            </a>
             {% endif %}
               {% if request.user.is_superuser %}
-            <a href="{% url 'contact' %}"><button>Reply Contacts</button></a>
-            <a href="{% url 'send-newsletter' %}"><button>Send Newsletter</button></a>
+            <a href="{% url 'contact' %}">
+              <i class="fa fa-reply"></i>
+            </a>
+            <a href="{% url 'send-newsletter' %}"><i class="fa fa-book"></i></a>
             {% endif %}
           </div>
         
@@ -88,16 +92,15 @@
     {% if request.user.is_staff %}
   
     <div>
-        <h3 class="text-center mt-5 mb-5">Staff Panel</h3>
+        <h3 >Staff Panel</h3>
         <form action="">
-        <input class="form-control" id="myInput" style="" type="search" placeholder="Search Appointment" name=q><br><br>
+        <input class="form-control" id="myInput" style="" type="search" placeholder="Search Appointment" name=q>
         <input type="submit" value="Search">
         </form>
-        <br>
     
         <div class="table-responsive">
 
-          <table class="table table-bordered table-striped table-hover mx-auto">
+          <table>
             <a href="{% url 'profile' user_profile.username %}" ><p style="text-align:right; padding-right: 5%">Reset</p></a>
               <thead>
                 <tr>
@@ -129,7 +132,6 @@
     {% endif %}
   </div>
   
-  <article>
       {% if not user_profile.comment_set.all %}
       <h1 style="text-align: center;">No Conversations</h1>
       {% else %}
@@ -139,7 +141,7 @@
       <div class="profile-conversation">
       
         <div class="conversation-comment">
-          <h4>Comments: </h2>
+          <h4>Received: </h2>
             <a href="{% url 'post' comments.post.id %}">
               <h3>Post: {{comments.post.topic.title}}</h3>
             </a>
@@ -149,7 +151,7 @@
        
         <div class="conversation-replies">
           {% for replies in comments.commentreply_set.all %}
-          <h4>Replied: {{replies.created_at | timesince}} ago</h4>
+          <h4>Sent: {{replies.created_at | timesince}} ago</h4>
           <p><strong>@{{replies.replier.username}}</strong> : {{replies.body}}</p>
           {% endfor %}
         </div>
@@ -159,7 +161,6 @@
     
       {% endif %}
     
-  </article>
 </section>
 
 

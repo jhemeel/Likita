@@ -61,21 +61,18 @@
     
     </div>
 
-    <div>
+    <div class="comment">
         <h2 style="">Comment Section</h2>
-        <div class="comment">
+        <div >
 
             <div id="form">
                 <form action="" method="post">
                     {% csrf_token %}
-                   <ul>
-                    <li>
+                
                         <input type="text" name="body" id="form-control">
-                    </li>
-                    <li>
+                    
                         <input type="submit" value="Post comment">
-                    </li>
-                   </ul>
+                    
                    
                 </form>
             </div>

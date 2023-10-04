@@ -262,6 +262,7 @@ header .navbar .menu {
   background-color: var(--secondary-color);
   padding-bottom: 20px;
   width: 100%;
+  height:calc(100vh - 120px);
 }
 
 header .navbar .menu.active {
@@ -288,8 +289,8 @@ header .navbar .nav-link {
   border-radius: 4px;
   width: fit-content;
   font-family: "Aubade", "Catamaran", "Montserrat", "Poppins", sans-serif;
-  font-size: var(--font-siz);
   border-bottom: 2px transparent;
+  font-size: var(--font-size-md);
 }
 
 header .navbar .nav-link:hover {
@@ -1790,11 +1791,13 @@ display: grid;
     width: unset;
     text-align: unset;
     z-index: 200;
+    height: initial;
   }
 
   header .navbar .menu-item .nav-items {
     margin-left: 15px;
     margin-top: unset;
+
   }
   header .navbar .menu .menu-item {
     display: inherit;
@@ -1822,6 +1825,11 @@ display: grid;
     display: block;
     color: var(--heading-color);
   }
+
+header .navbar .nav-link{
+  font-size: var(--font-size-sm);
+}
+
   .hamburger {
     display: none;
   }
@@ -1855,7 +1863,7 @@ display: grid;
   .hero-page h2 {
     line-height: 4rem;
     margin: unset;
-    padding:0  2%;
+    padding: 5%;
     height: 100vh;
   }
 
@@ -2147,10 +2155,6 @@ display: grid;
 }
 
 @media screen and (min-width: 1024.05px) {
-  header .navbar .menu {
-    gap: 7vw;
-  }
-
   header .navbar .menu .menu-item .nav-items {
     margin-top: 0;
   }

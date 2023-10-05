@@ -423,7 +423,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   font-size: var(--big-font-size);
   font-family:   "Montserrat", "Poppins", sans-serif;
   font-weight: 800;
-  letter-spacing: 0.3ch;
+  letter-spacing: 0.1ch;
   text-align: left;
   margin: auto;
   padding-left: 3%;
@@ -560,9 +560,8 @@ article {
 #search-form input[type="search"] {
   height: 4ch;
   width: 100%;
-  background-color: var(--primary-color);
-  color: var(--secondary-color-darker);
-  
+  box-shadow: var(--article-shadow);
+  color: var(--ink);
   font-family:'Aubade', 'Handwriting', "Poppins", sans-serif;
 
   font-weight: 700;
@@ -583,12 +582,11 @@ article {
   top: 10px;
   font-size: 18px;
   background-color: transparent;
-  color: var(--primary-bg);
+  color: var(--ink);
   cursor: pointer;
 }
 
 .feeds .posts {
-  /* box-shadow: var(--box-shadow); */
   padding: 1rem;
   border-radius: 10px;
 }
@@ -643,7 +641,7 @@ body::-webkit-scrollbar-thumb,
 }
 
 .feeds .posts .post p a {
-  color: #0d70b1;
+  color: var(--tertiary-bg);
 }
 .feeds .post-bottom {
   display: flex;
@@ -795,7 +793,7 @@ word-spacing: 0.5ch;
 letter-spacing: 0.3ch;
   font-size: var(--big-font-size);
   font-weight: 300;
-  color: var(--input-btn-color);
+  color: var(--primary-color);
   margin-bottom: 20px;
 }
 
@@ -812,7 +810,7 @@ form label {
   display: inline-block;
   font-size: var(--font-size);
   font-family: "Type-Ra", "Poppins", sans-serif;
-  color: var(--input-btn-color);
+  color: var(--primary-color);
   align-self: flex-start;
   width: 100%;
 }
@@ -826,11 +824,12 @@ textarea {
   border-radius: 5px;
   border: 1px solid transparent;
   background-color: #ffffff;
+  box-shadow: var(--article-shadow);
   font-size: 18px;
   font-family: "Handwriting";
   font-weight: 800;
   letter-spacing: 0.1ch;
-  color: var(--primary-bg);
+  color: var(--ink);
   padding: 0 0.5rem;
 }
 
@@ -854,6 +853,11 @@ input[type="submit"] {
   background-color: var(--tertiary-bg);
   color: var(--tertiary-color);
   font-size: 18px;
+}
+
+input[type="submit"]:hover{
+  background-color: var(--tertiary-color);
+  color: var(--tertiary-bg);
 }
 
 form a,
@@ -1541,6 +1545,10 @@ aside #chat-box small {
   text-align: center;
 }
 
+#services .text-center{
+  text-align: center;
+}
+
 #services .section-title .h2,
 #doctors .section-title .h2 {
   padding: 2rem;
@@ -2032,6 +2040,7 @@ header .navbar .nav-link{
     box-shadow: none;
   }
 
+
   #search-form button[type="submit"] {
     display: none;
   }
@@ -2042,7 +2051,7 @@ header .navbar .nav-link{
   }
   #search-form input[type="submit"] {
     display: unset;
-    width: 15%;
+    width: 150px;
     height: 4ch;
     vertical-align: top;
     font-size: 18px;
@@ -2058,6 +2067,7 @@ header .navbar .nav-link{
     background-color: var(--tertiary-color);
     color: var(--tertiary-bg);
     border: 1px solid;
+
   }
 
   #post-feeds .feeds {
@@ -2072,7 +2082,7 @@ header .navbar .nav-link{
   /* forms start */
 
   form {
-    max-width: 500px;
+    max-width: 600px;
     margin: auto;
   }
   form label {

@@ -6,16 +6,14 @@
 <article>
   {% if user.is_authenticated %}
 
-  <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black m-5">
-    <form method="post" action="{% url 'booking' %}" style="margin: auto" required>
+  <div>
+    <form method="post" action="{% url 'booking' %}" required>
       <h3 class="text-center mt-3">Book An Appointment</h3>
 
       {% csrf_token %}
-    <ul>
-      <!--input service-->
-        <li>
-            <label class="">Service:</label>
-            <select class="form-select fs-3" name="service">
+    
+            <label for="service">Service:</label>
+            <select class="form-select fs-3" name="service" id="service">
               <option value="Consultaion">Consultaion</option>
               <option value="Nursing care">Nursing care</option>
               <option value="Medical social services">
@@ -25,25 +23,19 @@
                 Homemaker or basic assistance care
               </option>
             </select>
-        </li>
-          <!--input day-->
-        <li class="mt-3">
-        <label class="">Day:</label>
-        <select class="form-select fs-3" name="day">
+       
+        <label for="day">Day:</label>
+        <select class="form-select fs-3" name="day" id="day">
           {% for validateWeekday in validateWeekdays %}
           <option value="{{validateWeekday}}">{{validateWeekday}}</option>
           {% endfor %}
         </select>
-        </li>
        
-        <li>
             <input
           type="submit"
-          class="btn btn-primary text-white"
           value="Continue"
         />
-        </li>
-    </ul>
+       
     </form>
   </div>
 

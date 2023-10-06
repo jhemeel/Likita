@@ -21,7 +21,6 @@ def ask_openai(message):
     return answer
 
 
-# current_time = datetime.now().strftime("%HH:%MM:%SS")
 
 def chatbot(request):
     chats = Chat.objects.filter(user=request.user)

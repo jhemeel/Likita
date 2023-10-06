@@ -5,44 +5,41 @@
 
 
 
-<article>
 {% if user.is_authenticated %}
 <!--if 24hrs before nobat-->
 {% if delta24 == True %}
-<h1 style="text-align: center;">Edit Appointment</h1>
 
-<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
-    <form method="post" action="{% url 'userUpdate' id %}" class="me-2 ms-2" required>
+<div>
+    <form method="post" action="{% url 'userUpdate' request.user.id  %}" class="me-2 ms-2" required>
+<h3>Edit Appointment</h3>
+
         {% csrf_token %}
 
         <!--input service-->
-        <div>
-            <h3 class="">Select Service:</h3>
-            <select class="form-select fs-3" name="service">
+    
+            <label for="service">Select Service:</label>
+            <select class="form-select fs-3" name="service" id="service">
                 <option value="Consultation">Consultation</option>
                 <option value="Nursing care">Nursing care</option>
                 <option value="Medical social services">Medical social services</option>
                 <option value="Homemaker or basic assistance care">Homemaker or basic assistance care</option>
             </select>
-        </div>
+
             <!--input day-->
-            <div class="mt-3">
-                <h3 class="">Select Day:</h3>
-                <select class="form-select fs-3" name="day">
+                <label for="day">Select Day:</label>
+                <select class="form-select fs-3" name="day" id="day">
                     {% for validateWeekday in validateWeekdays %}
                     <option value="{{validateWeekday}}">{{validateWeekday}}</option>
                     {% endfor %}
                 </select>
-            </div>
 
-            <br/>
-            <button type="submit" class="btn btn-primary text-white">Continue</button>
+            <input type="submit" value="Continue">
         </div>
     </form>
 </div>
 <!--else if its 24hrs before editing-->
 {% else %}
-<form action="" style="margin: auto; background: transparent" >
+<form action="" >
     
 <div>
     <h1 style="text-align: center; color: red">Editing Appointments Is Only Available 24hrs Before Appointment!</h1>
@@ -55,12 +52,11 @@
 
 {% else %}
 
-<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+<div>
     <h1 class="p-2  me-3">You Are Not Signed in!</h1>
-    <a href="{% url 'register' %}" class="btn btn-primary shadow text-center">Sign in</a>
+    <a href="{% url 'login' %}" >Sign in</a>
 </div>
 
 {% endif %}
 
-</article>
 {% endblock %}

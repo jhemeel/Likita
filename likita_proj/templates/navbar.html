@@ -5,7 +5,7 @@
            
             <a href="{% url 'home' %}" class="nav-brand">
                 <div class="icon">
-                    <img src="{% static 'images/pill.png' %}" alt="">
+                    <img src="{% static '/images/pill.png' %}" alt="">
                 </div>
                      Dokto
             </a>
@@ -22,7 +22,6 @@
             <ul class="menu-item">
                 {% if request.user.is_authenticated %}
                 <li><a href="{% url 'profile' request.user.username %}"><img src="{{request.user.avatar.url}}" alt="" width="30" height="30"></a> </li>
-                {% comment %} <li><a href="{% url 'profile' request.user.username %}"> {{request.user.name | truncatechars:4}}</a> </li> {% endcomment %}
                 <ul class="hide-wrapper">
                 <li class="nav-items hide"><a href="{% url 'logout' %}" class="nav-link" style="display: flex; gap: 10px"> <i class="fa fa-sign-out"></i>Logout</a></li>
                 <li class="nav-items hide"><a href="{% url 'settings' request.user.username %}" style="display: flex; gap: 10px" class="nav-link"> <i class="fa fa-cog"></i>Settings</a></li>
@@ -49,21 +48,21 @@
         </div>
     </div>
     <div class="social-nav">
-        <a href="https://web.facebook.com/adekunlejemeel">
+        <a href="//web.facebook.com/adekunlejemeel">
         <i class="fa-brands fa-facebook" aria-hidden="true"></i>
             
         </a>
-        <a href="https://twitter.com/Sadique42469433">
+        <a href="//twitter.com/Sadique42469433">
             <i class="fa-brands fa-twitter"  aria-hidden="true"></i>
 
         </a>
-        <a href="https://www.linkedin.com/in/jemeel-sadique-a0b465260/">
+        <a href="//www.linkedin.com/in/jemeel-sadique-a0b465260/">
             <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
 
         </a>
         
-        <a href="https://wa.link/bu84d9"> <i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
-        <a href="https://www.instagram.com/sadiquejemeel/">
+        <a href="//wa.link/bu84d9"> <i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="//www.instagram.com/sadiquejemeel/">
         <i class="fa-brands fa-instagram" aria-hidden="true"></i>
 
         </a>

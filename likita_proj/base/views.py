@@ -139,7 +139,7 @@ def delete_post(request, pk):
     if request.user == post.owner or request.user.is_superuser:
         if request.method == "POST":
             post.delete()
-            return redirect('home')
+            return redirect('blog')
     context={'post': post}
     return render(request, 'base/delete.html', context)
 

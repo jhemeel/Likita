@@ -6,20 +6,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href=" {% static './images/pill.png' %}">
+    <link rel="icon" type="image/x-icon" href=" {% static 'images/pill.png' %}">
     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
 
-    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
-    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
-    <link href=" {% static 'https://fonts.googleapis.com/css2?family=Poppins&display=swap' %}" rel="stylesheet">
+    <link rel="preconnect" href="{% static '//fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static '//fonts.gstatic.com' %}" crossorigin>
 
-    <link rel="stylesheet" href="{% static './styles/main.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/main.css' %}">
     <title>{% block title %} {% endblock title %}</title>
-  {% comment %} {% load bootstrap5 %}
-  {% bootstrap_css %}
-  {% bootstrap_javascript %} {% endcomment %}
+
 </head>
 
 <body>
@@ -33,7 +30,6 @@
         {% endblock content %}
     </main>
 
-    {% comment %} {% include 'chat/chat.html' %} {% endcomment %}
 
     <footer>
         {% include 'footer.html' %}
@@ -41,14 +37,11 @@
 
 </body>
 
-<script src="{% static './js/hamburger.js' %}"></script>
-<script src="{% static './js/mode.js' %}"></script>
-<script src="{% static './js/scroll.js' %}"></script>
-<script src="{% static './js/edits.js' %}"></script>
-<script src="{% static './js/chats.js' %}"></script>
-<script src="{% static './js/animation.js' %}"></script>
-<script src="{% static './js/scene.js' %}" type="module" defer></script>
-
-{% comment %} <script src="{% static 'js/chatbot.js' %}"></script> {% endcomment %}
+<script src="{% static '/js/hamburger.js' %}"></script>
+<script src="{% static '/js/mode.js' %}"></script>
+<script src="{% static '/js/scroll.js' %}"></script>
+<script src="{% static '/js/edits.js' %}"></script>
+<script src="{% static '/js/chats.js' %}"></script>
+<script src="{% static '/js/animation.js' %}"></script>
 
 </html>

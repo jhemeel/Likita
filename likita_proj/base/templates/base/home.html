@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %}
 
-{% block title %}Dokto | Welcome{% endblock title %}
+{% block title %} Dokto | Welcome{% endblock title %}
 
 
 {% block content %}
@@ -11,5 +11,5 @@
   <div>{% include 'base/services.html' %}</div>
   <div  id="contact">{% include 'base/staffs.html' %}</div>
 </div> 
-<script src="{% static 'js/scripts.js' %}"></script>
+<script src="{% static '/js/scripts.js' %}"></script>
 {% endblock content %}

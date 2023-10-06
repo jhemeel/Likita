@@ -15,7 +15,7 @@ def book_an_appointment(request):
         service = request.POST.get('service')
         day = request.POST.get('day')
         if service == None:
-            messages.success(request, "Please Select A Service!")
+            messages.info(request, "Please Select A Service!")
             return redirect('booking')
 
         #Store day and service in django session:
@@ -74,23 +74,27 @@ def bookingSubmit(request):
                                 message = message
                                
                             )
-                            mail = EmailMessage(subject="Appointment Saved", body="Your Appointment is successfull", from_email=EMAIL_HOST_USER, to=[Appointment.email])
+                            mail = EmailMessage(
+                                subject="Appointment with Dokto Medics",
+                                body=f" Dear {Appointment.name}, Your booking is successfull", 
+                                from_email=EMAIL_HOST_USER, to=[Appointment.email])
                             mail.send()
                             messages.success(request, "Appointment Saved!")
-                            return redirect('home')
+                            return redirect('profile', pk=request.user.username)
                         else:
-                            messages.success(request, "The Selected Time Has Been Reserved Before!")
+                            messages.info(request, "The Selected Time Has Been Reserved Before!")
                     else:
-                        messages.success(request, "The Selected Day Is Full!")
+                        messages.info(request, "The Selected Day Is Full!")
                 else:
-                    messages.success(request, "The Selected Date Is Incorrect")
+                    messages.info(request, "The Selected Date Is Incorrect")
             else:
-                    messages.success(request, "The Selected Date Isn't In The Correct Time Period!")
+                    messages.info(request, "The Selected Date Isn't In The Correct Time Period!")
         else:
-            messages.success(request, "Please Select A Service!")
+            messages.info(request, "Please Select A Service!")
 
 
     return render(request, 'clinic/bookingSubmit.html', {'times':hour,})
+
 
 
 def userPanel(request):
@@ -102,8 +106,8 @@ def userPanel(request):
     })
     
     
-def userUpdate(request, id):
-    appointment = Appointment.objects.get(pk=id)
+def userUpdate(request, pk):
+    appointment = Appointment.objects.get(id=pk)
     userdatepicked = appointment.day
     #Copy  booking:
     today = datetime.today()
@@ -126,7 +130,7 @@ def userUpdate(request, id):
         request.session['day'] = day
         request.session['service'] = service
 
-        return redirect('userUpdateSubmit', id=id)
+        return redirect('userUpdateSubmit', pk=pk)
 
 
     return render(request, 'clinic/userUpdate.html', {
@@ -137,7 +141,7 @@ def userUpdate(request, id):
         })
 
 
-def userUpdateSubmit(request, id):
+def userUpdateSubmit(request, pk):
     name = request.user
     times = [
         "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM"
@@ -152,8 +156,8 @@ def userUpdateSubmit(request, id):
     service = request.session.get('service')
     
     #Only show the time of the day that has not been selected before and the time he is editing:
-    hour = checkEditTime(times, day, id)
-    appointment = Appointment.objects.get(pk=id)
+    hour = checkEditTime(times, day, pk)
+    appointment = Appointment.objects.get(id=pk)
     userSelectedTime = appointment.time
     if request.method == 'POST':
         time = request.POST.get("time")
@@ -164,12 +168,17 @@ def userUpdateSubmit(request, id):
                 if date == 'Monday' or date == 'Saturday' or date == 'Wednesday':
                     if Appointment.objects.filter(day=day).count() < 11:
                         if Appointment.objects.filter(day=day, time=time).count() < 1 or userSelectedTime == time:
-                            AppointmentForm = Appointment.objects.filter(pk=id).update(
+                            AppointmentForm = Appointment.objects.filter(id=pk).update(
                                 name = name,
                                 service = service,
                                 day = day,
                                 time = time,
                             ) 
+                            mail = EmailMessage(
+                                subject="Appointment with Dokto Medics Updated",
+                                body=f" Dear {Appointment.name}, Your booking update is successfull", 
+                                from_email=EMAIL_HOST_USER, to=[Appointment.email])
+                            mail.send()
                             messages.success(request, "Appointment Edited!")
                             return redirect('home')
                         else:
@@ -240,10 +249,10 @@ def checkTime(times, day):
     return x
 
 
-def checkEditTime(times, day, id):
+def checkEditTime(times, day, pk):
     #Only show the time of the day that has not been selected before:
     x = []
-    appointment = Appointment.objects.get(pk=id)
+    appointment = Appointment.objects.get(id=pk)
     time = appointment.time
     for k in times:
         if Appointment.objects.filter(day=day, time=k).count() < 1 or time == k:

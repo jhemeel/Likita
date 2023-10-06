@@ -11,12 +11,12 @@
     <div class="topics" id="topics">
         <h2>Categories</h2>
         <h3>
-            <a href="{% url 'home' %}">All</a>
+            <a href="{% url 'blog' %}">All</a>
             <span>{{posts.all.count}}</span>
         </h3>
         {% for topic in topics %}
         <h3>
-            <a href="{% url 'home' %}?q={{topic.title}}">{{topic.title}} </a> 
+            <a href="{% url 'blog' %}?q={{topic.title}}">{{topic.title}} </a> 
             <span>{{topic.post_set.count}}</span>
          </h3>
         {% endfor %}
@@ -31,14 +31,13 @@
             <i class="fa fa-search" role="submit"></i>
             </button>
         </form>
+        {% if posts %}
         {% for post in posts %}
        <div class="post post1">
         <h3>{{post.topic.title.upper}} : <span>{{post.heading}}</span></h3>
         <div class="image-box">
-            {% comment %} <a href="{{post.image.url}}"> {% endcomment %}
                 <img src="{{post.image.url}}" alt="" loading="lazy">
-                {% comment %} <i class="fa fa-multiply minimize"></i> {% endcomment %}
-            {% comment %} </a> {% endcomment %}
+
         </div>
         <p>
            {{post.body | truncatewords:30}}
@@ -82,6 +81,10 @@
         </div>
        </div>
        {% endfor %}
+
+       {% else %}
+        <p style="text-align: center; margin-top: 100px">No Post for the selected topic</p>
+       {% endif %}
     </div>
 
 </div>

@@ -19,7 +19,7 @@
   
   --primary-bg: #ffffff;
   --primary-color: #107896;
-  --ink: #365b7a;;
+  --ink: #365b7a;
   --heading-color: #3c6478;
   --secondary-color: #fffffa;;
   --secondary-color-darker: #f7f6f6;
@@ -31,8 +31,8 @@
   --input-btn-color: #45350c;
   --section-pad: 0 5%;
   --nav-pad: 0 5%;
-  --article-shadow: 0px 2px 12px 2px rgba(91, 102, 140, 1);
-  --box-shadow: 0px 1px 5px 3px rgba(7, 1, 61, 0.75);
+  --article-shadow: 0px 2px 3px 2px #365b7a;;
+  --box-shadow: 0px 1px 5px 3px #365b7a;;
   --font-size-sm: clamp(0.5rem, calc(1vw + 0.15rem), 0.8rem);
   --font-size: clamp(1rem, calc(1.25vw + 0.45rem), 2rem);
   --font-size-md: clamp(1rem, calc(1.4vw + 0.7rem), 2.3rem);
@@ -252,7 +252,7 @@ header .navbar.active {
 }
 
 header .navbar .nav-brand {
-  font-size: var(--font-size);
+  font-size: var(--font-size-md);
   font-family: "docktrin";
   text-transform: uppercase;
   display: flex;
@@ -272,7 +272,7 @@ header .navbar .menu {
   background-color: var(--secondary-color);
   padding-bottom: 20px;
   width: 100%;
-  height:calc(100vh - 120px);
+  height:calc(100vh - 60px);
 }
 
 header .navbar .menu.active {
@@ -283,7 +283,7 @@ header .navbar .menu .menu-item {
   padding-left: 1rem;
 }
 header .navbar .menu .menu-item .nav-items {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 header .navbar .menu .menu-item img {
@@ -298,9 +298,10 @@ header .navbar .nav-link {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   width: fit-content;
-  font-family: "Aubade", "Catamaran", "Montserrat", "Poppins", sans-serif;
+  font-family: "Montserrat", "Poppins", sans-serif;
   border-bottom: 2px transparent;
   font-size: var(--font-size-md);
+ 
 }
 
 header .navbar .nav-link:hover {
@@ -1530,9 +1531,9 @@ aside #chat-box small {
 
   /* padding: var(--section-pad); */
   background:linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.7),
+    to top,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8),
     rgba(255, 255, 255, 0.8)
   ),  
   url("/static/images/service-demo-bg.jpg");
@@ -1594,6 +1595,7 @@ aside #chat-box small {
 
 #services .services-demo-image{
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #services .services-demo-image img{
@@ -1602,25 +1604,40 @@ aside #chat-box small {
   height: auto;
   background-size: cover;
   background-position: center center;
-  /* aspect-ratio: 3 / 4; */
 }
 
 #services .containers .service-box {
-display: grid;
-/* grid-template-rows: 380px; */
- gap: 30px;
- /* background-color: #f3f6f7; */
+ display: flex;
+ flex-direction: column;
+ gap: 100px;
 }
 
 .services .box-container{
-  /* margin-bottom: 10px; */
-  border-radius: 5px;
+  display: block;
 }
+
+.services-image{
+  width: 100%;
+  height: 380px;
+  margin-bottom: 20px;
+}
+
+.services-image img{
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.7;
+}
+
+
 
 .services .icon-box {
   text-align: center;
   padding: 1rem;
   transform: scale(0.95);
+
 }
 
 .services .icon-box:hover {
@@ -1693,6 +1710,9 @@ display: grid;
 .services .description {
   line-height: 24px;
   font-size: var(--font-size);
+  /* font-size: 18px; */
+  text-align: center;
+
   color: var(ink);
 }
 
@@ -1956,6 +1976,8 @@ display: grid;
 
 header .navbar .nav-link{
   font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
 }
 
   .hamburger {
@@ -2197,21 +2219,43 @@ header .navbar .nav-link{
   }
 
 
-  #services .containers .service-box{
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 30px;
-    row-gap: 50px;
-
-  }
-
   #services .services-demo{
   grid-template-columns: 1fr 1fr;
   align-items: center;
   box-shadow: var(--article-shadow);
   padding: 1rem;
   border-radius: 12px;
+  column-gap: 40px;
 
 }
+
+#services .services-demo-image{
+  margin-bottom: initial;
+}
+
+.services .box-container{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  
+
+}
+
+.box-container.reverse{
+  flex-direction: row-reverse;
+}
+.services-image{
+  flex: 1;
+}
+
+.icon-box{
+  flex: 1;
+}
+
+
+
+
+
   
   #doctors .doctors-wrapper {
     display: grid;

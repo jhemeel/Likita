@@ -1,0 +1,47 @@
+{% load static %}
+
+<div class="latest-posts-container">
+    <div class="latest-posts">
+        <h1>Latest Blogs</h1>
+        <div class="screen">
+            <div class="container" data-autoplay="true" data-autoplay={{true}}>
+                <div class="slide"> 
+                    <img src="{% static "/images/hosp1.jpg" %}" alt="img1">
+                </div>
+                <div class="slide">
+                    <img src="{% static "/images/hosp2.jpg" %}" alt="img2">
+
+                </div>
+                <div class="slide">
+                    <img src="{% static "/images/hosp3.jpg" %}" alt="img3">
+
+                </div>
+                <div class="slide">
+                    <img src="{% static "/images/hosp4.webp" %}" alt="img4">
+                </div>
+                <div class="slide">
+                    <img src="{% static "/images/hosp5.webp" %}" alt="img5">
+                </div>
+                <div class="slide">
+                    <img src="{% static "/images/hosp6.webp" %}" alt="img6">
+                </div>
+
+                <button class="prev" onclick="prev()"><i class="fa fa-angle-left"></i></button>
+                <button class="next" onclick="next()"><i class="fa fa-angle-right"></i></button>
+
+
+            </div>
+            <div class="dots_container" id="indicator">
+            </div>
+    
+        </div>
+        <div class="latest-post">
+            <div class="left-full">
+    
+            </div>
+            <div class="top-half"></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

@@ -1911,6 +1911,11 @@ color: var(--heading-color);
 }
 
 
+#card{
+  max-width: 450px;
+  height: 400px;
+}
+
 /* tablets starts */
 
 @media screen and (min-width: 480.1px) and (max-width: 768px) {

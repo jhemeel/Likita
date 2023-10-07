@@ -2148,8 +2148,10 @@ color: var(--heading-color);
 }
 .latest-posts h1{
   color: teal;
-  font-family: "Poppins", sans-serif;
+  font-family:"Aubade", "Poppins", sans-serif;
   font-size: var(--big-font-size);
+  text-align: center;
+  text-transform: uppercase;
 }
 .latest-posts .screen{
   width: 100%;
@@ -2164,32 +2166,35 @@ color: var(--heading-color);
 }
 
 .latest-posts .latest-post{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(250px, auto);
-  gap: 10px;
+  display: block;
+}
+.latest-post > div{
+  position: relative;
+  margin-bottom: 20px;
+
+}
+
+.latest-post > div > img{
+  max-width: 100%;
   width: 100%;
+  height: 100%;
 
 }
-.latest-post > .left-full{
  
-  background-color: purple;
-  grid-column: 1 / span 7;
+.latest-post .description{
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  opacity: .6;
+  padding: 5px;
 }
+.latest-post > div  p{
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  font-family: "Montserrat", sans-serif;
 
-.latest-post .top-half{
-  background-color: teal;
-  grid-column: 8 / -1;
-
-}
-.latest-post > div:nth-child(3){
-  background-color: red;
-  grid-column: 1 / span 5;
-
-}
-.latest-post > div:last-child{
-  background-color: green;
-  grid-column: 6 / -1;
 }
 
 
@@ -2693,6 +2698,38 @@ header .navbar .nav-link{
 
   .about .box-container {
     grid-template-columns: 1fr 3fr;
+  }
+
+
+
+  .latest-posts .latest-post{
+  display: grid;  
+  grid-auto-rows: 200px;
+  gap: 10px;
+  width: 100%;
+  margin-top: 50px;
+  grid-template-columns: repeat(12, 1fr);
+  }
+  .latest-post > div{
+    margin-bottom: initial;
+  
+  }
+
+  .latest-post > div:first-child{
+ 
+    grid-column: 1 / span 7;
+  }
+  
+  .latest-post > div:nth-child(n + 2){
+    grid-column: 8 / -1;
+  
+  }
+  .latest-post > div:nth-child(n + 3){
+    grid-column: 1 / span 5;
+  
+  }
+  .latest-post > div:nth-child(4n + 0){
+    grid-column: 6 / -1;
   }
 
   

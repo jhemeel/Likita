@@ -4,21 +4,61 @@ import os, environ
 env = environ.Env()
 environ.Env.read_env()
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'mysite.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
 
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SE
+# CURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY= env('SECRET_KEY')
+environ.Env.read_env(BASE_DIR / ".env")
+
+DEBUG = env.bool('DEBUG', default=False)
+print(DEBUG)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1', 'www.dokto.com.ng']
 
@@ -169,10 +209,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# if DEBUG:
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static')),
-# else:
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+if DEBUG:
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static')),
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

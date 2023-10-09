@@ -52,11 +52,10 @@ LOGGING = {
 # CURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY= env('SECRET_KEY')
-# environ.Env.read_env(BASE_DIR / ".env")
+environ.Env.read_env(BASE_DIR / ".env")
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env.bool('DEBUG', default=False) == True
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
 
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
@@ -106,14 +105,17 @@ MIDDLEWARE = [
 ]
 
 
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "django.core.files.storage.FileSystemStorage",
+#     },
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # WHITENOISE_MANIFEST_STRICT = False
 
 
@@ -146,17 +148,17 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': env('DATABASE_PW'),
-        'HOST': 'containers-us-west-47.railway.app',
-        'PORT': '7954'
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': env('DATABASE_PW'),
+#         'HOST': 'containers-us-west-47.railway.app',
+#         'PORT': '7954'
 
-    }
-}
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
@@ -170,15 +172,15 @@ DATABASES = {
 #     }
 # }
 
-# database_url = env("DATABASE_URL")
-# DATABASES = {
-#     'default' :  dj_database_url.parse(
-#     database_url,
-#     conn_max_age=600,
-#     conn_health_checks=True,
+database_url = env("DATABASE_URL")
+DATABASES = {
+    'default' :  dj_database_url.parse(
+    database_url,
+    conn_max_age=600,
+    conn_health_checks=True,
     
-# )
-# }
+)
+}
 
 
 # Password validation

@@ -53,7 +53,7 @@ def register(request):
 
 
 def user_login(request):
-    
+    page= 'login'
     if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -68,7 +68,7 @@ def user_login(request):
         else:
             messages.info(request, 'Credentials Invalid!, Please enter the correct email and password. Note that both fields may be case-sensitive.')
             return redirect('login')
-    context={}
+    context={'page' : page}
     return render(request, 'authy/login-register.html', context)
 
       

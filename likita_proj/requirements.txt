@@ -31,6 +31,7 @@ multidict==6.0.4
 openai==0.27.7
 packaging==23.1
 Pillow==9.5.0
+psycopg2==2.9.6
 psycopg2-binary==2.9.7
 PyJWT==2.7.0
 pyrsistent==0.19.3

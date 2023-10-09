@@ -1,3 +1,4 @@
+import dj_database_url
 from pathlib import Path
 import os, environ
 
@@ -51,17 +52,14 @@ LOGGING = {
 # CURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY= env('SECRET_KEY')
-environ.Env.read_env(BASE_DIR / ".env")
+# environ.Env.read_env(BASE_DIR / ".env")
 
-DEBUG = env.bool('DEBUG', default=False)
-print(DEBUG)
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = env.bool('DEBUG', default=False) == True
+DEBUG = True
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1', 'www.dokto.com.ng']
-
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
 
 # Application definition
@@ -148,29 +146,39 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': env('DATABASE_PW'),
+        'HOST': 'containers-us-west-47.railway.app',
+        'PORT': '7954'
+
+    }
+}
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
+#         'NAME': 'postgres',
 #         'USER': 'postgres',
-#         'PASSWORD': env('DATABASE_PW'),
-#         'HOST': 'containers-us-west-47.railway.app',
-#         'PORT': '7954'
+#         'PASSWORD': 'Omolabake1',
+#         'HOST': 'localhost',
+#         # 'PORT': '7954'
 
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'Omolabake1',
-        'HOST': 'localhost',
-        # 'PORT': '7954'
-
-    }
-}
+# database_url = env("DATABASE_URL")
+# DATABASES = {
+#     'default' :  dj_database_url.parse(
+#     database_url,
+#     conn_max_age=600,
+#     conn_health_checks=True,
+    
+# )
+# }
 
 
 # Password validation

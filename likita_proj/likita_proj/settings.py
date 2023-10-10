@@ -15,9 +15,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SE
 # CURITY WARNING: keep the secret key used in production secret!
+environ.Env.read_env(BASE_DIR / ".env")
 
 SECRET_KEY= env('SECRET_KEY')
-environ.Env.read_env(BASE_DIR / ".env")
 
 # # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
@@ -70,18 +70,18 @@ MIDDLEWARE = [
 ]
 
 
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "django.core.files.storage.FileSystemStorage",
+#     },
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_MANIFEST_STRICT = False
 
 
 

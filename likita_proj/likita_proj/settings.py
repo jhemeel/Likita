@@ -78,7 +78,7 @@ MIDDLEWARE = [
 # for < django  v4.2, use this storage
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-WHITENOISE_MANIFEST_STRICT = False
+# WHITENOISE_MANIFEST_STRICT = False
 
 # allow react app to use this projects api as endpoint
 CORS_ORIGIN_WHITELIST = [

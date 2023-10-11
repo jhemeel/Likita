@@ -3,24 +3,20 @@ from pathlib import Path
 import os, environ
 
 env = environ.Env()
-environ.Env.read_env()
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+# SECURITY WARNING: keep the secret key used in production secret!
+environ.Env.read_env()
 
-# SE
-# CURITY WARNING: keep the secret key used in production secret!
 environ.Env.read_env(BASE_DIR / ".env")
 
-SECRET_KEY= env('SECRET_KEY')
+SECRET_KEY= env('SECRET_KEY', default='bjhvuovlbgcvotuvjvtgctuovgvtvuvghkvtvyulv')
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env.bool('DEBUG', default=False) == True
 
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
@@ -69,7 +65,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware'
 ]
 
-
+# for django v4.2+ use the below storage settings
 # STORAGES = {
 #     "default": {
 #         "BACKEND": "django.core.files.storage.FileSystemStorage",
@@ -79,12 +75,12 @@ MIDDLEWARE = [
 #     },
 # }
 
+# for < django  v4.2, use this storage
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 WHITENOISE_MANIFEST_STRICT = False
 
-
-
+# allow react app to use this projects api as endpoint
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
@@ -113,6 +109,16 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# database_url = env("DATABASE_URL")
+# DATABASES = {
+#     'default' :  dj_database_url.parse(
+#     database_url,
+#     conn_max_age=600,
+#     conn_health_checks=True,
+    
+# )
+# }
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -125,27 +131,16 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Omolabake1',
-#         'HOST': 'localhost',
-#         # 'PORT': '7954'
-
-#     }
-# }
-
-database_url = env("DATABASE_URL")
 DATABASES = {
-    'default' :  dj_database_url.parse(
-    database_url,
-    conn_max_age=600,
-    conn_health_checks=True,
-    
-)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'Omolabake1',
+        'HOST': 'localhost',
+    }
 }
+
 
 
 # Password validation
@@ -183,14 +178,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 # if DEBUG:
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # else:
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'media')
 
 LOGIN_URL = 'login'
 

@@ -424,14 +424,15 @@ header .navbar .nav-link:hover {
   height: 100%;
 
   object-fit: cover;
-  /* opacity: 0.3; */
 }
 
 .hero-page h2 {
-  font-size: var(--big-font-size);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   font-family: "Montserrat", "Poppins", sans-serif;
   font-weight: 800;
-  letter-spacing: 0.1ch;
+  letter-spacing: 2px;
   text-align: left;
   margin: auto;
   padding-left: 3%;
@@ -440,6 +441,14 @@ header .navbar .nav-link:hover {
   color: var(--primary-color);
   height: 350px;
   /* text-transform: uppercase; */
+}
+.hero-page h2  strong{
+  font-size: calc(var(--big-font-size) + 5px);
+
+  color: var(--tertiary-bg);
+}
+.hero-page h2 > span{
+  font-size: calc(var(--big-font-size) - 5px);
 }
 .hero-page h2 a {
   color: var(--primary-color);
@@ -457,7 +466,10 @@ header .navbar .nav-link:hover {
     sans-serif;
   letter-spacing: 0.3ch;
   right: 5%;
-  bottom: 40vh;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  height: fit-content;
 }
 
 .hero-page .blog a {
@@ -1700,7 +1712,7 @@ aside #chat-box small {
   left: calc(50% - 25px);
 }
 .services .description {
-  line-height: 24px;
+  line-height: 1.7;
   font-size: var(--font-size);
   /* font-size: 18px; */
   text-align: center;
@@ -2366,9 +2378,9 @@ button {
   }
 
   .hero-page h2 {
-    line-height: 4rem;
+    line-height: 3rem;
     margin: unset;
-    padding: 5%;
+    padding: 2% 0 0 5%;
     height: 100vh;
   }
 
@@ -2389,6 +2401,7 @@ button {
     left: 5%;
     bottom: 10%;
     right: initial;
+    top: initial;
   }
 
   .feeds {

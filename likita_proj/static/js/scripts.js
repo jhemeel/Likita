@@ -1,6 +1,6 @@
 // typewrite
 
-var colours = ["#51875c", "#2983a6", "#838303;", "orange"]
+var colours = ["#1a54b0", "#6109ad", "#838303;", "orange", "#1cad6e"]
 
 class TxtType {
   constructor(el, toRotate, period) {
@@ -60,7 +60,7 @@ window.onload = function () {
   var css = document.createElement("style");
   css.type = "text/css";
   css.innerHTML =
-    ".typewrite > .wrap { border-right: 0.08em solid var(--primary-color); color: var(--primary-color, )}";
+    ".typewrite > .wrap {padding-right: 5px; border-right: 0.2rem solid var(--primary-color); color: var(--primary-color, )}";
   document.body.appendChild(css);
 };
 

@@ -1,11 +1,54 @@
-{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Dokto | Blog{% endblock title %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}"
+    type="image/x-icon">
+    <link
+      href="{% static 'fontawesomefree/css/fontawesome.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'fontawesomefree/css/brands.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'fontawesomefree/css/solid.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-<div class"blogs">
-    {% include 'base/feeds.html' %}
-</div>
+    <link rel="preconnect" href="//fonts.googleapis.com" />
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin />
+
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <title>{% block title %} Dokto Blogs {% endblock title %}</title>
+</head>
+
+<body>
+    {% include "navbar.html" %}
+   {% block blog %}
+   
+   <div class"blogs">
+    {% include 'base/feed.html' %}
+    </div>
 
 
-{% endblock content %}
+   {% endblock blog %}
+
+
+
+    <script src="{% static 'js/carousels.js' %}"></script>
+    <script src="{% static 'js/hamburger.js' %}"></script>
+    <script src="{% static 'js/mode.js' %}"></script>
+    <script src="{% static 'js/scroll.js' %}"></script>
+    <script src="{% static 'js/animation.js' %}"></script>
+
+</body>
+</html>

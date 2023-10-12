@@ -37,15 +37,16 @@
     <main>{% block content %} {% endblock content %}</main>
 
     <footer>{% include 'footer.html' %}</footer>
+
+    {% block scripts %}
+
+    <script src="{% static 'js/hamburger.js' %}"></script>
+    <script src="{% static 'js/mode.js' %}"></script>
+    <script src="{% static 'js/scroll.js' %}"></script>
+    <script src="{% static 'js/edits.js' %}"></script>
+    <script src="{% static 'js/chats.js' %}"></script>
+    <script src="{% static 'js/animation.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    {% endblock scripts %}
   </body>
-
-  <script src="{% static 'js/hamburger.js' %}"></script>
-  <script src="{% static 'js/mode.js' %}"></script>
-  <script src="{% static 'js/scroll.js' %}"></script>
-  <script src="{% static 'js/edits.js' %}"></script>
-  <script src="{% static 'js/chats.js' %}"></script>
-  <script src="{% static 'js/animation.js' %}"></script>
-  <script src="{% static 'js/carousels.js' %}"></script>
-  <script src="{% static 'js/scripts.js' %}"></script>
-
 </html>

@@ -109,15 +109,15 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# database_url = env("DATABASE_URL")
-# DATABASES = {
-#     'default' :  dj_database_url.parse(
-#     database_url,
-#     conn_max_age=600,
-#     conn_health_checks=True,
-    
-# )
-# }
+database_url = env("DATABASE_URL")
+DATABASES = {
+     'default' :  dj_database_url.parse(
+     database_url,
+     conn_max_age=600,
+     conn_health_checks=True,
+   
+ )
+ }
 
 # DATABASES = {
 #     'default': {
@@ -131,15 +131,15 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'Omolabake1',
-        'HOST': 'localhost',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'postgres',
+#        'USER': 'postgres',
+#        'PASSWORD': 'Omolabake1',
+#        'HOST': 'localhost',
+#    }
+#}
 
 
 
@@ -170,7 +170,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
-
+    
 USE_TZ = True
 
 

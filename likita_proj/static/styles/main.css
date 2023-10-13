@@ -15,20 +15,20 @@
   --heading-color: #3c6478;
   --secondary-color: #fffffa;
   --secondary-color-darker: #f7f6f6;
-
   --tertiary-bg: #c71313;
   --tertiary-color: #d69c9c;
   --btn-bg-teal: teal;
   --btn-bg-tomato: tomato;
   --input-btn-color: #45350c;
-  --section-pad: 0 5%;
+  --section-pad: 100px 10% 0;
+  --blog-pad-mb: 0 10%;
+  --blog-pad: 0 5% 0 0;
   --nav-pad: 0 5%;
   --article-shadow: 0px 0 10px 1px #b7ccde;
   --box-shadow: 0 0 3px #365b7a;
   --font-size-sm: clamp(0.5rem, calc(1vw + 0.15rem), 0.8rem);
   --font-size: clamp(1rem, calc(1.25vw + 0.45rem), 2rem);
   --font-size-md: clamp(1rem, calc(1.4vw + 0.7rem), 2.3rem);
-
   --big-font-size: clamp(1rem, calc(2vw + 1rem), 3rem);
   --background-image: linear-gradient(
     171deg,
@@ -170,6 +170,10 @@ ul.messages li a.close {
   text-shadow: none;
 }
 
+.authy{
+  padding: var(--section-pad);
+}
+
 .btn {
   background-color: #a7b2bb;
 }
@@ -211,7 +215,7 @@ ul.messages li a.close {
 
 header {
   margin: 0 auto;
-  min-height: 160px;
+  /* min-height: 160px; */
 }
 
 header .navbar {
@@ -297,7 +301,7 @@ header .navbar .nav-link:hover {
   color: var(--tertiary-bg);
 }
 
-.head-section {
+/* .head-section {
   position: relative;
   top: 60px;
   display: flex;
@@ -310,9 +314,9 @@ header .navbar .nav-link:hover {
   padding: var(--nav-pad);
   border-bottom: 1px solid;
   z-index: 99;
-}
+} */
 
-.head-section.active {
+/* .head-section.active {
   position: unset;
   transform: translate(0, -200px);
 }
@@ -328,16 +332,22 @@ header .navbar .nav-link:hover {
 }
 .mode .fa-sun {
   color: teal;
-}
+} */
 .social-nav {
-  position: absolute;
-  top: 75px;
-  left: 5%;
-  margin: auto;
+  position: fixed;
   display: flex;
+  flex-direction: column;
+  top: 320px;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  height: fit-content;
+  padding: 5px 8px;
   gap: 30px;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1000;
+  background-color: aliceblue;
+  font-size:calc( var(--font-size) + 5px)
 }
 
 .social-nav .fa-facebook {
@@ -382,8 +392,9 @@ header .navbar .nav-link:hover {
 }
 
 .hero-section {
+  position: relative;
+  top: 100px;
   width: 100%;
-  /* height: 100vh; */
   margin: 0 auto;
   background-image: var(--background-image);
   background-size: cover;
@@ -392,7 +403,6 @@ header .navbar .nav-link:hover {
 }
 
 .hero-page {
-  margin-top: -50px;
   color: var(--tertiary-color);
   max-width: 100%;
   width: 100%;
@@ -400,11 +410,12 @@ header .navbar .nav-link:hover {
 
 .hero-page-wrapper {
   display: block;
+  text-align: center;
 }
 
 .hero-page #scene-box {
   width: 100%;
-  height: 300px;
+  height: 320px;
 
 }
 
@@ -425,7 +436,7 @@ header .navbar .nav-link:hover {
   letter-spacing: 1px;
   text-align: center;
   margin: auto;
-  padding-left: 3%;
+  padding:0 3%;
   max-width: 480px;
   color: var(--primary-color);
   height: 400px;
@@ -455,7 +466,7 @@ header .navbar .nav-link:hover {
     sans-serif;
   letter-spacing: 0.3ch;
   right: 5%;
-  top: 430px;
+  top: 320px;
   margin: auto;
   height: fit-content;
 }
@@ -1400,7 +1411,8 @@ aside #chat-box small {
 /* about */
 
 .about {
-  padding: 0 5%;
+
+  padding: var(--section-pad);
 }
 .about .box-container .box {
   width: 300px;
@@ -1483,7 +1495,7 @@ aside #chat-box small {
 /* contact us */
 
 .contact-container {
-  padding: var(--nav-pad);
+  padding: var(--section-pad);
 }
 
 .contact-container > div {
@@ -1519,15 +1531,17 @@ aside #chat-box small {
 
 /* appointment 
 *************************************************/
+.booking{
+  padding: var(--section-pad);
+}
 
 /* services-------------------------------------------------------------- */
 #services {
-  /* padding: var(--section-pad); */
   background: linear-gradient(
-      to top,
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
+      to bottom,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
     ),
     url("/static/images/service-demo-bg.jpg");
   background-size: cover;
@@ -1574,9 +1588,9 @@ aside #chat-box small {
   display: grid;
   gap: 50px;
   font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
-  padding: var(--section-pad);
   letter-spacing: 0.12ch;
   font-weight: 500;
+  padding: var(--section-pad);
 }
 
 #services .services-demo,
@@ -1758,7 +1772,7 @@ aside #chat-box small {
   font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
   letter-spacing: 0.12ch;
   font-weight: 500;
-  padding: var(--section-pad);
+  /* padding: var(--section-pad); */
 }
 
 #doctors .doctors-wrapper {
@@ -2135,12 +2149,14 @@ aside #chat-box small {
 /* new feeds starts*/
 #feed-container{
   position: relative;
-  top: -50px;
+  top: 70px;
+  padding: var(--blog-pad-mb);
 }
 #feed-container h1{
   font-family: "Aubade", "Poppins", sans-serif;
   font-size: var(--big-font-size);
  text-align: center;
+ color: var(--primary-color);
 }
 #feed-container .feed{
   position: relative;   
@@ -2157,28 +2173,18 @@ aside #chat-box small {
 
 .blog-post{
   display: inherit;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(180px, auto);
-  row-gap: 35px;
-  column-gap: 15px;
-
+  grid-auto-rows: minmax(80px, auto);
+  row-gap: 20px;
 }
 .blog-post div:nth-child(n + 1){
-  /* background-color: red; */
-box-shadow: var(--article-shadow);
-
-  grid-area: 1 / 1 / 3 / 7;
-  
+  box-shadow: var(--article-shadow);
 }
 .blog-post div:nth-child(n + 2){
-box-shadow: var(--article-shadow);
-grid-area: 1 / 7 / 3 / -1;
-}
-.blog-post div:nth-child(n + 3){
   box-shadow: var(--article-shadow);
-  grid-area: 3 / 1 / 4 / -1;
-
-}
+  }
+.blog-post div:nth-child(n + 3){
+    box-shadow: var(--article-shadow);
+  }
 .blog-post div:nth-child(n + 4){
   box-shadow: var(--article-shadow);
 
@@ -2370,30 +2376,24 @@ button {
   }
 
   .social-nav {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    left: 0;
+    left: initial;
+    justify-content: space-around;
     right: 0;
-    top: 75px;
+    top: 62px;
     bottom: unset;
-    width: fit-content;
-    margin: 0 auto;
-    height: unset;
-    background-color: unset;
-  }
-  .social-nav.hide {
-    top: -1000px;
+    height:calc( 70vh - 60px);
+    font-size: var(--big-font-size);
   }
 
-  .hero-page {
-    margin-top: -0px;
-  }
+  /* .social-nav.hide {
+    top: -1000px;
+  } */
+
 
   .hero-page-wrapper {
     display: grid;
-    grid-template-columns: 7fr 5fr;
-    height: calc(100vh - 50px);
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 60px);
     
   }
 
@@ -2423,7 +2423,7 @@ button {
     max-width: 100%;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center center;
   }
 
@@ -2702,7 +2702,9 @@ button {
 
 
   /* blog feeds starts */
-
+  #feed-container{
+    padding: var(--blog-pad);
+  }
   #feed-container .feed{
     
     grid-template-columns: repeat(12, 1fr);
@@ -2740,13 +2742,42 @@ button {
   }
 
   #feed-container .footers{
-    grid-area: 4 / 4 / 5 / 10 ;
+    grid-area: 4 / 3/ 5 / 10 ;
     box-shadow: var(--article-shadow);
+    margin-bottom: 20px;
   }
   
 .screen .container{
-  position: relative;
 }
+
+
+.blog-post{
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 50px;
+  column-gap: 15px;
+
+}
+.blog-post div:nth-child(n + 1){
+
+  grid-area: 1 / 1 / 3 / 7;
+  
+}
+.blog-post div:nth-child(n + 2){
+grid-area: 1 / 7 / 3 / -1;
+}
+.blog-post div:nth-child(n + 3){
+  grid-area: 3 / 1 / 6 / 6 ;
+}
+.blog-post div:nth-child(n + 4){
+grid-area: 3 / 6 / 5 / -1;
+}
+.blog-post div:nth-child(n + 5){
+  grid-area: 6 / 1 / 8 / 8;
+}
+.blog-post div:nth-child(6n + 0){
+grid-area: 6 / 8 / 8 / -1;
+}
+
 
   /* blog feeds ends */
 }

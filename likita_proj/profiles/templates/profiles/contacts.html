@@ -7,7 +7,7 @@
 
 
 {% if request.user.is_superuser %}
-<article>
+<div>
     <h2 class="contact-h2">Contact Messages</h2>
     {% for contact in contact_us  %}
 
@@ -48,7 +48,7 @@
         </div>
     </div> {% endcomment %}
 
-</article>
+</div>
 {% endif %}
 
 {% endblock content %}

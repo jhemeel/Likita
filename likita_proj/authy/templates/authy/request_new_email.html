@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<article>
+<div class="authy">
     <form method='POST' >
         {% csrf_token %}
         <h4>Request new email verification link</h4>
@@ -15,6 +15,6 @@
             </li>
         </ul>
     </form>
-</article>
+</div>
 
 {% endblock content %}

@@ -508,7 +508,7 @@ header .navbar .nav-link:hover {
   font-family: "Aubade", "Poppins", sans-serif;
   letter-spacing: 0.3ch;
   font-weight: 800;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-align: center;
   color: #04639a;
   background-color: var(--primary-bg);
@@ -526,8 +526,9 @@ header .navbar .nav-link:hover {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  font-family: "Aubade", "Poppins", sans-serif;
-  letter-spacing: 0.4ch;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.1ch;
+  font-weight: 300;
 }
 
 .feed .topics > h3:hover {
@@ -688,11 +689,69 @@ body::-webkit-scrollbar-track,
 .read-more{
   color: #333;
   font-family: "Poppins", "Monrserrat", sans-serif;
-  font-weight: 500;
-
-
+  font-weight: 600;
+  opacity: 0.7;
 }
 
+.read-more:hover{
+  opacity: 1;
+}
+
+/* health tips*/
+
+.health-tips{
+  position: sticky;
+  top: 70px;
+  text-align: center;
+
+}
+.health-tips > h2{
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-family: "Lora", "Poppins", sans-serif;
+}
+.health-tips > h2 img{
+  width: 150px;
+  height: 50px;
+}
+.health-tips .heading > h3{
+  font-size: calc(var(--font-size) + 1px);
+  color: var(--heading-color);
+
+  text-align: center;
+  font-family: "Montserrat", "Catamaran", "Poppins", san-serif;
+  margin-bottom: 20px;
+}
+
+
+.health-tips .heading > h4{
+  font-size: 15px ;
+  text-align: center;
+  color: var(--tertiary-bg);
+  margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+
+}
+.health-tip-lists{
+  margin-bottom: 20px;
+}
+.health-tip-lists > li{
+  font-size: 14px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+}
+
+.advert{
+  min-height: 250px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-bg);
+  opacity: 0.7;
+ 
+}
+.advert-wrapper{
+}
 
 
 
@@ -2281,6 +2340,7 @@ aside #chat-box small {
 
 .rightbar{
   order: 5;
+  padding: 1rem;
 }
 .footers{
   order: 6;
@@ -2797,7 +2857,7 @@ button {
     
     grid-template-columns: repeat(12, 1fr);
     row-gap: 50px;
-    column-gap: 20px;
+    column-gap: 50px;
     grid-auto-rows: 30px 400px auto 100px;
 
 
@@ -2829,17 +2889,7 @@ button {
    
   }
 
-  /* hold here */
-
-  .health-tips{
-    position: sticky;
-    top: 70px;
-
-  }
-  .advert{
-    min-height: 250px;
-    border: 1px solid var(--primary-color);
-  }
+  
 
   #feed-container .footers{
     grid-area: 4 / 3/ 5 / 10 ;

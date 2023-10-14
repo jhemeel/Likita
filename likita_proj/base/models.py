@@ -24,7 +24,7 @@ class User(AbstractUser):
     bio = models.TextField(null=True, blank=True)
     
     
-    # USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     class Meta:

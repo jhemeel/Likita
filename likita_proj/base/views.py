@@ -33,7 +33,6 @@ def blog(request):
         Q(body__icontains=q)
     )
     topics = Topic.objects.all()
-
     context = {'posts': posts, 'topics': topics, }
 
     return render(request, 'base/blog.html', context)

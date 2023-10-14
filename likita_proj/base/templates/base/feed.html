@@ -11,19 +11,9 @@
               <img src="{% static "images/hosp1.jpg" %}" alt="img1">
             </div>
             <div class="slide">
-              <img src="{% static "images/hosp2.jpg" %}" alt="img2">
-            </div>
-            <div class="slide">
-              <img src="{% static "images/hosp3.jpg" %}" alt="img3">
-            </div>
-            <div class="slide">
-              <img src="{% static "images/hosp4.webp" %}" alt="img4">
-            </div>
-            <div class="slide">
-              <img src="{% static "images/hosp5.webp" %}" alt="img5">
-            </div>
-            <div class="slide">
-              <img src="{% static "images/hosp6.webp" %}" alt="img6">
+            {% for post in posts %}
+              <img src="{{post.image.url}}" alt="">
+            {% endfor %}
             </div>
 
             <button class="prev" onclick="prev()">
@@ -37,41 +27,50 @@
     </div>
 
     <div class="blog-post">
-     
-        <div>
-        {% include "base/posts.html" %} 
-
-        </div>
-        <div>
-        {% include "base/posts.html" %} 
-
-        </div>
-        <div>
-        {% include "base/posts.html" %} 
-
-        </div>
-        <div>
-        {% include "base/posts.html" %} 
-
-        </div>
-        <div>
-        {% include "base/posts.html" %} 
-
-        </div>
-        <div>
-        {% include "base/posts.html" %} 
-
-        </div>
-
-        <div>
-        {% include "base/posts.html" %} 
-
-        </div>
+        {% include "base/posts.html" %}                        
     </div>
 
-    <div class="sidebar"></div>
+    <div class="sidebar">
+      <div class="hamburger topic-hamburger">
+        <div class="bar topic-bar"></div>
+        <div class="bar topic-bar"></div>
+        <div class="bar topic-bar"></div>
+      </div>
+
+
+      <div class="topics" id="topics">
+        <h2>Blog Topics</h2>
+        <h3>
+            <a href="{% url 'blog' %}">All</a>
+            <span>{{posts.all.count}}</span>
+        </h3>
+        {% for topic in topics %}
+        <h3>
+            <a href="{% url 'blog' %}?q={{topic.title}}">{{topic.title}} </a> 
+            <span>{{topic.post_set.count}}</span>
+         </h3>
+        {% endfor %}
+       
+      </div>
+    </div>
 
     <div class="rightbar">
+      <div class="health-tips">
+        <div class="heading">
+          <h3>Looking for ideas to keep your child engaged?</h3>
+          <h4>Here are tips to help them learn, grow and connect with you <i class="fa fa-heart"></i></h4>
+        </div>
+        <ul class="health-tip-lists">
+        </ul>
+        <li> Tap along</li>
+        <li> Chit Chat</li>
+        <li> Tap along</li>
+        <li> Reach Reach Reach</li>
+        <li>Go exploring</li>
+      </div>
+      <div class="advert">
+        <small>Advertise here</small>
+      </div>
     </div>
 
     <div class="footers">

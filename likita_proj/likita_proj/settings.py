@@ -1,7 +1,7 @@
 import dj_database_url
 from pathlib import Path
 import os, environ
-
+from datetime import datetime
 env = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,18 +34,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'cloudinary_storage',
+    'cloudinary',
+    
     'base.apps.BaseConfig',
     'authy.apps.AuthyConfig',
     'chat.apps.ChatConfig',
     'clinic.apps.ClinicConfig',
     'profiles.apps.ProfilesConfig',
     'liki_api.apps.LikiApiConfig',
+    
+    
     'fontawesomefree',
     'bootstrap5',
     'rest_framework',
     'corsheaders',
     'channels',
+    
     "verify_email.apps.VerifyEmailConfig",
+    
+    'django_bleach',
+    'markdownx',
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -186,14 +195,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'media')
 
+if  os.environ["ENVIRONMENT"] == "PRODUCTION":
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    
+    
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : env('MEDIA_CLOUD_NAME'),
+    'API_KEY' : env('MEDIA_CLOUD_API_KEY'),
+    'API_SECRET' : env('MEDIA_CLOUD_API_SECRET')
+}
+
 LOGIN_URL = 'login'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
 
 
 # email host server configuration
@@ -222,5 +240,32 @@ LINK_EXPIRED_TEMPLATE = 'authy/expired.html'
 NEW_EMAIL_SENT_TEMPLATE  = 'authy/new_email_sent.html'
 
 
+MARKDOWNX_MARKDOWNIFY_FUNCTION = 'markdownx.utils.markdownify'
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra'
+]
 
+MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
+    'extension_name_1': {
+        'option_1': 'value_1'
+    }
+}
 
+MARKDOWNX_MARKDOWN_TAB_LENGTH = 6
+
+MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
+
+MARKDOWNX_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 #5mb
+
+MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml', 'image/avif']
+
+MARKDOWNX_IMAGE_MAX_SIZE = {
+    'size': (300, 300),
+    'quality': 90,
+    'crop' : True,
+    'upscale' : True
+}
+
+MARKDOWNX_SVG_JAVASCRIPT_PROTECTION = True
+MARKDOWNX_EDITOR_RESIZABLE = True
+MARKDOWNX_SERVER_CALL_LATENCY = 500  # milliseconds

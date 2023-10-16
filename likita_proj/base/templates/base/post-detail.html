@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% comment %} {% load markdown_extras %} {% endcomment %}
+
+
+
+{% load static %}
+{% block content %}
+<form method="POST" action="">{% csrf_token %}
+    {{ form }}
+</form>
+{{ form.media }}
+
+<div class="post-detail-view">
+    <div class="main-content">
+        <div class="post-image">
+            <img src="{{post.image.url}}" alt="">
+        </div>
+        <div class="post-details">
+            <div class="post-categories">
+                <span>{{post.topic.title}}</span>
+                <span class="manage-post">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-multiply"></i>
+                </span>
+            </div>
+    
+            <h1 class="post-title">
+                {{post.heading.upper }}
+            </h1>
+   
+            <div class="post-info">
+               <div class="Post-author">
+                Author: <span>@{{post.owner.username}}</span>
+               </div>
+                <div class="Post-date">
+                    {{post.created_at | timesince}} ago
+                </div>
+    
+            </div>
+            <div>
+                <p class="post-description" >
+                    {{post.formatted_markdown | safe | linebreaks }}
+                </p>
+            </div>
+        </div>
+       
+     
+        
+        <div class="post-details">
+          <div>
+            <h3>Conclusion</h3>
+            <p class=post-description>Lorem ipsum dolor sit amet consectetur adipisicing 
+                elit. Quaerat error ipsum facere ullam maxime asperiores ipsa voluptatibus ex eum autem?
+            </p>
+          </div>
+        </div>
+    </div>
+    {% include "base/rightbar.html" %}
+
+    
+
+</div>
+
+{% endblock content %}

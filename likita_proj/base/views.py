@@ -81,7 +81,7 @@ def post(request, pk):
         return redirect('post', pk=post.id)
 
     context = {'post': post, 'post_comment': post_comment}
-    return render(request, 'base/post.html', context)
+    return render(request, 'base/post-detail.html', context)
 
 
 @login_required(login_url='login')

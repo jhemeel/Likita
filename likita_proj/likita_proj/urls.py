@@ -12,8 +12,11 @@ urlpatterns = [
     path('', include('chat.urls')),
     path('', include('clinic.urls')),
     path('api/', include('liki_api.urls')),
+    
     path('api-auth/', include('rest_framework.urls')),
     path('verification/', include('verify_email.urls')),
+    
+    path('markdownx/', include('markdownx.urls')),
     
 ]
 

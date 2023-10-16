@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
+
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 # Create your models here.
 
 
@@ -32,8 +35,19 @@ class User(AbstractUser):
         
     def __str__(self):
         return self.username
+
+class Categories(models.Model):
+    title = models.CharField(max_length=50, null=True, blank=True)
+    slug = models.SlugField()
     
+
+    class Meta:
+        verbose_name_plural = 'Category'
         
+    def __str__(self):
+        return self.title
+    
+           
 
 class Topic(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -47,11 +61,19 @@ class Topic(models.Model):
 
 
 class Post(models.Model):
+    
+    class Status(models.TextChoices):
+        DRAFT = 'DF', 'Draft'
+        PUBLISHED = 'PB', 'Published'
+    
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    overview =  MarkdownxField(null = True, blank=True)
     heading = models.CharField(max_length=200, null=True, blank=True)
-    body = models.TextField(null=True, blank=True)
+    body = MarkdownxField(null = True, blank=True)
+    Categories =models.ManyToManyField(Categories, related_name='post_categories',)
+    status = models.CharField(choices = Status.choices,  default=Status.DRAFT, max_length=2)
     image = models.ImageField(upload_to="post-media")
     no_of_liked_post = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -61,12 +83,13 @@ class Post(models.Model):
         verbose_name_plural = 'Post'
         ordering = ['-created_at', '-updated_at']
         
-       
+        
+    def formatted_markdown(self):
+        return markdownify(self.body)
         
     def __str__(self):
         return self.heading    
-    
-    
+ 
     
 class LikedPost(models.Model):
     post_id = models.CharField(max_length=500)
@@ -77,6 +100,7 @@ class LikedPost(models.Model):
     
     def __str__(self):
         return self.user
+
 
 class Comment(models.Model):
     id = models.UUIDField( primary_key=True, default=uuid.uuid4 )
@@ -93,6 +117,7 @@ class Comment(models.Model):
     
     def __str__(self):
         return f'{self.sender} : {self.body[:20]}'
+
     
 class CommentReply(models.Model):
     id = models.UUIDField( primary_key=True, default=uuid.uuid4 )

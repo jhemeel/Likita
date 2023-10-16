@@ -15,16 +15,17 @@
   --heading-color: #3c6478;
   --secondary-color: #fffffa;
   --secondary-color-darker: #f7f6f6;
-  --tertiary-bg: #c71313;
-  --tertiary-color: #d69c9c;
+  /* --tertiary-bg: #c71313; */
+  --tertiary-bg: #d63a02;;
+  --tertiary-color: #decac3;
   --btn-bg-teal: teal;
   --btn-bg-tomato: tomato;
-  --input-btn-color: #45350c;
+  --btn-color: #1e9cd2;
   --section-pad: 100px 10% 0;
   --blog-pad-mb: 0 10%;
   --blog-pad: 0 5% 0 0;
   --nav-pad: 0 5%;
-  --article-shadow: 0px 0 10px 1px #b7ccde;
+  --article-shadow: 0px 0 5px 1px #b7ccde;
   --box-shadow: 0 0 3px #365b7a;
   --font-size-sm: clamp(0.5rem, calc(1vw + 0.15rem), 0.8rem);
   --font-size: clamp(1rem, calc(1.25vw + 0.45rem), 2rem);
@@ -91,10 +92,13 @@ body {
 }
 p {
   color: var(--ink);
-  font-size: var(--font-size);
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.6;
   text-align: left;
   word-wrap: normal;
+  font-family: "Poppins";
+
+
 }
 
 p::first-letter {
@@ -118,7 +122,7 @@ ul.messages {
   left: 0;
   right: 0;
   width: 100%;
-  top: 160px;
+  top: 70px;
 }
 
 ul.messages li.success,
@@ -175,10 +179,11 @@ ul.messages li a.close {
 }
 
 .btn {
-  background-color: #a7b2bb;
+  background-color: var(--btn-color);
+  color: #ffffff !important;
 }
 .btn:hover {
-  background-color: var(--primary-bg);
+  background-color: var(--tertiary-bg);
   color: var(--ink);
 }
 
@@ -219,7 +224,7 @@ ul.messages li a.close {
 
 header {
   margin: 0 auto;
-  /* min-height: 160px; */
+  z-index: 1000000;
 }
 
 header .navbar {
@@ -236,7 +241,7 @@ header .navbar {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 999999;
 }
 header .navbar.active {
   box-shadow: var(--article-shadow);
@@ -472,22 +477,22 @@ header .navbar .nav-link:hover {
   right: 5%;
   top: 320px;
   margin: auto;
+font-weight: 700;
   height: fit-content;
 }
 
 .hero-page .blog a {
   font-size: var(--font-size-md);
   border: 2px solid transparent;
-  padding: 0.5rem;
+  padding:0 0.5rem;
   border-radius: 5px;
   cursor: pointer;
   color: white;
-  background-color: #1361f2;
-  /* background-color: var(--btn-bg-teal); */
+  background-color: var(--btn-color);
 }
 .hero-page .blog a:hover {
-  color: teal;
-  background-color: transparent;
+  color: var(--primary-bg);
+  background-color: var(--tertiary-bg);
   border: 2px solid;
 }
 
@@ -751,7 +756,101 @@ body::-webkit-scrollbar-track,
  
 }
 .advert-wrapper{
+  flex: 13px;
 }
+
+/* post dtails starts */
+.post-detail-view{
+  position: relative;
+  top: 70px;
+  padding: var(--blog-pad-mb);
+  display: grid;
+  row-gap: 20px;
+  margin-top: 20px;
+
+}
+.post-detail-view .main-content{
+
+}
+
+.post-detail-view .post-details{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+  margin-bottom: 50px;
+}
+.post-detail-view .main-content .post-image{
+  width: 100%;
+  height: 250px;
+}
+.main-content .post-image img{
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+
+}
+.post-details .post-categories{
+  color: var(--heading-color);
+  opacity: .7;
+  font-size: 12px;
+  align-self: center;
+  margin-top: 8px;
+
+}
+.post-categories .manage-post{
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  display: flex;
+  gap: 20px;
+  font-size: 17px;
+  padding:0 0.5rem;
+  font-weight: 700;
+}
+
+ .manage-post .fa-edit{
+  color: var(--primary-color);
+  opacity: 0.5;
+}
+
+.manage-post .fa-multiply{
+  color: var(--tertiary-bg);
+  opacity: 0.5;
+}
+.manage-post .fa-edit:hover,
+.manage-post .fa-multiply:hover
+{
+  opacity: 1;
+}
+
+.post-details .post-title{
+  align-self: center;
+  text-align: center;
+  font-size: var(--font-size-md);
+  font-family: "Montserrat", "Poppins", serif;
+  color: var(--ink);
+
+}
+.post-details .post-subheading{
+  font-family: "Montserrat", "Poppins", serif;
+  color: var(--ink);
+  font-size: calc(var(--font-size-md) - 0.1rem);
+}
+
+
+.post-details .post-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.post-details .post-description{
+  font-size: 15px;
+  font-family: "Poppins";
+  word-spacing: 0.4ch;
+}
+
+/* post dtails ends */
 
 
 
@@ -917,7 +1016,7 @@ body::-webkit-scrollbar-track,
 
 #post-feeds {
   position: relative;
-  top: -80px;
+  top: 80px;
 }
 
 #post-feeds .feeds {
@@ -1189,12 +1288,12 @@ aside #chat-box small {
   padding: 0 0.5rem;
   border-radius: 4px;
   font-size: var(--font-size);
-  font-family: "Bluebird", "Aubade", "Poppins", sans-serif;
+  font-family: "Aubade", "Poppins", sans-serif;
   letter-spacing: 0.3ch;
 }
 .profile-container .col p {
   color: var(--primary-color);
-  font-family: "Aubade", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .profile-container .col .image {
@@ -1213,7 +1312,7 @@ aside #chat-box small {
   text-align: center;
   color: teal;
   font-size: var(--font-size);
-  font-family: "Aubade", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .profile a#edit-appointment {
@@ -1255,7 +1354,7 @@ aside #chat-box small {
 
 .staff-pannel h3 {
   font-size: var(--big-font-size);
-  font-family: "Bluebird", "Aubade", "Poppins", sans-serif;
+  font-family: "Aubade", "Poppins", sans-serif;
   letter-spacing: 0.3ch;
   color: #04639a;
   text-align: center;
@@ -1384,11 +1483,11 @@ aside #chat-box small {
 .comment {
   margin-top: 50px;
   padding: var(--section-pad);
-  font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .comment h2 {
-  font-family: "Bluebird", "Handwriting", "Poppins", sans-serif;
+  font-family: "Aubade", "Poppins", sans-serif;
   letter-spacing: 0.3ch;
 }
 .comment #form {
@@ -1594,7 +1693,7 @@ aside #chat-box small {
 .about .content p {
   color: var(--ink);
   margin-bottom: 2rem;
-  font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: var(--font-size);
   font-weight: 400;
   letter-spacing: 0.1ch;
@@ -1703,6 +1802,7 @@ aside #chat-box small {
   text-transform: uppercase;
   color: var(--primary-color);
   position: relative;
+  font-family: "Aubade";
 }
 
 #services .section-title h2::after,
@@ -1721,7 +1821,7 @@ aside #chat-box small {
 #doctors .container {
   display: grid;
   gap: 50px;
-  font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
   letter-spacing: 0.12ch;
   font-weight: 500;
   padding: var(--section-pad);
@@ -1733,6 +1833,10 @@ aside #chat-box small {
   display: grid;
   grid-template-columns: 1;
   margin-bottom: 50px;
+}
+#services .service-demo-statement,
+#doctors .service-demo-statement{
+  font-size: 17px;
 }
 
 #services .services-demo-image,
@@ -1832,11 +1936,11 @@ aside #chat-box small {
 }
 .services .description,
 .doctors-demo .description {
-  line-height: 1.7;
-  font-size: var(--font-size);
+  line-height: 1.5;
+  font-size: 17px;
   text-align: center;
-
   color: var(ink);
+  letter-spacing: 0.5px;
 }
 
 /* service animation***************************************** */
@@ -1903,8 +2007,8 @@ aside #chat-box small {
 
 /* service animation***************************************** */
 #doctors {
-  font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
-  letter-spacing: 0.12ch;
+  font-family:  "Poppins", sans-serif;
+  letter-spacing: 0.1ch;
   font-weight: 500;
   /* padding: var(--section-pad); */
 }
@@ -1990,7 +2094,7 @@ aside #chat-box small {
 
 .doctors .member .member-info span {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--primary-color);
 }
@@ -2012,7 +2116,7 @@ aside #chat-box small {
   display: block;
   margin: 40px auto;
   text-align: center;
-  font-family: var(--font-family);
+  font-family: "Poppins", sans-serif;
 }
 #upper-side {
   padding: 2em;
@@ -2467,6 +2571,15 @@ button {
 /* tablets ends */
 
 @media screen and (min-width: 768.1px) {
+
+  p {
+    font-size: 17px;
+    line-height: 1.8;
+    font-family: "Poppins", sans-serif;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
   /* global */
 
   header .navbar .menu {
@@ -2637,6 +2750,40 @@ button {
     color: var(--tertiary-bg);
     border: 1px solid;
   }
+
+  
+  
+  .post-detail-view{
+    padding: var(--blog-pad);
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 50px;
+  }
+  .post-detail-view .main-content{
+    grid-area: 1 / 2 / -1 / 9 ;
+  }
+  .post-detail-view .rightbar{
+    grid-area: 1 / 9 / -1 / -1;
+  }
+  .post-detail-view .main-content .post-image{
+    height: 390px;
+  }
+
+  .post-detail-view .main-content .post-image img{
+    height: 100%;
+  }
+  .post-details .post-title{
+  font-size: calc( var(--font-size-md) + 2px);
+    
+  }
+
+
+  .post-details .post-description{
+    font-size: 17px;
+    word-spacing: 0.2ch;
+    font-family: "Poppins", sans-serif;
+  }
+
+
 
   #post-feeds .feeds {
     max-width: 70%;
@@ -2873,6 +3020,7 @@ button {
   #feed-container .blog-post{
     grid-area: 3 / 3 / 4 / 10;
 
+
   }
   #feed-container .sidebar{
     grid-area: 1 / 1 / 5 / 3;
@@ -2884,8 +3032,9 @@ button {
     grid-area: 1 / 10 / 5 / 13;
     min-height: calc(100vh - 100px);
     position: sticky;
-    top: 100px;
-    box-shadow: var(--article-shadow);
+    top: 60px;
+    box-shadow:var(--article-shadow);
+
    
   }
 
@@ -2897,9 +3046,6 @@ button {
     margin-bottom: 20px;
   }
   
-.screen .container{
-}
-
 
 .blog-post{
   grid-template-columns: repeat(12, 1fr);
@@ -2931,6 +3077,13 @@ grid-area: 6 / 8 / 8 / -1;
 
 
   /* blog feeds ends */
+
+
+  /* post details starts */
+
+
+
+  /* post details ends */
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {

@@ -1,12 +1,12 @@
-from django.conf import settings
+import os, environ
 from base.models import User
 from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    username = settings.env("SUPER_USER_NAME")
-    password = settings.env("SUPER_USER_PASSWORD")
-    email = settings.env("SUPER_USER_EMAIL")
+    username = os.environ.get("SUPER_USER_NAME")
+    password = os.environ.get("SUPER_USER_PASSWORD")
+    email = os.environ.get("SUPER_USER_EMAIL")
     help = 'Creates a superuser.'
 
     def handle(self, *args, **options):

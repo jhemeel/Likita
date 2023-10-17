@@ -629,7 +629,7 @@ body::-webkit-scrollbar-track,
 } */
 .feed .Post-wrapper{
   padding: 1rem;
-  /* height: 500px; */
+ /* min-height: 500px; */
 }
 .feed .Post-image{
   width: 100%;
@@ -661,7 +661,7 @@ body::-webkit-scrollbar-track,
   align-self: center;
   text-align: center;
   font-size: var(--font-size-md) ;
-  font-family:  "Catamaran", "Montserrat", "Poppins", sans-serif;
+  font-family:"Lora",  "Catamaran", "Montserrat", "Poppins", sans-serif;
   color: var(--primary-color);
 }
 
@@ -680,14 +680,11 @@ body::-webkit-scrollbar-track,
 }
 .Post-description{
   display: -webkit-box;
-  overflow-y: hidden;
+  overflow: hidden;
   line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   font-family: "Poppins", "Monrserrat", sans-serif;
-  line-height: 1.6;
-  font-size: 15px;
-  /* color: var(--ink); */
   color: #333;
 }
 
@@ -851,6 +848,10 @@ body::-webkit-scrollbar-track,
 }
 
 /* post dtails ends */
+.create-update-container{
+  position: relative;
+  top: 100px;
+}
 
 
 

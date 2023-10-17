@@ -31,14 +31,16 @@
     </div>
 
     <div class="sidebar">
+     <div class="topic-menu-container">
       <div class="hamburger topic-hamburger">
-        <div class="bar topic-bar"></div>
-        <div class="bar topic-bar"></div>
-        <div class="bar topic-bar"></div>
+        <span class="bar topic-bar"></span>
+        <span class="bar topic-bar"></span>
+        <span class="bar topic-bar"></span>
       </div>
+      <span>TOPIC MENU</span>
+     </div>
 
-
-      <div class="topics" id="topics">
+        <div class="topics" id="topics">
         <h2>Blog Topics</h2>
         <h3>
             <a href="{% url 'blog' %}">All</a>
@@ -59,5 +61,4 @@
     <div class="footers">
     </div>
   </div>
-  {% include "footer.html" %}
 </div>

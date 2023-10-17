@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div id="login-register-form" class="authy">
+<div id="login-register-form" class="authy {{page}}">
   {% if page == 'register' %}
   <div>
     <form action="" method="post">
@@ -61,7 +61,7 @@
         <a href="{% url 'password_reset' %}" class="forgot-pwd"><i>Forgot Password?</i></a>
       </div>
     </form>
-  </div>
+  </div >
   {% endif %}
 </div>
 

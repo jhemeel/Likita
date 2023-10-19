@@ -26,11 +26,11 @@
       </div>
 
       <div class="row doctors-wrapper">
-
+        {% for staff in staffs %}
         <div class="">
           <div class="member scroll-element js-scroll slide-left delay-1">
             <div class="member-img">
-              <img src=" {% static 'images/dr1.jpg' %}" class="img-fluid" alt="">
+              <img src={{staff.avatar.url}} alt="">
               <div class="social">
                 <a href=""><i class="fa-brands fa-twitter"></i></a>
                 <a href=""><i class="fa-brands fa-facebook"></i></a>
@@ -39,66 +39,12 @@
               </div>
             </div>
             <div class="member-info">
-              <h4>Walter White</h4>
-              <span>Chief Medical Officer</span>
+              <h4>Dr {{staff.name}} (MD)</h4>
+              <span>{{staff.profession}}</span>
             </div>
           </div>
         </div>
-
-        <div class="">
-          <div class="member scroll-element js-scroll slide-left delay-2">
-            <div class="member-img">
-              <img src=" {% static 'images/dr2.jpg' %}" class="img-fluid" alt="">
-              <div class="social">
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info">
-              <h4>Sarah Jhonson</h4>
-              <span>Anesthesiologist</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="">
-          <div class="member scroll-element js-scroll slide-right delay3">
-            <div class="member-img">
-              <img src=" {% static 'images/dr3.jpg' %}" class="img-fluid" alt="">
-              <div class="social">
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info">
-              <h4>William Anderson</h4>
-              <span>Cardiology</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="">
-          <div class="member scroll-element js-scroll slide-right delay-4">
-            <div class="member-img">
-              <img src=" {% static 'images/dr4.webp' %}" class="img-fluid" alt="">
-              <div class="social">
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info">
-              <h4>Amanda Jepson</h4>
-              <span>Neurosurgeon</span>
-            </div>
-          </div>
-        </div>
-
+        {% endfor %}
       </div>
 
     </div>

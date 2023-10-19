@@ -3,15 +3,10 @@ from base.models import User
 from .models import ReplyContact, ContactUs, Subscribe, SendNewsletter
 from django import forms
 
-
-
-
 class ProfileForm(ModelForm):
     class Meta:
         model = User
-        fields = ['avatar','bio','name','username','date_of_birth','age','gender','email', 'location','profession']
-        # fields = '__all__'
-        
+        fields = ['avatar','bio','name','username','date_of_birth','gender','email', 'location','profession']        
         
 class ContactForm(ModelForm):
     class Meta:
@@ -38,13 +33,3 @@ class NewsletterForm(ModelForm):
         widgets = {
             'attachment': ClearableFileInput(attrs={"allow_multiple_selected": True}),
         }
-        
-        
-
-# class ReplyForm(forms.Form):
-#     email_id = forms.EmailField()
-#     email_cc = forms.EmailField()
-#     email_bcc = forms.EmailField()
-#     subject = forms.CharField(max_length=200)
-#     message = forms.CharField(widget=forms.Textarea)
-#     attachment = forms.FileField()

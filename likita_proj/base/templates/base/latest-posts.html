@@ -3,44 +3,22 @@
 <div class="latest-posts-container">
   <div class="latest-posts">
     <h1>Top Posts From Dokto</h1>
-   
     <div class="latest-post">
+    {% for post in latest_posts %}
+
       <div class="post-box">
-        <img src="{% static "images/hosp1.jpg" %}" alt="img1">
-        <div class="description">
+        <img src={{post.image.url}} alt=`{{post.title}} image`>
+
+        <a href="{% url "post" post.id %}">
+         <div class="description">
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
-            quam!
+           {{post.headline}}
           </p>
-        </div>
+         </div>
+        </a>
       </div>
-      <div class="post-box">
-        <img src="{% static "images/hosp2.jpg" %}" alt="img2">
-        <div class="description">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-            repellat!
-          </p>
-        </div>
-      </div>
-      <div class="post-box">
-        <img src="{% static "images/hosp3.jpg" %}" alt="img3">
-        <div class="description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat,
-            voluptates?
-          </p>
-        </div>
-      </div>
-      <div class="post-box">
-        <img src="{% static "images/hosp4.webp" %}" alt="img4">
-        <div class="description">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint,
-            dicta!
-          </p>
-        </div>
-      </div>
+      {% endfor %}
+
     </div>
   </div>
 </div>

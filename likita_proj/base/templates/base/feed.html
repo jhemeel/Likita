@@ -7,14 +7,12 @@
     </div>
     <div class="screen">
         <div class="container" data-autoplay="true">
-            <div class="slide">
-              <img src="{% static "images/hosp1.jpg" %}" alt="img1">
-            </div>
-            <div class="slide">
             {% for post in posts %}
-              <img src="{{post.image.url}}" alt="">
-            {% endfor %}
+
+            <div class="slide">
+              <img src={{post.image.url}} alt="">
             </div>
+            {% endfor %}
 
             <button class="prev" onclick="prev()">
               <i class="fa fa-angle-left"></i>
@@ -44,7 +42,6 @@
         <h2>Blog Topics</h2>
         <h3>
             <a href="{% url 'blog' %}">All</a>
-            <span>{{posts.all.count}}</span>
         </h3>
         {% for topic in topics %}
         <h3>

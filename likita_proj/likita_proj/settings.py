@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     "verify_email.apps.VerifyEmailConfig",
     
     'django_bleach',
-    'markdownx',
+    "django_summernote",
+    'tinymce',
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -143,7 +144,7 @@ DATABASES = {
 # DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'postgres',
+#        'NAME': 'dokto',
 #        'USER': 'postgres',
 #        'PASSWORD': 'Omolabake1',
 #        'HOST': 'localhost',
@@ -187,9 +188,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# if DEBUG:
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-# else:
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 
 MEDIA_URL = 'media/'
@@ -240,32 +239,16 @@ LINK_EXPIRED_TEMPLATE = 'authy/expired.html'
 NEW_EMAIL_SENT_TEMPLATE  = 'authy/new_email_sent.html'
 
 
-MARKDOWNX_MARKDOWNIFY_FUNCTION = 'markdownx.utils.markdownify'
-MARKDOWNX_MARKDOWN_EXTENSIONS = [
-    'markdown.extensions.extra'
-]
 
-MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
-    'extension_name_1': {
-        'option_1': 'value_1'
+SUMMERNOTE_THEME = 'bs4'
+SUMMERNOTE_CONFIG={
+    'summernote': {
+        'airMode': False,
+         # Change editor size
+        # 'width': '100%',
+        # 'height': '480',
+
+        # Use proper language setting automatically (default)
+        'lang': None,
     }
 }
-
-MARKDOWNX_MARKDOWN_TAB_LENGTH = 6
-
-MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
-
-MARKDOWNX_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 #5mb
-
-MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml', 'image/avif']
-
-MARKDOWNX_IMAGE_MAX_SIZE = {
-    'size': (300, 300),
-    'quality': 90,
-    'crop' : True,
-    'upscale' : True
-}
-
-MARKDOWNX_SVG_JAVASCRIPT_PROTECTION = True
-MARKDOWNX_EDITOR_RESIZABLE = True
-MARKDOWNX_SERVER_CALL_LATENCY = 500  # milliseconds

@@ -5,42 +5,34 @@
 
 {% load static %}
 {% block content %}
-<form method="POST" action="">{% csrf_token %}
-    {{ form }}
-</form>
-{{ form.media }}
 
-<div class="post-detail-view">
+<div class="post-detail-view" >
     <div class="main-content">
         <div class="post-image">
             <img src="{{post.image.url}}" alt="">
+            <span class="manage-post">
+                <i class="fa fa-edit"></i>
+                <i class="fa fa-multiply"></i>
+            </span>
         </div>
-        <div class="post-details">
-            <div class="post-categories">
-                <span>{{post.topic.title}}</span>
-                <span class="manage-post">
-                    <i class="fa fa-edit"></i>
-                    <i class="fa fa-multiply"></i>
-                </span>
+        <div class="Post-details">
+            <div class="Post-categories">
+                {% for categories in post.categories.all %}
+                <span>{{categories.title}}</span>
+                {% endfor %}
             </div>
-    
-            <h1 class="post-title">
-                {{post.heading.upper }}
-            </h1>
-   
             <div class="post-info">
-               <div class="Post-author">
-                Author: <span>@{{post.owner.username}}</span>
-               </div>
-                <div class="Post-date">
-                    {{post.created_at | timesince}} ago
-                </div>
-    
+                <div class="Post-author">Author: <span>{{post.owner.name}}</span></div>
+                <div class='Post-date'>{{post.published_at | timesince}} ago</div>
             </div>
-            <div>
-                <p class="post-description" >
-                    {{post.formatted_markdown | safe | linebreaks }}
-                </p>
+            <div class="post-title">
+                {{post.topic.title}}
+            </div>
+            <div class="overview ">
+                {{post.overview | safe}}
+            </div>
+            <div class="Post-description">
+                {{post.body | safe}}
             </div>
         </div>
     </div>

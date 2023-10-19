@@ -3,38 +3,39 @@ from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
-from .models import Post, Topic, User, LikedPost, Comment, CommentReply
+from .models import Post, Topic, User, LikedPost, Comment, CommentReply, Categories, HealthTips
 from .forms import PostForm, ReplyForm
 
 
 # Create your views here.
 
 def home(request):
+    staffs = User.objects.filter(is_staff = True)
+    published_posts = Post.objects.filter(status = Post.Status.PUBLISHED)
+    latest_posts = published_posts.order_by("-created_at")[0:4]
+    context= {
+        'publishes_posts': published_posts,
+        'latest_posts': latest_posts,
+        'staffs': staffs
+    }
 
-    q = request.GET.get('q') if request.GET.get('q') != None else ""
-    posts = Post.objects.filter(
-        Q(topic__title__icontains=q) |
-        Q(owner__username__icontains=q) |
-        Q(heading__icontains=q) |
-        Q(body__icontains=q)
-    )
-    topics = Topic.objects.all()
-
-    context = {'posts': posts, 'topics': topics, }
     return render(request, 'base/home.html', context)
-
+    
 
 def blog(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
-    posts = Post.objects.filter(
+    posts = Post.objects.order_by('-created_at').filter(
         Q(topic__title__icontains=q) |
         Q(owner__username__icontains=q) |
-        Q(heading__icontains=q) |
-        Q(body__icontains=q)
+        Q(headline__icontains=q) |
+        Q(body__icontains=q) 
     )
+    
+    tips = HealthTips.objects.all()
+    
+    
     topics = Topic.objects.all()
-    context = {'posts': posts, 'topics': topics, }
-
+    context = {'posts': posts, 'topics': topics, "tips": tips }
     return render(request, 'base/blog.html', context)
 
 
@@ -49,7 +50,7 @@ def create_post(request):
             topic, created = Topic.objects.get_or_create(title=topic_title)
             post = Post.objects.create(
                 topic=topic,
-                heading=request.POST.get('heading'),
+                headline=request.POST.get('headline'),
                 body=request.POST.get('body'),
                 image=request.FILES.get('image'),
                 owner=request.user
@@ -67,7 +68,7 @@ def create_post(request):
 
 @login_required(login_url='login')
 def post(request, pk):
-
+    tips = HealthTips.objects.all()
     post = Post.objects.get(id=pk)
     post_comment = post.comment_set.all()
 
@@ -80,7 +81,7 @@ def post(request, pk):
 
         return redirect('post', pk=post.id)
 
-    context = {'post': post, 'post_comment': post_comment}
+    context = {'post': post, 'post_comment': post_comment, "tips": tips}
     return render(request, 'base/post-detail.html', context)
 
 
@@ -95,7 +96,7 @@ def update_post(request, pk):
             topic, created = Topic.objects.get_or_create(title=topic_title)
 
             post.topic = topic
-            post.heading = request.POST.get('heading')
+            post.headline = request.POST.get('headline')
             post.body = request.POST.get('body')
             post.image = request.FILES.get(
                 'image') if request.FILES.get('image') else post.image

@@ -10,31 +10,25 @@
     </div>
     <div class="Post-details">
         <div class="Post-categories">
-            <span>{{post.topic.title}}</span>
+            {% for categories in post.categories.all %}
+            <span>{{categories.title}}</span>
+            {% endfor %}
         </div>
 
-        <h3 class="Post-title">
-            {{post.heading.upper}}
-        </h3>
-
-        <div class="Post-info">
-           <div class="Post-author">
-            Author: <span>@{{post.owner.username}}</span>
-           </div>
-            <div class="Post-date">
-                {{post.created_at | timesince}} ago
-            </div>
-
+        <div class="Post-headline">
+            {{post.headline}}
+        </div>
+        <div class="overview">
+            {{post.overview | safe | linebreaks | truncatewords:15}}
         </div>
 
-        <p class="Post-description">
-           {{post.body}}
-        </p>
+       <div>
         <a href="{% url "post" post.id %}">
             <span class="read-more">
                 Read More
             </span>
         </a>
+       </div>
         
 
     </div>

@@ -3,8 +3,6 @@ from django.contrib.auth.models import AbstractUser
 import uuid
 from django.utils import timezone
 
-# from markdownx.models import MarkdownxField
-# from markdownx.utils import markdownify
 # Create your models here.
 
 

@@ -659,10 +659,14 @@ body::-webkit-scrollbar-track,
 }
 
 .read-more{
-  color: var(--tertiary-bg);
+  background-color: var(--tertiary-bg);
+  color: var(--tertiary-color);
   font-family: "Poppins", "Monrserrat", sans-serif;
   font-weight: 600;
-  opacity: 0.6;
+  opacity: 0.8;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  padding: 0.5rem;
 }
 
 .read-more:hover{
@@ -728,13 +732,13 @@ body::-webkit-scrollbar-track,
 .post-detail-view .Post-details h1{
   font-size: 35px;
   color: var(--heading-color);
-  font-family: "Catamaran", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
   
 }
 .post-detail-view .Post-details h2{
   font-size: 30px;
   color: var(--heading-color);
-  font-family: "Catamaran", "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 
 }
 .post-detail-view .Post-details h3{
@@ -839,8 +843,12 @@ body::-webkit-scrollbar-track,
 }
 
 .Post-details .Post-description{
-
   margin-top: 30px;
+
+}
+
+.Post-description p{
+  color: var(--ink);
 }
 
 

@@ -28,7 +28,10 @@
     <link rel="preconnect" href="//fonts.gstatic.com" crossorigin />
 
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    {% include 'django_quill/media.html' %}
     <title>{% block title %} {% endblock title %}</title>
+
+  
   </head>
 
   <body>

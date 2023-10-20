@@ -54,8 +54,7 @@ INSTALLED_APPS = [
     "verify_email.apps.VerifyEmailConfig",
     
     'django_bleach',
-    "django_summernote",
-    'tinymce',
+    'django_quill',
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -237,18 +236,3 @@ VERIFICATION_SUCCESS_TEMPLATE = "authy/success.html"
 VERIFICATION_FAILED_TEMPLATE = "authy/failed.html"
 LINK_EXPIRED_TEMPLATE = 'authy/expired.html'
 NEW_EMAIL_SENT_TEMPLATE  = 'authy/new_email_sent.html'
-
-
-
-SUMMERNOTE_THEME = 'bs4'
-SUMMERNOTE_CONFIG={
-    'summernote': {
-        'airMode': False,
-         # Change editor size
-        # 'width': '100%',
-        # 'height': '480',
-
-        # Use proper language setting automatically (default)
-        'lang': None,
-    }
-}

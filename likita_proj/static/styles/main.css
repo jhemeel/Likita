@@ -17,6 +17,7 @@
   --secondary-color-darker: #f7f6f6;
   --tertiary-bg: #d63a02;;
   --tertiary-color: #decac3;
+  --overview-color: royalblue;
   --btn-bg-teal: teal;
   --btn-color: #1e9cd2;
   --section-pad: 130px 10% 0px;
@@ -647,6 +648,12 @@ body::-webkit-scrollbar-track,
   color: var(--ink);
 }
 
+ .overview p {
+  color: var(--overview-color);
+  font-family: "Poppins";
+  font-size: var(--font-size);
+
+}
 
 .Post-author{
   font-family: "Aubade", 'Poppins', sans-serif;
@@ -725,7 +732,18 @@ body::-webkit-scrollbar-track,
   padding: var(--blog-pad-mb);
   display: grid;
   row-gap: 20px;
-  margin-top: 20px;
+
+}
+
+.post-detail-view .main-content .post-image{
+  width: 100%;
+  height: 250px;
+  position: relative;
+}
+.main-content .post-image img{
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
 
 }
 
@@ -759,33 +777,21 @@ body::-webkit-scrollbar-track,
   font-family: "Catamaran", "Poppins", sans-serif;
 
 }
-.post-detail-view .main-content img{
+
+/* .post-detail-view .main-content img{
   max-width: 100%;
   width: 100%;
   height: 300px;
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: center center;
-}
+ 
+} */
 
 .post-detail-view .Post-details{
   display: flex;
   flex-direction: column;
   gap: 30px;
   position: relative;
-  margin-bottom: 30px;
 }
-.post-detail-view .main-content .post-image{
-  width: 100%;
-  height: 250px;
-  position: relative;
-}
-.main-content .post-image img{
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
 
-}
 .Post-details .post-categories{
   color: var(--heading-color);
   opacity: .7;
@@ -834,22 +840,33 @@ body::-webkit-scrollbar-track,
 
 }
 
-
-
 .Post-details .post-info{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-.Post-details .Post-description{
-  margin-top: 30px;
-
-}
-
-.Post-description p{
+.post-detail-view .Post-details .overview p{
   color: var(--ink);
+  font-weight: 600;
 }
+
+.post-detail-view .Post-details .overview,
+.Post-description p
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 50px;
+}
+
+.Post-description p > img,
+.Post-details .overview iframe{
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  object-position: center center;
+}
+
 
 
 /* post dtails ends */
@@ -2319,27 +2336,23 @@ aside #chat-box small {
   height: 100%;
 }
 
-.latest-post .description {
-  background-color: white;
+.latest-post .headline {
+  background-color: black;
+  color: var(--primary-bg);
   position: absolute;
   bottom: 0;
   width: 100%;
   opacity: 0.8;
   padding: 5px;
-  font-size: 20px;
-}
-.latest-post > div p {
   font-size: var(--font-size);
-  font-weight: 700;
-  color: var(--ink);
   font-family: "Poppins", sans-serif;
+  font-weight: 500;
   display: -webkit-box;
   overflow: hidden;
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-
 
 /* new feeds starts*/
 #feed-container{

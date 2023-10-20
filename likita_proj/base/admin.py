@@ -1,12 +1,10 @@
-from django.db import models
 from django.contrib import admin
 from .models import User, Categories, Post, Topic,LikedPost, Comment, CommentReply, HealthTips
 
 
-from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
-
-class PostAdmin(SummernoteModelAdmin):
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
     summernote_fields = ('body', 'overview')
     
     list_display = ['topic', 'headline', 'owner', 'status', 'created_at', 'published_at']
@@ -18,7 +16,6 @@ class PostAdmin(SummernoteModelAdmin):
     date_hierarchy = 'published_at'
 
 
-admin.site.register(Post, PostAdmin)
 admin.site.register(User)
 admin.site.register(Categories)
 admin.site.register(Topic)

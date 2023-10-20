@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 from django.utils import timezone
+from django_quill.fields import QuillField
 
 # Create your models here.
 
@@ -66,8 +67,8 @@ class Post(models.Model):
     categories =models.ManyToManyField(Categories, related_name='post_categories')
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     headline = models.CharField(max_length=100)
-    overview =  models.TextField()
-    body = models.TextField()
+    overview =  QuillField()
+    body = QuillField()
     status = models.CharField(choices = Status.choices,  default=Status.DRAFT, max_length=2)
     image = models.ImageField(upload_to="post-media")
     no_of_liked_post = models.IntegerField(default=0)
@@ -134,7 +135,7 @@ class CommentReply(models.Model):
 
 class HealthTips(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    content = models.TextField()
+    content = QuillField()
     
     class Meta:
         verbose_name_plural = "HealthTip"

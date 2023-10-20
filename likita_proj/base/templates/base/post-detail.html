@@ -27,10 +27,13 @@
                 {{post.topic.title}}
             </div>
             <div class="overview ">
-                {{post.overview | safe}}
+                {{post.overview.html | safe}}
             </div>
+            <h3>
+                {{post.topic.subtitle}}
+               </h3>
             <div class="Post-description">
-                {{post.body | safe}}
+                {{post.body.html | safe}}
             </div>
         </div>
     </div>

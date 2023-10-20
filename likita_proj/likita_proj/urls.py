@@ -16,9 +16,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('verification/', include('verify_email.urls')),
     
-    path('summernote/', include('django_summernote.urls')),
-    path('tinymce/', include('tinymce.urls')),
-    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

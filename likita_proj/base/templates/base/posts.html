@@ -19,7 +19,7 @@
             {{post.headline}}
         </div>
         <div class="overview">
-            {{post.overview | safe | truncatewords_html:5}}
+            {{post.overview.html | safe | truncatewords:20}}
         </div>
 
        <div>

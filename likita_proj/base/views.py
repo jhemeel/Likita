@@ -56,7 +56,7 @@ def create_post(request):
                 owner=request.user
             )
             post.save()
-            return redirect('home')
+            return redirect('blog')
 
     else:
         messages.warning(request, 'Permission Denied')

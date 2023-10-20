@@ -1419,35 +1419,46 @@ aside #chat-box small {
   color: #2d7cc1;
 }
 
-.delete-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-}
-.delete-box h1 {
+
+.delete-box h3 {
   text-align: center;
-  color: var(--heading-color);
+  color: var(--ink);
+  font-size: var(--font-size-md);
+  margin-bottom: 30px;
+}
+.delete-box h3 span{
+  color: var(--tertiary-bg);
+  font-style: italic;
+
 }
 
-.delete-box .delete-form-container {
+.form-control-group{
   display: flex;
-  align-items: center;
+  flex-flow: row-reverse wrap;
+ column-gap: 80px;
+ row-gap: 20px;
   justify-content: center;
-  gap: 100px;
 }
 
-.delete-box .go-back {
+
+.delete-box .confirm-btn {
   width: 150px;
   height: 4ch;
-  background-color: var(--primary-color);
-  font-size: 18px;
+  background-color: var(--tertiary-bg);
+  font-size: var(--font-size-md);
   color: var(--tertiary-color);
   border: 1px solid transparent;
   border-radius: 4px;
 }
-
+.delete-box .go-back-btn{
+  width: 150px;
+  height: 4ch;
+  background-color: var(--btn-color);
+  font-size: var(--font-size-md);
+  color: var(--primary-bg);
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
 .comment {
   margin-top: 50px;
   padding: var(--section-pad);
@@ -1693,9 +1704,9 @@ aside #chat-box small {
 .contact_us-container{
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.85),
-      rgba(255, 255, 255, 0.85 ),
-      rgba(255, 255, 255, 0.85)
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7 ),
+      rgba(255, 255, 255, 0.7)
     ),
     url("/static/images/contact_us.jpg");
     background-repeat: no-repeat;

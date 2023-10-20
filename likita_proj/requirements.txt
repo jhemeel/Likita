@@ -30,7 +30,6 @@ gunicorn==20.1.0
 idna==3.4
 inflection==0.5.1
 jsonschema==4.17.3
-Markdown==3.5
 msgpack==1.0.5
 multidict==6.0.4
 openai==0.27.7
@@ -46,7 +45,6 @@ requests==2.31.0
 six==1.16.0
 soupsieve==2.4.1
 sqlparse==0.4.4
-tinycss2==1.1.1
 tqdm==4.65.0
 typing_extensions==4.6.3
 tzdata==2023.3

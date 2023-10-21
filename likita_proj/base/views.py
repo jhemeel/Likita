@@ -28,13 +28,14 @@ def blog(request):
         Q(topic__title__icontains=q) |
         Q(owner__username__icontains=q) |
         Q(headline__icontains=q) |
-        Q(body__icontains=q) 
+        Q(body__icontains=q) ,
+         status= Post.Status.PUBLISHED                                       
     )
     
-    tips = HealthTips.objects.all()
+    tips = HealthTips.objects.order_by('-created_at').all()
     
     
-    topics = Topic.objects.all()
+    topics = Topic.objects.filter(post__status = Post.Status.PUBLISHED)
     context = {'posts': posts, 'topics': topics, "tips": tips }
     return render(request, 'base/blog.html', context)
 
@@ -77,8 +78,11 @@ def create_post(request):
 @login_required(login_url='login')
 def post(request, pk):
     tips = HealthTips.objects.all()
-    post = Post.objects.get(id=pk)
-    post_comment = post.comment_set.all()
+    posts = Post.objects.filter(id=pk, status=Post.Status.PUBLISHED)
+    
+    for post in posts:
+        
+        post_comment = post.comment_set.all()
 
     if request.method == 'POST':
         comment = Comment.objects.create(

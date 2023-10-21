@@ -982,9 +982,9 @@ body::-webkit-scrollbar-track,
 #login-register-form.login{
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.8 ),
-    rgba(255, 255, 255, 0.8)
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6 ),
+    rgba(255, 255, 255, 0.6)
   ),
   url("/static/images/login6.jpg");
   background-repeat: no-repeat;
@@ -995,9 +995,9 @@ body::-webkit-scrollbar-track,
 #login-register-form.register{
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.85),
-    rgba(255, 255, 255, 0.85 ),
-    rgba(255, 255, 255, 0.85)
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8 ),
+    rgba(255, 255, 255, 0.8)
   ),
   url("/static/images/register1.jpg"); 
   background-repeat: no-repeat;
@@ -1005,7 +1005,7 @@ body::-webkit-scrollbar-track,
 
 }
 #login-register-form{
- 
+ font-weight: 900;
   height: calc(100vh);
 }
 
@@ -1044,7 +1044,7 @@ form label {
   display: inline-block;
   font-size: var(--font-size);
   font-family: "Poppins", sans-serif;
-  color: var(--primary-color);
+  color: var(--ink);
   align-self: flex-start;
   width: 100%;
 }
@@ -1099,9 +1099,12 @@ form small {
   padding-left: 10px;
 }
 .newsletter-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 3rem;
+  margin-top: 50px;
+}
+.newsletter-container h3{
+  font-size: var(--font-size);
+  font-weight: 900;
+
 }
 
 footer {
@@ -1704,18 +1707,20 @@ aside #chat-box small {
 .contact_us-container{
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.7 ),
-      rgba(255, 255, 255, 0.7)
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6 ),
+      rgba(255, 255, 255, 0.6)
     ),
-    url("/static/images/contact_us.jpg");
+    url("/static/images/contact-us1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-x: 35%;
+    background-position:35%;
+    background-attachment: fixed;
 }
 
 .contact-container {
   padding: var(--section-pad);
+  font-weight: 900;
 
 }
 
@@ -1753,7 +1758,21 @@ aside #chat-box small {
 *************************************************/
 .booking{
   padding: var(--section-pad);
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.6 ),
+      rgba(255, 255, 255, 0.9)
+    ),
+    url("/static/images/appointment.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:0 30%;
+    background-attachment: fixed;
+    height: 100vh;
+    font-weight: 900;
 }
+
 
 /* services-------------------------------------------------------------- */
 #services {
@@ -2811,7 +2830,7 @@ button {
   
   .contact-container {
     display: flex;
-    gap: 150px;
+    gap: 100px;
     align-items: center;
   }
 

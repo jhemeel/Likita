@@ -19,9 +19,17 @@
             {% endfor %}
           </select>
         </datalist>
-        <label for="id_heading">Subtitle:</label>
-        {{form.topic.subtitle}}
-     
+
+        <label for="subtitle">Subtitle:</label>
+        <input type="text" name="subtitle" id="subtitle" list='subtitle_list' value={{post.topic.subtitle}}>
+        <datalist id="subtitle_list">
+          <select name="" id="subtitle">
+            {% for topic in topics %}
+              <option value="{{topic.subtitle}}">{{topic.subtitle}}</option>
+            {% endfor %}
+          </select>
+        </datalist>
+        
         <label for="id_heading">Headline:</label>
         {{form.headline}}
      

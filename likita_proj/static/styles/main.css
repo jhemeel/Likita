@@ -865,7 +865,6 @@ body::-webkit-scrollbar-track,
   font-weight: 600;
 }
 
-.post-detail-view .Post-details .overview,
 .Post-description p
 {
   display: grid;
@@ -877,7 +876,7 @@ body::-webkit-scrollbar-track,
 .Post-details .overview iframe{
   max-width: 100%;
   width: 100%;
-  height: auto;
+  max-height: 350px;
   object-fit: fill;
   object-position: center center;
 }

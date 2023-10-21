@@ -6,81 +6,10 @@
   
 <div class="create-update-container">
     {% if page == 'create-post' %}
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h3>Create Post</h3>
- 
-        <label for="topic">Topic:</label>
-        <input type="text" name="topic" id="topic" list='topic-list' value={{post.topic.title}}>
-        <datalist id="topic-list">
-          <select name="" id="topic">
-            {% for topic in topics %}
-              <option value="{{topic.title}}">{{topic.title}}</option>
-            {% endfor %}
-          </select>
-        </datalist>
-
-        <label for="subtitle">Subtitle:</label>
-        <input type="text" name="subtitle" id="subtitle" list='subtitle_list' value={{post.topic.subtitle}}>
-        <datalist id="subtitle_list">
-          <select name="" id="subtitle">
-            {% for topic in topics %}
-              <option value="{{topic.subtitle}}">{{topic.subtitle}}</option>
-            {% endfor %}
-          </select>
-        </datalist>
-        
-        <label for="id_heading">Headline:</label>
-        {{form.headline}}
-     
-        <label for="id_body">Overview:</label>
-        {{form.overview}}
-    
-        <label for="id_body">Body:</label>
-        {{form.body}}
-    
-        <label for="id_image">Image:</label>
-        {{form.image}}
-    
-        <input type="submit" value="Create Post">
-    
-    </form>
+    {% include "base/postForm.html" %}
  
     {% else %}
- 
-    <form action="" method="POST" enctype="multipart/form-data">
-         {% csrf_token %}
-         <h3>Update Post</h3>
- 
-        <label for="topic">Topic:</label>
-        <input type="text" name="topic" id="topic" list='topic-list' value="{{post.topic.title}}">
-        <datalist id="topic-list">
-            <select name="" id="topic">
-                {% for topic in topics %}
-                <option value="{{topic.title}}">{{topic.title}}</option>
-                {% endfor %}
-            </select>
-        </datalist>
-            
-        <label for="id_heading">Subtitle:</label>
-        {{form.topic.subtitle}}
-
-        <label for="id_heading">Heading:</label>
-        {{form.heading}}
-    
-        <label for="id_body">Overview:</label>
-        {{form.overview}}
-
-        <label for="id_body">Body:</label>
-        {{form.body}}
-
-        <label for="id_image">Image:</label>
-        {{form.image}}
-    
-        <input type="submit" value="Update Post">
-          
-     
-    </form>
+    {% include "base/postForm.html" %}
     {% endif %}
 </div>
 

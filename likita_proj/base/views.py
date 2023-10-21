@@ -42,14 +42,22 @@ def blog(request):
 @login_required(login_url='login')
 def create_post(request):
     page = 'create-post'
+    page_title_content = "Create A Post"
     topics = Topic.objects.all()
+    category  = Categories.objects.all()
     form = PostForm()
     if request.user.is_superuser:
         if request.method == 'POST':
             topic_title = request.POST.get('topic')
-            topic, created = Topic.objects.get_or_create(title=topic_title)
+            topic_subtitle = request.POST.get('subtitle')
+            category_title = request.POST.get('category')
+            
+            topic, created = Topic.objects.get_or_create(title=topic_title, subtitle=topic_subtitle )
+            categories, created = Categories.objects.get_or_create(title = category_title)
             post = Post.objects.create(
                 topic=topic,
+                categories = categories,
+                overview = request.POST.get('overview'),
                 headline=request.POST.get('headline'),
                 body=request.POST.get('body'),
                 image=request.FILES.get('image'),
@@ -62,7 +70,7 @@ def create_post(request):
         messages.warning(request, 'Permission Denied')
         return redirect('profile', pk=request.user.username)
 
-    context = {'form': form, 'topics': topics, 'page': page}
+    context = {'form': form, 'topics': topics, 'categories': category, 'page': page, 'page_title_content': page_title_content}
     return render(request, 'base/create-update-post.html', context)
 
 
@@ -87,19 +95,25 @@ def post(request, pk):
 
 @login_required(login_url='login')
 def update_post(request, pk):
+    page_title_content = "Update Post"
     topics = Topic.objects.all()
+    category  = Categories.objects.all()
     post = Post.objects.get(id=pk)
     form = PostForm(instance=post)
     if request.user.is_superuser:
         if request.method == 'POST':
             topic_title = request.POST.get('topic')
-            topic, created = Topic.objects.get_or_create(title=topic_title)
-
+            topic_subtitle = request.POST.get('subtitle')
+            category_title = request.POST.get('category')
+            topic, created = Topic.objects.get_or_create(title=topic_title, subtitle=topic_subtitle)
+            categories, created = Categories.objects.get_or_create(title = category_title)
+            
             post.topic = topic
+            post.categories_set = categories
             post.headline = request.POST.get('headline')
+            post.overview = request.POST.get('overview'),
             post.body = request.POST.get('body')
-            post.image = request.FILES.get(
-                'image') if request.FILES.get('image') else post.image
+            post.image = request.FILES.get('image') if request.FILES.get('image') else post.image
 
             post.save()
             return redirect('home')
@@ -108,7 +122,7 @@ def update_post(request, pk):
         messages.warning(request, 'Permission Denied')
         return redirect('profile', pk=request.user.username)
 
-    context = {'form': form, 'topics': topics, 'post': post}
+    context = {'form': form, 'topics': topics, 'categories': category, 'post': post, 'page_title_content': page_title_content}
     return render(request, 'base/create-update-post.html', context)
 
 

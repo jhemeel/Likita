@@ -1004,6 +1004,7 @@ body::-webkit-scrollbar-track,
   url("/static/images/login6.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 50%;
 
 }
 
@@ -1017,6 +1018,8 @@ body::-webkit-scrollbar-track,
   url("/static/images/register1.jpg"); 
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 50%;
+
 
 }
 #login-register-form{
@@ -1040,7 +1043,7 @@ form h3 {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   word-spacing: 0.5ch;
-  font-size: calc( var(--font-size-md) + 8px);
+  font-size: calc( var(--font-size-md));
   font-weight: 300;
   color: var(--primary-color);
   margin-bottom: 20px;
@@ -2842,6 +2845,7 @@ button {
   }
 
   /* contact us */
+
   
   .contact-container {
     display: flex;

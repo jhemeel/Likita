@@ -20,7 +20,7 @@
   --overview-color: royalblue;
   --btn-bg-teal: teal;
   --btn-color: #1e9cd2;
-  --section-pad: 130px 10% 0px;
+  --section-pad: 130px 10% 50px;
   --page-pad: 50px 10% 0;
   --blog-pad-mb: 20px 10%;
   --blog-pad: 20px 5% 0 0;
@@ -234,6 +234,7 @@ ul.messages li a.close {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-weight: 900;
 
 }
 
@@ -563,41 +564,7 @@ font-weight: 700;
   }
 }
 
-#search-form {
-  width: 100%;
-  background-color: transparent;
-  padding: 0;
-  margin: auto;
-  box-shadow: none;
-  position: relative;
-}
 
-#search-form input[type="search"] {
-  height: 4ch;
-  width: 100%;
-  box-shadow: var(--article-shadow);
-  color: var(--ink);
-  font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
-  font-weight: 700;
-  border: 1px transparent;
-  font-size: 18px;
-  padding-right: 30px; /* remove pc*/
-}
-#search-form input[type="submit"] {
-  display: none;
-}
-
-#search-form button[type="submit"] {
-  border: none;
-  display: block;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  font-size: 18px;
-  background-color: transparent;
-  color: var(--ink);
-  cursor: pointer;
-}
 
 body::-webkit-scrollbar,
 .feed .posts::-webkit-scrollbar {
@@ -885,14 +852,6 @@ body::-webkit-scrollbar-track,
 
 /* post dtails ends */
 
-
-.create-update-container{
-  position: relative;
-  top: 100px;
-}
-
-
-
 .feeds .post-bottom .edit-delete {
   display: none;
   gap: 5px;
@@ -994,6 +953,24 @@ body::-webkit-scrollbar-track,
 
 /* GLOBAL FORM STYLES */
 
+form h2,
+form h3 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-size: calc( var(--font-size-md));
+  font-weight: 300;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 900;
+}
+
+#login-register-form{
+  font-weight: 900;
+   height: calc(100vh);
+   width: 100%;
+ }
+ 
 #login-register-form.login{
   background: linear-gradient(
     to bottom,
@@ -1004,7 +981,7 @@ body::-webkit-scrollbar-track,
   url("/static/images/login6.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50%;
+  background-position:50%;
 
 }
 
@@ -1019,103 +996,265 @@ body::-webkit-scrollbar-track,
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
-
-
-}
-#login-register-form{
- font-weight: 900;
-  height: calc(100vh);
 }
 
-
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  width: 80%;
-  margin: auto;
+.floatedFormContainer{
+  border-bottom: 1px solid var(--primary-color);
+  position: relative;
+  padding: 0 8px;
 }
 
-form h2,
-form h3 {
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  word-spacing: 0.5ch;
-  font-size: calc( var(--font-size-md));
-  font-weight: 300;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-}
-
-.register-form-fields,
-.settings-form-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  align-items: center;
-}
-
-form label {
-  display: inline-block;
+.floatedFormContainer label {
   font-size: var(--font-size);
   font-family: "Poppins", sans-serif;
   color: var(--ink);
-  align-self: flex-start;
   width: 100%;
+  position: absolute;
+  transform-origin: top left;
+  transform: translate(0, 10px) scale(1);
+}
+.active label{
+  transform: translate(-3px, 0) scale(0.8);
+  color: #797979;
 }
 
-input:not([type="submit"]),
-input:not([type="file"]),
-select,
-textarea {
-  width: 100%;
-  height: 4ch;
-  border-radius: 5px;
-  border: 1px solid transparent;
-  background-color: #ffffff;
-  box-shadow: var(--article-shadow);
-  font-size: 18px;
-  font-family: "Handwriting";
-  font-weight: 800;
-  color: var(--ink);
-  padding: 0 0.5rem;
-}
-
-input:not([type="submit"]):focus,
-input:not([type="file"]):focus,
-select:focus,
-textarea:focus {
+.floatedFormContainer input{
+  border: none;
   outline: none;
-  border-color: var(--input-btn-color);
+  padding: 16px 0 8px;
+  font-size: var(--font-size);
+  width: 100%;
+  background-color: transparent;
+  font-family: "Poppins", sans-serif;
+  letter-spacing:  1px;
+  color:var(--ink);
+  font-weight: 600;
+
 }
 
-input[type="file"] {
-  /* visibility: hidden; */
-}
-textarea {
-  height: 10ch;
+.floatedFormContainer input:focus,
+.floatedFormContainer input:active{
+  background-color: transparent;
+
 }
 
 input[type="submit"] {
   width: 100%;
+  height: 4ch;
   background-color: var(--tertiary-bg);
   color: var(--tertiary-color);
   font-size: 18px;
+  border: 1px solid transparent;
 }
 
 input[type="submit"]:hover {
   background-color: var(--tertiary-color);
   color: var(--tertiary-bg);
+  border: 1px solid;
 }
+
+.form-btn{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 15px;
+margin-top: 15px;
+}
+
+/* create-update */
+
+.create-update-container{
+  /* height: (100vh - 50px); */
+  overflow-y: scroll;
+  padding: var(--section-pad);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8 ),
+    rgba(255, 255, 255, 0.8)
+  ),
+  url("/static/images/prescribe.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.postForm{
+  display: grid;
+  grid-template-columns: 1fr;
+  font-weight: 600;
+  column-gap: 30px;
+  row-gap: 10px;
+}
+
+.postForm h3{
+  background-color: var(--primary-color);
+  color: #ffffff;
+  order: -2;
+}
+
+.postForm .form-group.image{
+  order: -1;
+}
+
+.postForm input:not([type=submit]),
+select{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--ink);
+  width: 100%;
+  font-size: var(--font-size);
+  padding: 0 10px 5px 10px;
+}
+.postForm .form-group:not(.form-group.image){
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.postForm .image input{
+display: none;
+}
+
+.postForm label{
+  display: inline-block;
+  font-size: var(--font-size);
+  font-family: "Poppins", sans-serif;
+  color: var(--ink);
+  
+}
+
+.postForm label > span{
+  background: url("/static/images/add_image.svg");
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+}
+.postForm .image .img-box{
+  max-width: 400px;
+  max-height: 380px;
+  
+}
+
+.postForm .image .img-box img{
+  max-width: 100%;
+  height: 100%;
+}
+/* create-update ends */
+
+/* settings */
+.setting-form-container{
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8 ),
+    rgba(255, 255, 255, 0.8)
+  ),
+  url("/static/images/rx.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:35%;
+  background-attachment: fixed;
+
+}
+.setting-form-container form{
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+}
+.setting-form-container form h3{
+  background-color: var(--tertiary-bg);
+  color: #ffffff;
+}
+
+.setting-form-container form .image{
+  /* margin:0 auto; */
+  /* width: 50px; */
+  /* background-color: red; */
+}
+
+.setting-form-container input[type="submit"]{
+  margin-top: 30px;
+}
+
+.setting-form-container .settings-form-fields{
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 30px;
+}
+
+.form-group:nth-child(1){
+  width: 60px;
+  visibility: collapse;
+}
+
+.settings-form-fields label{
+  font-size: var(--font-size);
+  color: var(--ink);
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+.settings-form-fields label[for="id_avatar"] ~ *{
+  display: none;
+}
+
+.settings-form-fields label[for="id_avatar"]::after{
+  display: block;
+  content: "";
+  background:
+  url("/static/images/add_image.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  visibility: visible;
+}
+
+.settings-form-fields input:not([type="submit"]),
+.settings-form-fields select,
+.settings-form-fields option
+  {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0 8px;
+    outline: none;
+    box-shadow: var(--box-shadow);
+    font-family: "Poppins", sans-serif;
+  }
+/* settings ends */
+.settings-form-fields textarea{
+  width: 100%;
+  border: none;
+  outline: none;
+  box-shadow: var(--box-shadow);
+  font-family: "Poppins", sans-serif;
+  padding: 8px;
+
+
+}
+
+/* contact-us */
+
+
+
+/* contact-us ends */
+
+
 
 form a,
 form small {
   color: var(--btn-bg-teal);
   padding-left: 10px;
 }
+
+
+
 .newsletter-container {
   margin-top: 50px;
 }
@@ -1452,15 +1591,6 @@ aside #chat-box small {
   font-style: italic;
 
 }
-
-.form-control-group{
-  display: flex;
-  flex-flow: row-reverse wrap;
- column-gap: 80px;
- row-gap: 20px;
-  justify-content: center;
-}
-
 
 .delete-box .confirm-btn {
   width: 150px;
@@ -2718,46 +2848,7 @@ button {
     padding-top: 15px;
   }
 
-  #search-form {
-    flex-direction: row;
-    background-color: var(--primary-bg);
-    padding: 0;
-    margin: auto;
-    box-shadow: none;
-    position: sticky;
-    top: 62px;
-    z-index: 999;
-  }
 
-  #search-form button[type="submit"] {
-    display: none;
-  }
-
-  #search-form input[type="search"] {
-    width: 80%;
-    padding-right: unset;
-  }
-  #search-form input[type="submit"] {
-    display: unset;
-    width: 150px;
-    height: 4ch;
-    vertical-align: top;
-    font-size: 18px;
-    font-weight: 600;
-    border: 1px transparent;
-    color: var(--tertiary-color);
-    background-color: var(--tertiary-bg);
-    font-family: "Aubade", "Handwriting", "Poppins", sans-serif;
-  }
-
-  #search-form input[type="submit"]:hover {
-    background-color: var(--tertiary-color);
-    color: var(--tertiary-bg);
-    border: 1px solid;
-  }
-
-  
-  
   .post-detail-view{
     padding: var(--blog-pad);
     grid-template-columns: repeat(12, 1fr);
@@ -2787,33 +2878,131 @@ button {
 
   /* forms start */
 
-  form {
-    max-width: 600px;
-    margin: auto;
-  }
-  form label {
-    width: 45%;
-  }
 
-  .register-form-fields,
-  .settings-form-fields {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    width: 600px;
-    margin: auto;
-  }
+.login-register-page-wrapper{
+  width: 600px;
+  margin: auto;
+}
+#login-register-form.login{
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6 ),
+    rgba(255, 255, 255, 0.6)
+  ),
+  url("/static/images/login6.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:0 28%;
 
-  .setting-form-container .image {
-    position: fixed;
-    left: 5%;
-    top: 150px;
-  }
+}
 
-  form input[type="submit"] {
-    width: 150px;
-  }
+.postForm{
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto  auto auto minmax(100px, auto) minmax(100px, auto) 50px;
+}
 
+.postForm h3{
+  grid-area: 1 / 1 / 2 / 11;
+}
+
+.postForm .form-group.topic{
+  grid-area: 2 / 1 / 3 / span 4
+}
+.postForm .form-group.subtitle{
+  grid-area: 2 / 5 / 3 / span 4;
+}
+
+.postForm .form-group.category{
+  grid-area: 3 / 1 / 4 / span 4;
+}
+
+.postForm .form-group.headline{
+  grid-area: 3 / 5 / 4 / span 4;
+}
+
+.postForm .form-group.overview{
+  grid-area:  5 / 1 / 7 / 11;
+  align-self: center;
+}
+
+.postForm .form-group.body{
+  grid-area: 7 / 1/ 9 / 11;
+  
+}
+.postForm .form-group.image{
+  grid-area: 2 / 11 / 7 / -1;
+}
+
+.postForm input[type="sumbit"]{
+  grid-area: 1 / 11 / 2 / -1 ;
+}
+
+form input[type="submit"] {
+  width: 150px;
+}
+
+/* settings */
+
+.setting-form-container form{
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: 50px auto auto;
+  column-gap: 30px;
+}
+
+.setting-form-container form h3{
+  grid-area: 1 / 1 / 2 / 10;
+  background-color: var(--tertiary-bg);
+}
+.setting-form-container form .image{
+  grid-area: 1 / 10 / 3 /-1;
+}
+.setting-form-container input[type="submit"]{
+  grid-area: 3 / 5 / 4 / 7;
+  margin-top: 0;
+}
+
+.setting-form-container .settings-form-fields{
+  grid-area: 2 / 1 / 3 / 10;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 40px 40px 40px 40px;
+  column-gap: 20px;
+  row-gap: 30px;
+}
+
+.form-group:nth-child(2){
+  grid-area: 1 / 1 / 2 / 10;
+}
+.form-group:nth-child(1){
+  grid-area: 1 / 11 / 2 / span 1 ;
+}
+.form-group:nth-child(3){
+  grid-area: 2 / 1 / 3 / 5;
+}
+.form-group:nth-child(4){
+  grid-area: 2 / 5 / 3 / 9;
+}
+.form-group:nth-child(7){
+  grid-area: 2 / 9 / 3 / -1;
+}
+.form-group:nth-child(5){
+  grid-area: 3 / 1 / 4 / 7;
+}
+.form-group:nth-child(6){
+  grid-area: 3 / 7 / 4 / -1;
+}
+
+.form-group:nth-child(8){
+  grid-area: 4 / 1 / 5 / 7 ;
+}
+.form-group:nth-child(9){
+  grid-area:  4 / 7 / 5 / -1;
+}
+
+/* settings ends */
+
+/* forms ends */
   aside.shows {
     display: block;
     /* transform: translate(60%, 0); */

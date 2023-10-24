@@ -1,6 +1,7 @@
 import dj_database_url
 from pathlib import Path
-import os, environ
+import os
+import environ
 from datetime import datetime
 env = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -13,7 +14,8 @@ environ.Env.read_env()
 
 environ.Env.read_env(BASE_DIR / ".env")
 
-SECRET_KEY= env('SECRET_KEY', default='bjhvuovlbgcvotuvjvtgctuovgvtvuvghkvtvyulv')
+SECRET_KEY = env(
+    'SECRET_KEY', default='bjhvuovlbgcvotuvjvtgctuovgvtvuvghkvtvyulv')
 
 # # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False) == True
@@ -26,33 +28,33 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'cloudinary_storage',
     'cloudinary',
-    
+
     'base.apps.BaseConfig',
     'authy.apps.AuthyConfig',
     'chat.apps.ChatConfig',
     'clinic.apps.ClinicConfig',
     'profiles.apps.ProfilesConfig',
     'liki_api.apps.LikiApiConfig',
-    
-    
+
+
     'fontawesomefree',
     'bootstrap5',
     'rest_framework',
     'corsheaders',
     'channels',
-    
+
     "verify_email.apps.VerifyEmailConfig",
-    
+
     'django_bleach',
     'django_quill',
 ]
@@ -63,8 +65,8 @@ AUTH_USER_MODEL = 'base.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    
-    
+
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -99,7 +101,7 @@ ROOT_URLCONF = 'likita_proj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':  [os.path.join(  BASE_DIR, 'templates')],
+        'DIRS':  [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,15 +120,15 @@ WSGI_APPLICATION = 'likita_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-database_url = env("DATABASE_URL")
-DATABASES = {
-     'default' :  dj_database_url.parse(
-     database_url,
-     conn_max_age=600,
-     conn_health_checks=True,
-   
- )
- }
+# database_url = env("DATABASE_URL")
+# DATABASES = {
+#      'default' :  dj_database_url.parse(
+#      database_url,
+#      conn_max_age=600,
+#      conn_health_checks=True,
+
+#  )
+#  }
 
 # DATABASES = {
 #     'default': {
@@ -140,16 +142,15 @@ DATABASES = {
 #     }
 # }
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'dokto',
-#        'USER': 'postgres',
-#        'PASSWORD': 'Omolabake1',
-#        'HOST': 'localhost',
-#    }
-# }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dokto',
+        'USER': 'postgres',
+        'PASSWORD': 'Omolabake1',
+        'HOST': 'localhost',
+    }
+}
 
 
 # Password validation
@@ -179,7 +180,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Lagos'
 
 USE_I18N = True
-    
+
 USE_TZ = True
 
 
@@ -193,14 +194,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'media')
 
-if  env("ENVIRONMENT") == "PRODUCTION":
+if env("ENVIRONMENT") == "PRODUCTION":
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    
-    
+
+
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME' : env('MEDIA_CLOUD_NAME'),
-    'API_KEY' : env('MEDIA_CLOUD_API_KEY'),
-    'API_SECRET' : env('MEDIA_CLOUD_API_SECRET')
+    'CLOUD_NAME': env('MEDIA_CLOUD_NAME'),
+    'API_KEY': env('MEDIA_CLOUD_API_KEY'),
+    'API_SECRET': env('MEDIA_CLOUD_API_SECRET')
 }
 
 LOGIN_URL = 'login'
@@ -217,7 +218,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_ID') 
+EMAIL_HOST_USER = os.environ.get('EMAIL_ID')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
@@ -225,36 +226,43 @@ EMAIL_PAGE_DOMAIN = 'https://www.dokto.com.ng/'
 
 
 # link expres
-EXPIRE_AFTER = "7d" # Will expire after seven day from link generation
+EXPIRE_AFTER = "7d"  # Will expire after seven day from link generation
 MAX_RETRIES = 100
 
 SUBJECT = f'Activate Your DRKAYMD account'
-REQUEST_NEW_EMAIL_TEMPLATE='authy/request_new_email.html'
+REQUEST_NEW_EMAIL_TEMPLATE = 'authy/request_new_email.html'
 HTML_MESSAGE_TEMPLATE = "authy/email_message.html"
 
 VERIFICATION_SUCCESS_TEMPLATE = "authy/success.html"
 VERIFICATION_FAILED_TEMPLATE = "authy/failed.html"
 LINK_EXPIRED_TEMPLATE = 'authy/expired.html'
-NEW_EMAIL_SENT_TEMPLATE  = 'authy/new_email_sent.html'
+NEW_EMAIL_SENT_TEMPLATE = 'authy/new_email_sent.html'
 
 
-# QUILL_CONFIGS = {
-#     'default':{
-#         'theme': 'snow',
-#         'modules': {
-#             'syntax': True,
-#             'toolbar': [
-#                 [
-#                     {'font': []},
-#                     {'header': [1 , 2, 3, 4, 5, 6, False ]},
-#                     {'align': []},
-#                     'bold', 'italic', 'image', 'video', 'underline', 'strike', 'blockquote',
-#                     {'color': []},
-#                     {'background': []},
-#                 ],
-#                 ['code-block', 'link'],
-#                 ['clean'],
-#             ]
-#         }
-#     }
-# }
+QUILL_CONFIGS = {
+    'default': {
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    {'font': []},
+                    {'header': [1, 2, 3, 4, 5, 6, False]},
+                    {'align': []},
+                    'bold', 'italic', 'underline', 'strike', 'blockquote',
+                    {'color': []},
+                    {'background': []},
+                    {'indent':  "-1"}, {'indent':  "+1"},
+
+                ],
+                
+                [{'list':  "ordered"}, {'list':  "bullet"}],
+                [
+                    {'script':  "sub"}, {'script':  "super"}
+                ],
+                ['code-block', 'link',  'image', 'video',],
+                ['clean'],
+            ]
+        }
+    }
+}

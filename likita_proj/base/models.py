@@ -136,7 +136,7 @@ class CommentReply(models.Model):
 class HealthTips(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     content = QuillField()
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at= models.DateTimeField()
     
     class Meta:
         verbose_name_plural = "HealthTip"

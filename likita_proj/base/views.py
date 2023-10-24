@@ -44,6 +44,7 @@ def blog(request):
 def create_post(request):
     page = 'create-post'
     page_title_content = "Create A Post"
+    button_text = "Publish"
     topics = Topic.objects.all()
     category  = Categories.objects.all()
     form = PostForm()
@@ -71,7 +72,14 @@ def create_post(request):
         messages.warning(request, 'Permission Denied')
         return redirect('profile', pk=request.user.username)
 
-    context = {'form': form, 'topics': topics, 'categories': category, 'page': page, 'page_title_content': page_title_content}
+    context = {
+                'form': form, 
+               'topics': topics, 
+               'categories': category,
+               'page': page,
+               'page_title_content': page_title_content,
+               "button_text": button_text
+               }
     return render(request, 'base/create-update-post.html', context)
 
 
@@ -100,6 +108,7 @@ def post(request, pk):
 @login_required(login_url='login')
 def update_post(request, pk):
     page_title_content = "Update Post"
+    button_text = 'Update'
     topics = Topic.objects.all()
     category  = Categories.objects.all()
     post = Post.objects.get(id=pk)
@@ -126,7 +135,14 @@ def update_post(request, pk):
         messages.warning(request, 'Permission Denied')
         return redirect('profile', pk=request.user.username)
 
-    context = {'form': form, 'topics': topics, 'categories': category, 'post': post, 'page_title_content': page_title_content}
+    context = {
+                'form': form, 
+               'topics': topics,
+               'categories': category,
+               'post': post,
+               'page_title_content': page_title_content,
+               'button_text': button_text
+               }
     return render(request, 'base/create-update-post.html', context)
 
 

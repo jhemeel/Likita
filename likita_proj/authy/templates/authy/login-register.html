@@ -1,68 +1,66 @@
-{% extends 'base.html' %} {% load static %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block title %}Dokto | Login / Register{% endblock title %}
 
-
-
 {% block content %}
+<div class="authy {{page}}" id="login-register-form">
+    
+    {% if page == 'register' %}
+    <div class="login-register-page-wrapper">
+        <form action="" method="post" enctype="multipart/form-data" onsubmit="target.preventDefault()">
+            {% csrf_token %}
+            <h3  aria-label="required">Register With Us</h3>
+     
+            <div class="form-fields">
+                {% for fields in form %}
+                <div class="floatedFormContainer" id="floatedFormContainer" >
+                    <div class="fieldWrapper">
+                        {{ field.errors }}
+                        <label for="label_id"> {{fields.label_tag}} </label>
+                        {{fields}}
+                    </div>            
+                </div>
+                {% endfor %}
+                <div class="form-btn">
+                    <input type="submit" value="Sign Up" />
+                    <p>I am registered<i><a href="{% url 'login' %}">Login</a></i></p>
+                </div>
+     
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="login-register-page-wrapper">
+        <form action="" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <h3>Login</h3>
+       
+                <div class="form-fields">
+                    <div class="floatedFormContainer" id="floatedFormContainer">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" data-placeholder="Enter your email...">
+                    </div>
+                    <div class="floatedFormContainer" id="floatedFormContainer">
+                        <label for="pwd">Password:</label>
+                        <input type="password" name="password" id="pwd" data-placeholder="Enter password">
+                    </div>
+                    <div class="form-btn">
+                        <input type="submit" value="Login" />
+                        <p>I am not registered <i><a href="{% url 'register' %}">Sign Up</a> </i></p>
+                    </div>
+                    <div  class="form-btn">
+                        <a href="{% url 'password_reset' %}" class="forgot-pwd"><i>Forgot Password?</i></a>
+                    </div>
+                </div>
+               
+      
+      
+        </form>
+    </div>
+    {% endif %}
 
-<div id="login-register-form" class="authy {{page}}">
-  {% if page == 'register' %}
-  <div>
-    <form action="" method="post">
-      {% csrf_token %}
-      <h3>Register with us</h3>
 
-      <div class="register-form-fields">
-        {% for field in form %}
-        <label for=""> {{field.label_tag}} {{field}} </label>
-
-        {% endfor %}
-      </div>
-
-      <ul>
-        <li>
-          <input type="submit" value="Sign Up" />
-          <p>
-            I am registered
-            <i>
-              <a href="{% url 'login' %}"
-                >Login</a
-              ></i
-            >
-          </p>
-        </li>
-      </ul>
-    </form>
-  </div>
-  {% else %}
-  <div>
-    <form action="" method="post" class="forms">
-      {% csrf_token %}
-
-      <h3>Login</h3>
-
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" />
-
-      <label for="pwd">Password:</label>
-      <input type="password" name="password" id="pwd" />
-
-      <div>
-        <input type="submit" value="Login" />
-        <p>
-          I am not registered
-          <a href="{% url 'register' %}"
-            ><i>Sign Up</i></a
-          >
-        </p>
-      </div>
-      <div>
-        <a href="{% url 'password_reset' %}" class="forgot-pwd"><i>Forgot Password?</i></a>
-      </div>
-    </form>
-  </div >
-  {% endif %}
+    <script src="{% static '/js/floatedForm.js' %}"></script>
 </div>
-
 {% endblock content %}

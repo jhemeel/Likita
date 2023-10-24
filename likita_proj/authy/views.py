@@ -81,6 +81,7 @@ def user_logout(request):
   
 @login_required(login_url='login')  
 def settings(request, pk):
+    className = 0
     user = User.objects.get(username=pk)
     form = ProfileForm(instance=user)
     
@@ -90,7 +91,7 @@ def settings(request, pk):
             form.save()
             return redirect(f'/profile/{user.username}')
     
-    context={'form':form, 'user': user}
+    context={'form':form, 'user': user, "className": className}
     return render(request, 'authy/settings.html', context)
 
 

@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="reply-form-container">
+<div class="reply-form-container authy">
   <div>
     <p>Comment: {{comment.body}}</p>
   </div>
-  <form action="" method="post">
+  <form action="" method="post" class="form">
     {% csrf_token %} {% for field in form %}
 
     <label for="id_field"> {{field.label}} </label>

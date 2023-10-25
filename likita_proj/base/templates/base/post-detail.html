@@ -3,46 +3,67 @@
 
 {% load static %}
 {% block content %}
-
-<div class="post-detail-view" >
-    <div class="main-content">
-        <div class="post-image">
-            <img src="{{post.image.url}}" alt="">
-            {% if request.user.is_staff %}
-            <span class="manage-post">
-                <a href="{% url "update-post" post.id %}"><i class="fa fa-edit"></i></a>
-                <a href="{% url "delete-post" post.id %}"><i class="fa fa-multiply"></i></a>
-            </span>
-            {% endif %}
-        </div>
-        <div class="Post-details">
-            <div class="Post-categories">
-                {% for categories in post.categories.all %}
-                <span>{{categories.title}}</span>
-                {% endfor %}
+<div class="post-detail-comments">
+    <div class="post-detail-view" >
+        <div class="main-content">
+            <div class="post-image">
+                <img src="{{post.image.url}}" alt="">
+                {% if request.user.is_staff %}
+                <span class="manage-post">
+                    <a href="{% url "update-post" post.id %}"><i class="fa fa-edit"></i></a>
+                    <a href="{% url "delete-post" post.id %}"><i class="fa fa-multiply"></i></a>
+                </span>
+                {% endif %}
             </div>
-            <div class="post-info">
-                <div class="Post-author">Author: <span>{{post.owner.name}}</span></div>
-                <div class='Post-date'>{{post.published_at | timesince}} ago</div>
-            </div>
-            <div class="post-title">
-                {{post.topic.title}}
-            </div>
-            <div class="overview ">
-                {{post.overview.html | safe}}
-            </div>
-            <h2>
-                {{post.topic.subtitle}}
-            </h2>
-            <div class="Post-description">
-                {{post.body.html | safe}}
-            </div>
-        </div>
-    </div>
-    {% include "base/rightbar.html" %}
-
+            <div class="Post-details">
+                <div class="Post-categories">
+                    {% for categories in post.categories.all %}
+                    <span>{{categories.title}}</span>
+                    {% endfor %}
+                </div>
+                <div class="post-info">
+                    <div class="Post-author">Author: <span>{{post.owner.name}}</span></div>
+                    <div class='Post-date'>{{post.published_at | timesince}} ago</div>
+                </div>
+                <div class="post-title">
+                    {{post.topic.title}}
+                </div>
+                <div class="overview ">
+                    {{post.overview.html | safe}}
+                </div>
+                <h2>
+                    {{post.topic.subtitle}}
+                </h2>
+                <div class="Post-description">
+                    {{post.body.html | safe}}
+                </div>
     
-
+                <div class="post-likes">
+    
+                    <a href="{% url 'liked-post' %}?q={{post.id}}">
+                        
+                      <p>
+                        {% if post.no_of_liked_post == 0 %}
+                        <span style="margin-right: 10px">No Likes</span><i class="fa fa-thumbs-up"></i>    
+                        {% elif post.no_of_liked_post == 1 %}
+                        <span>Liked by {{post.no_of_liked_post}} person</span><i class="fa fa-thumbs-up"></i>
+                        {% else %}
+                        <span>Liked by {{post.no_of_liked_post}} people</span><i class="fa fa-thumbs-up"></i>
+                        {% endif %}
+                      </p>
+                        
+                    </a>
+                </div>
+    
+                
+    
+            </div>
+        </div>
+        
+        {% include "base/rightbar.html" %}
+    </div>
+    {% include "base/postComments.html" %}
 </div>
+
 
 {% endblock content %}

@@ -41,10 +41,10 @@
 
   {% else %}
 
-  <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black m-5">
-   <form action="" style="margin: auto">
+  <div>
+   <form action="">
     <h3 class="p-2 me-3">You Are Not Signed in!</h3>
-    <a href="{% url 'login' %}" class=""> <input type="button" value="Sign in"> </a
+    <a href="{% url 'login' %}" class=""> <input type="button" value="Sign in" style="background-color: var(--tertiary-bg); color: white; box-shadow: none; cursor: pointer "> </a
     >
   </div>
    </form>

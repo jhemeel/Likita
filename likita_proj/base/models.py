@@ -46,8 +46,8 @@ class Categories(models.Model):
 
 class Topic(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    title = models.CharField(max_length=100)
-    subtitle = models.CharField(max_length=100)
+    title = models.CharField(max_length=500)
+    subtitle = models.CharField(max_length=500)
     
     class Meta:
         verbose_name_plural = 'Topic'

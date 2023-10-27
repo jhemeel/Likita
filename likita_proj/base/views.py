@@ -93,6 +93,7 @@ def post(request, pk):
         post_comment = post.comment_set.all()
 
     if request.method == 'POST':
+        
         comment = Comment.objects.create(
             body=request.POST.get('body'),
             sender=request.user,
@@ -100,7 +101,6 @@ def post(request, pk):
         )
 
         return redirect('post', pk=post.id)
-
     context = {'post': post, 'post_comment': post_comment, "tips": tips}
     return render(request, 'base/post-detail.html', context)
 

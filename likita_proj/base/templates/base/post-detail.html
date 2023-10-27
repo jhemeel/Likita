@@ -26,7 +26,7 @@
                     <div class='Post-date'>{{post.published_at | timesince}} ago</div>
                 </div>
                 <div class="post-title">
-                    {{post.topic.title}}
+                    <h1>{{post.topic.title}}</h1>
                 </div>
                 <div class="overview ">
                     {{post.overview.html | safe}}
@@ -40,7 +40,7 @@
     
                 <div class="post-likes">
     
-                    <a href="{% url 'liked-post' %}?q={{post.id}}">
+                    <a href="{% url 'liked-post' %}?q={{post.id}}" id="like-post">
                         
                       <p>
                         {% if post.no_of_liked_post == 0 %}

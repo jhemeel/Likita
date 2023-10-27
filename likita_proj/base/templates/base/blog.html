@@ -28,10 +28,12 @@
     <link rel="preconnect" href="//fonts.gstatic.com" crossorigin />
 
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/preload.css' %}" />
     <title>{% block title %} Dokto Blogs {% endblock title %}</title>
 </head>
 
 <body>
+    {% include "preload.html" %}  
     {% include "navbar.html" %}
    {% block blog %}
    
@@ -56,6 +58,8 @@
     <script src="{% static 'js/edits.js' %}"></script>
     <script src="{% static 'js/scroll.js' %}"></script>
     <script src="{% static 'js/animation.js' %}"></script>
+    <script src="{% static 'js/preload.js' %}"></script>
+    
 
 </body>
 </html>

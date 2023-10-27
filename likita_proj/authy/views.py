@@ -16,6 +16,8 @@ from verify_email.email_handler import send_verification_email
 
 # Create your views here.
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('/')
     page = 'register'      
     form = MyUserCreationForm()
     if request.method == 'POST':
@@ -53,6 +55,8 @@ def register(request):
 
 
 def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('/')
     page= 'login'
     if request.method == "POST":
         email = request.POST.get('email')

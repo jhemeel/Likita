@@ -56,7 +56,7 @@ def bookingSubmit(request):
         phone = request.POST['phone']
         message = request.POST['message']
         date = dayToWeekday(day)
-        email = request.user.email,
+        email = request.user.email
         
         
         if service != None:
@@ -75,9 +75,9 @@ def bookingSubmit(request):
                                
                             )
                             mail = EmailMessage(
-                                subject="Appointment with Dokto Medics",
-                                body=f" Dear {Appointment.name}, Your booking is successfull", 
-                                from_email=EMAIL_HOST_USER, to=[Appointment.email])
+                                subject="Appointment with Dokto",
+                                body=f" Dear {name}, Your {service} booking is successfull", 
+                                from_email=EMAIL_HOST_USER, to=[email])
                             mail.send()
                             messages.success(request, "Appointment Saved!")
                             return redirect('profile', pk=request.user.username)
@@ -94,7 +94,6 @@ def bookingSubmit(request):
 
 
     return render(request, 'clinic/bookingSubmit.html', {'times':hour,})
-
 
 
 def userPanel(request):
@@ -138,6 +137,7 @@ def userUpdate(request, pk):
             'validateWeekdays':validateWeekdays,
             'delta24': delta24,
             'id': id,
+            'appointment': appointment
         })
 
 
@@ -154,6 +154,8 @@ def userUpdateSubmit(request, pk):
 
     day = request.session.get('day')
     service = request.session.get('service')
+    
+    email = request.user.email
     
     #Only show the time of the day that has not been selected before and the time he is editing:
     hour = checkEditTime(times, day, pk)
@@ -176,10 +178,10 @@ def userUpdateSubmit(request, pk):
                             ) 
                             mail = EmailMessage(
                                 subject="Appointment with Dokto Medics Updated",
-                                body=f" Dear {Appointment.name}, Your booking update is successfull", 
-                                from_email=EMAIL_HOST_USER, to=[Appointment.email])
+                                body=f" Dear {name}, Your {service} booking is updated successfull", 
+                                from_email=EMAIL_HOST_USER, to=[email])
                             mail.send()
-                            messages.success(request, "Appointment Edited!")
+                            messages.success(request, "Appointment Updated!")
                             return redirect('home')
                         else:
                             messages.success(request, "The Selected Time Has Been Reserved Before!")
@@ -191,12 +193,14 @@ def userUpdateSubmit(request, pk):
                     messages.success(request, "The Selected Date Isn't In The Correct Time Period!")
         else:
             messages.success(request, "Please Select A Service!")
+            
         return redirect('userPanel')
 
 
     return render(request, 'clinic/userUpdateSubmit.html', {
         'times':hour,
-        'id': id,
+        'id': pk,
+        'appointment': appointment
     })
 
 

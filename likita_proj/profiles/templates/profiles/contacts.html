@@ -3,8 +3,8 @@
 {% block content %}
 
 
-<center style="font-size: 3rem; border; 1px solid #ccc; height: 4ch; text-align: center; margin-top: 50px"><a href="{% url 'home' %}">Continue</a></center>
-
+<div class="contact-messages-container authy">
+    <span class="continue-nav"><a href="{% url 'home' %}">Continue</a></span>
 
 {% if request.user.is_superuser %}
 <div>
@@ -21,7 +21,7 @@
         {% if contact.replycontact_set.filter.exists  %}
             <strong style="color: green;">Replied</strong>
         {% else %}
-            <strong><a href="/reply-contact/{{contact.id}}">Reply</a></strong>
+            <strong><a href="/reply-contact/{{contact.id}}"><i class="fa fa-reply" style="color: red;"></i></a></strong>
         {% endif %}
 
         </div>
@@ -49,6 +49,11 @@
     </div> {% endcomment %}
 
 </div>
+{% else %}
+<div class="forbidden">
+    <p>Forbiden</p>
+</div>
 {% endif %}
+</div>
 
 {% endblock content %}

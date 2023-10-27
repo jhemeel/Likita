@@ -4,48 +4,45 @@
 {% block content %}
 
 
-
-{% if user.is_authenticated %}
+<div class="authy">
+    {% if user.is_authenticated %}
 <!--if 24hrs before nobat-->
-{% if delta24 == True %}
-
-<div>
-    <form method="post" action="{% url 'userUpdate' request.user.id  %}" class="me-2 ms-2" required>
-    <h3>Edit Appointment</h3>
-
-        {% csrf_token %}
-
-        <!--input service-->
+    {% if delta24 == True %}
     
+    <div>
+        <form method="post" action="{% url 'userUpdate' appointment.id  %}" class="form" required>
+            <h3>Edit Appointment</h3>
+        
+            {% csrf_token %}
+        
+            <!--input service--> 
             <label for="service">Select Service:</label>
             <select class="form-select fs-3" name="service" id="service">
                 <option value="Consultation">Consultation</option>
                 <option value="Nursing care">Nursing care</option>
                 <option value="Medical social services">Medical social services</option>
                 <option value="Homemaker or basic assistance care">Homemaker or basic assistance care</option>
+            </select    
+            
+            <label for="day">Select Day:</label>
+            <select class="form-select fs-3" name="day" id="day">
+                {% for validateWeekday in validateWeekdays %}
+                <option value="{{validateWeekday}}">{{validateWeekday}}</option>
+                {% endfor %}
             </select>
-
-            <!--input day-->
-                <label for="day">Select Day:</label>
-                <select class="form-select fs-3" name="day" id="day">
-                    {% for validateWeekday in validateWeekdays %}
-                    <option value="{{validateWeekday}}">{{validateWeekday}}</option>
-                    {% endfor %}
-                </select>
-
+        
             <input type="submit" value="Continue">
+        </form>
+    </div>
+    <!--else if its 24hrs before editing-->
+    {% else %}
+    <form action="" class="form">
+        
+        <div>
+            <h1 style="text-align: center; color: red">Editing Appointments Is Only Available 24hrs Before Appointment!</h1>
+            <a href="{% url 'profile' request.user.username %}" ><input type="button" value="Return To Profile Page"></a>
         </div>
     </form>
-</div>
-<!--else if its 24hrs before editing-->
-{% else %}
-<form action="" >
-    
-<div>
-    <h1 style="text-align: center; color: red">Editing Appointments Is Only Available 24hrs Before Appointment!</h1>
-    <a href="{% url 'profile' request.user.username %}" ><input type="button" value="Return To Profile Page"></a>
-</div>
-</form>
 
 {% endif %}
 
@@ -58,5 +55,7 @@
 </div>
 
 {% endif %}
+
+</div>
 
 {% endblock %}

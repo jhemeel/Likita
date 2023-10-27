@@ -8,25 +8,26 @@
  
 {% block content %}
 
-{% if user.is_authenticated %}
+<div class="authy">
+  {% if user.is_authenticated %}
 
 <div>
-  <form
-    method="post"
-    action="{% url 'userUpdateSubmit' request.user.id %}"
-    class="me-2 ms-2"
-    required
-  >
-<h3>Edit Appointment</h3>
+    <form
+      method="post"
+      action="{% url 'userUpdateSubmit' appointment.id %}"
+      class="form"
+      required
+      >
+      <h3>Edit Appointment</h3>
 
-    {% csrf_token %}
+      {% csrf_token %}
 
-    <!--input time-->
+        <!--input time-->
     
-        <label for="time">Time:</label>
+      <label for="time">Time:</label>
 
-        <select class="form-select" name="time" id="time">
-          {% for time in times %}
+      <select class="form-select" name="time" id="time">
+        {% for time in times %}
           <option value="{{time}}">{{time}}</option>
           {% endfor %}
         </select>
@@ -39,7 +40,7 @@
       
         <input type="submit" value="Submit">
      
-  </form>
+    </form>
 </div>
 
 {% else %}
@@ -50,4 +51,5 @@
 </div>
 
 {% endif %}
+</div>
  {% endblock %}

@@ -1353,12 +1353,17 @@ aside #chat-box small {
     background-repeat: repeat;
     background-size: fill;
     background-attachment: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
 }
 
 .profile-container {
   display: flex;
   flex-direction: column-reverse;
   gap: 20px;
+  margin: auto;
+  width: 100%;
 }
 .profile-container .col {
   position: relative;
@@ -1475,6 +1480,7 @@ aside #chat-box small {
 .staff-pannel table {
   width: 100%;
   margin: auto;
+  font-size: var(--font-size-sm);
 }
 .staff-pannel table,
 .staff-pannel td,
@@ -1482,9 +1488,9 @@ aside #chat-box small {
   font-size: var(--font-size);
   font-family: "Poppins", sans-serif;
   color: var(--ink);
-  padding: 0.5rem;
   border: 1px solid;
   border-collapse: collapse;
+  padding: 5px;
 }
 
 .staff-pannel th {
@@ -1512,7 +1518,7 @@ aside #chat-box small {
 }
 
 .profile h1 {
-  font-size: var(--big-font-size);
+  font-size: var(--font-size);
   padding: 1rem;
   font-family: "Poppins", sans-serif;
   color: var(--heading-color);

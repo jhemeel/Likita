@@ -102,23 +102,19 @@
             <a href="{% url 'profile' user_profile.username %}" ><p style="text-align:right; padding-right: 5%">Reset</p></a>
               <thead>
                 <tr>
-                  <th class="text-center" scope="col">S/N</th>
-                  <th class="text-center" scope="col">Time</th>
-                  <th class="text-center" scope="col">First Name</th>
-                  <th class="text-center" scope="col">Last Name</th>
+                  <th class="text-center" scope="col">Name</th>
                   <th class="text-center" scope="col">Service</th>
                   <th class="text-center" scope="col">Date</th>
+                  <th class="text-center" scope="col">Time</th>
                 </tr>
               </thead>
               <tbody id="myTable">
                   {% for item in items %}
                 <tr>
-                  <td class="text-center">{{item.id}}</td>
-                  <td class="text-center">{{item.time}}</td>
-                  <td class="text-center">{{item.name.first_name}}</td>
-                  <td class="text-center">{{item.name.last_name}}</td>
+                  <td class="text-center">{{item.name}}</td>
                   <td class="text-center">{{item.service}}</td>
-                  <td class="text-center">{{item.day}}</td>
+                  <td class="text-center">{{item.date}}</td>
+                  <td class="text-center">{{item.time}}</td>
                 </tr>
                   {% endfor %}
               </tbody>

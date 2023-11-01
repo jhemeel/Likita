@@ -27,7 +27,7 @@ def profile(request, pk):
     #Only show the Appointments 21 days from today
     # items = Appointment.objects.filter(day__range=[minDate, maxDate]).order_by('day', 'time')
     items = Appointment.objects.filter(
-        Q( name__last_name__icontains=q)|
+        Q( name__name__icontains=q)|
         Q(time__icontains = q) |
         Q(day__icontains = q)|
         Q(service__icontains = q)

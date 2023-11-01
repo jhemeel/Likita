@@ -1,0 +1,7 @@
+{% if post.no_of_liked_post == 0 %}
+    <span style="margin-right: 10px">No Likes</span>    
+    {% elif post.no_of_liked_post == 1 %}
+    <span>Liked by {{post.no_of_liked_post}} person</span>
+    {% else %}
+    <span>Liked by {{post.no_of_liked_post}} people</span>
+ {% endif %}

@@ -17,17 +17,19 @@ if (localStorage.getItem("mode") === "dark") {
 } else {
   noDark();
 }
+if (mode){
+  mode.addEventListener("click", (e) => {
+    document.body.classList.toggle("dark-mode");
+    if (document.body.classList.contains("dark-mode")) {
+      darkMode();
+      night.style.display = "block";
+      day.style.display = "none";
+    } else {
+      noDark();
+      day.style.display = "block";
+      night.style.display = "none";
+    }
+  });
+}
 
-mode.addEventListener("click", (e) => {
-  document.body.classList.toggle("dark-mode");
-  if (document.body.classList.contains("dark-mode")) {
-    darkMode();
-    night.style.display = "block";
-    day.style.display = "none";
-  } else {
-    noDark();
-    day.style.display = "block";
-    night.style.display = "none";
-  }
-});
 

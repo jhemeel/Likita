@@ -11,4 +11,4 @@ const previewPhoto = () => {
         fileReader.readAsDataURL(file[0]);
     }
 }
-input.addEventListener('change', previewPhoto);
+if (input) input.addEventListener('change', previewPhoto);

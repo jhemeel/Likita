@@ -1,0 +1,16 @@
+<div class="comment" id="commments">
+    {% include "base/commentForm.html" %}
+    <div class="comment-box">
+        <ul id="comment-list">
+            {% if post.comments.count > 0 %}
+            {% for comment in post.comments.all %}
+            {% include "base/single-comment.html" %}
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div id='no-comments-message'>
+            <li>No Comments Yet</li>
+        </div>
+    {% endif %}
+    </div>
+</div>

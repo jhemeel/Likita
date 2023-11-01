@@ -11,4 +11,4 @@ const previewAvatar = () => {
         fileReader.readAsDataURL(file[0]);
     }
 }
-avatar.addEventListener('change', previewAvatar);
+if (avatar) avatar.addEventListener('change', previewAvatar);

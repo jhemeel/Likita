@@ -19,6 +19,7 @@ class ContactUs(models.Model):
     def __str__(self):
         return f'{self.email} : {self.message[:30]}'
     
+    REQUIRED_FIELDS =['message']
     
     
     

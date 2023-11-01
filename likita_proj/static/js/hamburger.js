@@ -9,20 +9,22 @@ hamburger.addEventListener('click', ()=>{
 })
 
 navLinks.forEach(link=>{
-    link.addEventListener('click', ()=>{
-        hamburger.classList.remove('active')
-        menu.classList.remove('active')
-        
-    })
+    if (link){
+        link.addEventListener('click', ()=>{
+            hamburger.classList.remove('active')
+            menu.classList.remove('active')
+            
+        })
+    }
+   
 })
 
 
 
 let topicHamburger = document.querySelector('.topic-hamburger')
 topics = document.getElementById('topics')
-
-topicHamburger.addEventListener('click', ()=>{
-    topics.classList.toggle('active')
-})
+if (topicHamburger){
+    topicHamburger.addEventListener('click', ()=>{ topics.classList.toggle('active')})
+}
 
 

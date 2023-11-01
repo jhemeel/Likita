@@ -1,37 +1,32 @@
 {% load static %}
 
-{% if posts %}
 
-{% for post in posts %}
 <div class="Post">
-   <div class="Post-wrapper">
-    <div class="Post-image">
-        <img src="{{post.image.url}}" alt="">
+    <div class="Post-wrapper">
+        <div class="Post-image">
+             <img src="{{post.image.url}}" alt="">
+        </div>
+        <div class="Post-details">
+            <div class="Post-categories">
+                {% for categories in post.categories.all %}
+                <span>{{categories.title}}</span>
+                {% endfor %}
+            </div>
+     
+            <div class="Post-headline">
+                {{post.headline}}
+            </div>
+            <div class="overview">
+                {{post.overview.html | safe }}
+            </div>
+        
+            <div>
+                <a href="{% url "post" post.id %}">
+                     <span class="read-more">
+                         Read More
+                     </span>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="Post-details">
-        <div class="Post-categories">
-            {% for categories in post.categories.all %}
-            <span>{{categories.title}}</span>
-            {% endfor %}
-        </div>
-
-        <div class="Post-headline">
-            {{post.headline}}
-        </div>
-        <div class="overview">
-            {{post.overview.html | safe }}
-        </div>
-
-       <div>
-        <a href="{% url "post" post.id %}">
-            <span class="read-more">
-                Read More
-            </span>
-        </a>
-       </div>
-    </div>
-
-   </div>
 </div>
-{% endfor %}
-{% endif %}

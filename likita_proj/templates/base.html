@@ -32,8 +32,6 @@
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/preload.css' %}" />
     <title>{% block title %} {% endblock title %}</title>
-
-  
   </head>
 
   <body>
@@ -42,8 +40,6 @@
 
     <main>{% block content %} {% endblock content %}</main>
 
-
-    {% block scripts %}
 
     <script src="{% static 'js/hamburger.js' %}"></script>
     <script src="{% static 'js/mode.js' %}"></script>
@@ -56,9 +52,15 @@
     <script src="{% static "js/previewAvatar.js" %}"></script>
     <script src="{% static 'js/floatedForm.js' %}"></script>
     <script src="{% static 'js/preload.js' %}"></script>
+    <script src="{% static 'js/hideMessages.js' %}"></script>
+    <script src="{% static "js/htmx.min.js" %}"></script>
+    <script src="{% static 'js/deleteComment.js' %}"></script>
 
 
-
-    {% endblock scripts %}
+    <script>
+      document.body.addEventListener('htmx:configRequest', function(evt) {
+        evt.detail.headers['X-CSRFToken'] = '{{ csrf_token }}'; // add a new header into the request
+    });
+    </script>
   </body>
 </html>

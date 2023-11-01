@@ -1,0 +1,47 @@
+<li id="comment-list-item">
+    <a href="{% url 'profile' comment.sender.username %}"><img src="{{comment.sender.avatar.url}}" alt="" width="30" height="30" style="border-radius:50%"></a>
+    <div class="user-comment">
+        <a href="{% url 'profile' comment.sender.username %}">@{{comment.sender.username}}</a> 
+        <span><small> commented {{comment.created_at| timesince}} ago</small></span>
+        <div class="comment-reply-box">
+            <div class="comment-body">
+
+                <p >
+                    {{comment.body}}
+                </p>
+                {% if request.user.is_staff or comment.sender.is_staff %}
+                <p>
+                    <a href="{% url 'replies' comment.id %}">Reply</a>
+                </p>
+                {% endif %}
+            </div>
+
+            {% for reply in comment.commentreply_set.all %}
+              {% if reply is not None %}
+  
+                  <div class="reply-body">
+                   <div>
+                   <a href="{% url 'profile' reply.replier.username %}">@{{reply.replier.username}}</a>
+                   <span> replied {{reply.created_at | timesince}} ago</span>
+                   </div>
+                   {{reply.body}}
+                  </div>
+              {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+    <div class="comment-actions">
+        
+        <form id="delete-comment-form"
+            hx-delete="{% url "delete-comment" comment.id %}" 
+             hx-target="closest li"
+            hx-confirm="Are you sure you want to delete this comment ?">
+            {% if comment.sender == request.user %}
+            <button type="submit" class="modal-btn"><i class="fa fa-multiply"></i></button>
+            {% endif %}
+        </form>
+
+    </div>
+
+</li>

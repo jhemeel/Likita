@@ -12,7 +12,7 @@ urlpatterns = [
     path('liked-post/', views.liked_post, name='liked-post'),
     path('delete-post/<str:pk>/', views.delete_post, name='delete-post'),
     path('replies/<str:pk>/', views.reply_comment, name='replies'),
-    
+    path('delete-comment/<str:pk>/', views.delete_comment, name='delete-comment'),
     path('contact-us', views.contact_us, name='contact-us'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

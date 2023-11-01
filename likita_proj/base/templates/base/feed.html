@@ -26,7 +26,13 @@
     </div>
 
     <div class="blog-post">
-        {% include "base/posts.html" %}                        
+      {% if posts %}
+        {% for post in posts %}
+        {% include "base/posts.html" %} 
+        {% endfor %}
+        {% else %}
+        <p>No Post For That Topic Yet</p>
+      {% endif %}                       
     </div>
 
     <div class="sidebar">

@@ -20,9 +20,6 @@ SECRET_KEY = env(
 # # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False) == True
 
-
-
-
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(" ")
 
 
@@ -59,6 +56,7 @@ INSTALLED_APPS = [
 
     'django_bleach',
     'django_quill',
+     "django_htmx",
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -72,10 +70,14 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    
+    "django_htmx.middleware.HtmxMiddleware",
+    
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware'
+    
 ]
 
 # for django v4.2+ use the below storage settings
@@ -200,11 +202,11 @@ if env("ENVIRONMENT") == "PRODUCTION":
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('MEDIA_CLOUD_NAME'),
-    'API_KEY': env('MEDIA_CLOUD_API_KEY'),
-    'API_SECRET': env('MEDIA_CLOUD_API_SECRET')
-}
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': env('MEDIA_CLOUD_NAME'),
+        'API_KEY': env('MEDIA_CLOUD_API_KEY'),
+        'API_SECRET': env('MEDIA_CLOUD_API_SECRET')
+    }
 
 LOGIN_URL = 'login'
 
@@ -229,7 +231,7 @@ EMAIL_PAGE_DOMAIN = 'https://www.dokto.com.ng/'
 
 # link expres
 EXPIRE_AFTER = "7d"  # Will expire after seven day from link generation
-MAX_RETRIES = 100
+MAX_RETRIES = 3
 
 SUBJECT = f'Activate Your DRKAYMD account'
 REQUEST_NEW_EMAIL_TEMPLATE = 'authy/request_new_email.html'

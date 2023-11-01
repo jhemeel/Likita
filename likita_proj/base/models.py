@@ -14,7 +14,7 @@ class User(AbstractUser):
         FEAMLE = "F", "Female"
         NIL = "", "Prefer not to say"
         
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, help_text="Enter active email address")
     name = models.CharField(max_length=100, null=True, blank=True)
     date_of_birth = models.DateField(default="1990-05-25")
     gender = models.CharField(max_length=1, choices=Gender.choices, default=Gender.MALE)
@@ -102,7 +102,7 @@ class LikedPost(models.Model):
 class Comment(models.Model):
     id = models.UUIDField( primary_key=True, default=uuid.uuid4 )
     sender  = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     body = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

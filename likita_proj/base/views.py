@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, permission_required
+from django.template.loader import render_to_string
+
 from django.contrib import messages
 from .models import Post, Topic, User, LikedPost, Comment, CommentReply, Categories, HealthTips
 from .forms import PostForm, ReplyForm
@@ -38,7 +40,6 @@ def blog(request):
     topics = Topic.objects.filter(post__status = Post.Status.PUBLISHED)
     context = {'posts': posts, 'topics': topics, "tips": tips }
     return render(request, 'base/blog.html', context)
-
 
 @login_required(login_url='login')
 def create_post(request):
@@ -82,30 +83,38 @@ def create_post(request):
                }
     return render(request, 'base/create-update-post.html', context)
 
-
+    raise TypeError("Object of type Comment is not Json serializale pls")
+    
+    
 @login_required(login_url='login')
 def post(request, pk):
     tips = HealthTips.objects.all()
     posts = Post.objects.filter(id=pk, status=Post.Status.PUBLISHED)
-    
-    for post in posts:
-        
-        post_comment = post.comment_set.all()
+    if posts:
+        for post in posts:
+            post 
+        comment = post.comments.all()   
+            
+        if request.method == "POST":
+            comment = Comment(post=post, sender=request.user, body = request.POST.get('body'))
+            comment.save()
+            
+            if request.htmx:
+                post = Post.objects.get(id=pk)
+                context={"comment": comment}
+                comment_html = render_to_string("base/single-comment.html", context)
+                if post.comments.count() == 0:
+                    oob_swap_command = {
+                        "<div hx-swap-oob='true' id='no-comments-message'></div>"
+                    }
+                    comment_html += oob_swap_command
+                return HttpResponse(comment_html)
+            return redirect(comment.get_absolute_url)
 
-    if request.method == 'POST':
-        
-        comment = Comment.objects.create(
-            body=request.POST.get('body'),
-            sender=request.user,
-            post=post
-        )
-
-        return redirect('post', pk=post.id)
-    context = {'post': post, 'post_comment': post_comment, "tips": tips}
+    context={'post': post, 'tips': tips, 'comment': comment}    
     return render(request, 'base/post-detail.html', context)
 
 
-@login_required(login_url='login')
 def update_post(request, pk):
     page_title_content = "Update Post"
     button_text = 'Update'
@@ -129,7 +138,7 @@ def update_post(request, pk):
             post.image = request.FILES.get('image') if request.FILES.get('image') else post.image
 
             post.save()
-            return redirect('home')
+            return redirect('blog')
 
     else:
         messages.warning(request, 'Permission Denied')
@@ -158,15 +167,20 @@ def liked_post(request):
         new_like.save()
         post.no_of_liked_post += 1
         post.save()
-        return redirect('post', pk=post.id)
-
+        
     else:
         liked_post_filter.delete()
         post.no_of_liked_post -= 1
         post.save()
-        return redirect('post', pk=post.id)
-
-
+        
+        
+    if request.htmx:
+        context = {'post' : post}
+        likes_html = render_to_string("base/likes.html", context)
+        return HttpResponse(likes_html)         
+    return redirect('post', pk=post.id)
+    
+    
 @login_required(login_url='login')
 def delete_post(request, pk):
     post = Post.objects.get(id=pk)
@@ -184,11 +198,11 @@ def reply_comment(request, pk):
     form = ReplyForm()
 
     comment_reply = comment.commentreply_set.all()
-    if request.user.is_superuser:
+    if request.user.is_staff:
         replier = request.user
 
     else:
-        return redirect('home')
+        return redirect('post', pk = comment.post.id)
 
     if request.method == "POST":
         reply = CommentReply.objects.create(
@@ -197,14 +211,24 @@ def reply_comment(request, pk):
             comment=comment
         )
         messages.success(
-            request, f'{comment} successfully replied: {reply.body}')
+            request, f'{comment} successfully replied: {reply.body[0:5]}')
 
         return redirect('post', pk=reply.comment.post.id)
     context = {'comment': comment,
                'comment_reply': comment_reply, 'form': form}
     return render(request, 'base/reply.html', context)
 
+@login_required
+def delete_comment(request, pk):
+    if request.method == "DELETE":
+        comment = get_object_or_404(Comment, id=pk)
+        comment.delete()
+        
+        if request.htmx:
 
+            return HttpResponse(status=200, reason="comment deleted succesfully")
+
+    return redirect('post', pk=comment.post.id)
 def contact_us(request):
 
     return render(request, 'base/contact_us.html')

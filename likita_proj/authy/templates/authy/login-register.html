@@ -17,7 +17,8 @@
                 <div class="floatedFormContainer" id="floatedFormContainer" >
                     <div class="fieldWrapper">
                         {{ field.errors }}
-                        <label for="label_id"> {{fields.label_tag}} </label>
+                        {{field.help_text}}
+                        {{fields.label_tag}}
                         {{fields}}
                     </div>            
                 </div>
@@ -39,7 +40,7 @@
                 <div class="form-fields">
                     <div class="floatedFormContainer" id="floatedFormContainer">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" data-placeholder="Enter your email...">
+                        <input type="email" name="email" id="email" data-placeholder="Enter your email..." required>
                     </div>
                     <div class="floatedFormContainer" id="floatedFormContainer">
                         <label for="pwd">Password:</label>

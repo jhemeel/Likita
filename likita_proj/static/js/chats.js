@@ -1,6 +1,11 @@
+
+const chat = document.querySelector(".chat")
 function showChat() {
-  document.querySelector(".chat").addEventListener("click", () => {
-    document.querySelector("aside").classList.toggle("shows");
-  });
+  if (chat){
+    chat.addEventListener("click", () => {
+      document.querySelector("aside").classList.toggle("shows");
+    });
+  }
+  
 }
 showChat();

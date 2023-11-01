@@ -36,33 +36,13 @@
                 </h2>
                 <div class="Post-description">
                     {{post.body.html | safe}}
-                </div>
-    
-                <div class="post-likes">
-    
-                    <a href="{% url 'liked-post' %}?q={{post.id}}" id="like-post">
-                        
-                      <p>
-                        {% if post.no_of_liked_post == 0 %}
-                        <span style="margin-right: 10px">No Likes</span><i class="fa fa-thumbs-up"></i>    
-                        {% elif post.no_of_liked_post == 1 %}
-                        <span>Liked by {{post.no_of_liked_post}} person</span><i class="fa fa-thumbs-up"></i>
-                        {% else %}
-                        <span>Liked by {{post.no_of_liked_post}} people</span><i class="fa fa-thumbs-up"></i>
-                        {% endif %}
-                      </p>
-                        
-                    </a>
-                </div>
-    
-                
-    
+                </div>    
             </div>
+            {% include "base/post-likes.html" %}
         </div>
-        
         {% include "base/rightbar.html" %}
     </div>
-    {% include "base/postComments.html" %}
+    {% include "base/comments.html" %}
 </div>
 
 

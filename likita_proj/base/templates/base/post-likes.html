@@ -1,0 +1,8 @@
+<div class="post-likes">     
+      <p  id="post-likes">
+        {% include "base/likes.html" %}
+      </p>
+      <a href="" hx-get = "{% url 'liked-post' %}?q={{post.id}}" id="like-post" hx-target="#post-likes" hx-trigger="click">
+        <i class="fa fa-thumbs-up"></i>
+      </a>      
+</div>

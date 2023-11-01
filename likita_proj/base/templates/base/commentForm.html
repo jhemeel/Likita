@@ -1,0 +1,7 @@
+<form hx-post="{% url 'post' post.id %}" hx-swap="afterend" hx-trigger="submit"  hx-target = "#comment-list" hx-on::after-request="this.reset()" class="form" >
+    <h3 style="">Leave Comment</h3>
+            
+    <textarea name="body" id="form-control" required></textarea>
+        
+    <input type="submit" id="comment-submit-button" value="Post Comment">
+</form>

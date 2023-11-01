@@ -2966,7 +2966,9 @@ button {
 
   header .navbar .menu-item .nav-items {
     margin-right: 15px;
-    margin-top: unset;
+  }
+  header .navbar .menu .menu-item .nav-items {
+    margin-top: initial;
   }
   header .navbar .menu .menu-item {
     display: inherit;
@@ -3515,9 +3517,7 @@ form input[type="submit"] {
 }
 
 @media screen and (min-width: 1024.05px) {
-  header .navbar .menu .menu-item .nav-items {
-    margin-top: 0;
-  }
+  
   .hero-page h2 {
     min-width: 700px;
   }

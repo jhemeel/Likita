@@ -59,7 +59,7 @@ class CommentModelSitemap(Sitemap):
 class  CommentReplyModelSitemap(Sitemap):
     changefreq = "always"
     priority = 0.8
-    protocol = 'http'
+    protocol = os.environ.get('PROTOCOL')
     
     def items(self):
         return get_list_or_404(CommentReply)
@@ -76,7 +76,7 @@ class  CommentReplyModelSitemap(Sitemap):
 class StaticSitemap(Sitemap):
     changefreq = "monthly"
     priority = 0.8
-    protocol = 'http'
+    protocol = os.environ.get('PROTOCOL')
  
     def items(self):
         

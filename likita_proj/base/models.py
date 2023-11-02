@@ -91,6 +91,8 @@ class Post(models.Model):
 class LikedPost(models.Model):
     post_id = models.CharField(max_length=500)
     user = models.CharField(max_length=100)
+    created_at = models.DateTimeField(default = timezone.now)
+    updated_at = models.DateTimeField(default = timezone.now)
     
     class Meta:
         verbose_name_plural = 'LikedPost'
@@ -136,7 +138,8 @@ class CommentReply(models.Model):
 class HealthTips(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     content = QuillField()
-    created_at= models.DateTimeField()
+    created_at= models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(default=timezone.now)
     
     class Meta:
         verbose_name_plural = "HealthTip"

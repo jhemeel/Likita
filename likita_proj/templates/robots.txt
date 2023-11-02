@@ -1,0 +1,10 @@
+User-Agent: Googlebot
+
+Disallow:
+Allow: /
+Allow: /blog
+
+{% comment %} Sitemap: https://domain.com/sitemap.xml {% endcomment %}
+Sitemap: https://www.dokto.com.ng/sitemap.xml/
+Sitemap: https://www.dokto.com.ng/booking_sitemap.xml/
+Sitemap: https://www.dokto.com.ng/profile_sitemap.xml/

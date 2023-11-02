@@ -2,8 +2,24 @@ from django.urls import path
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import PostModelSitemap, CommentModelSitemap,CommentReplyModelSitemap, LikedPostModelSitemap,  StaticSitemap
+
+sitemaps = {
+    'post':PostModelSitemap, #add DynamicSitemap to the dictionary
+    'comment' : CommentModelSitemap,
+    'replies': CommentReplyModelSitemap,
+    'liked-post': LikedPostModelSitemap,
+    'static':StaticSitemap, #add StaticSitemap to the dictionary
+    
+}
 
 urlpatterns = [
+    
+
+    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
+    
     path('', views.home, name="home" ),
     path('blog/', views.blog, name='blog'),
     path('create-post/', views.create_post, name="create-post"),
@@ -14,7 +30,7 @@ urlpatterns = [
     path('replies/<str:pk>/', views.reply_comment, name='replies'),
     path('delete-comment/<str:pk>/', views.delete_comment, name='delete-comment'),
     path('contact-us', views.contact_us, name='contact-us'),
+    
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

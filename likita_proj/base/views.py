@@ -109,7 +109,7 @@ def post(request, pk):
                     }
                     comment_html += oob_swap_command
                 return HttpResponse(comment_html)
-            return redirect(comment.get_absolute_url)
+            return redirect('post', id=pk)
 
     context={'post': post, 'tips': tips, 'comment': comment}    
     return render(request, 'base/post-detail.html', context)

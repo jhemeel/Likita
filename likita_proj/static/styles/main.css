@@ -2995,6 +2995,15 @@ button {
   header .navbar .menu .fa-caret-down {
     display: block;
     color: var(--heading-color);
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: var(--font-size)
+  }
+  header .navbar .menu .fa-caret-down:hover{
+    background-color: var(--btn-color);
+    color: var(--primary-bg);
   }
 
   header .navbar .nav-link {

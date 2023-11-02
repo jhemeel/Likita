@@ -34,6 +34,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # sitemap config
+    "django.contrib.sites",  # new
+    "django.contrib.sitemaps",  # new 
 
     'cloudinary_storage',
     'cloudinary',
@@ -58,6 +62,8 @@ INSTALLED_APPS = [
     'django_quill',
      "django_htmx",
 ]
+
+SITE_ID = 1
 
 AUTH_USER_MODEL = 'base.User'
 

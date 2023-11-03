@@ -2919,6 +2919,7 @@ button {
     margin: auto;
     width: 100%;
     padding-left: 5%;
+  
   }
 
   .contact-messages {
@@ -3063,7 +3064,7 @@ button {
     max-width: 100%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
   }
 

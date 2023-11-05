@@ -113,7 +113,7 @@ def post(request, pk):
     context={'post': post, 'tips': tips, 'comment': comment}    
     return render(request, 'base/post-detail.html', context)
 
-
+@login_required(login_url='login')
 def update_post(request, pk):
     page_title_content = "Update Post"
     button_text = 'Update'
@@ -154,7 +154,6 @@ def update_post(request, pk):
     return render(request, 'base/create-update-post.html', context)
 
 
-@login_required(login_url='login')
 def liked_post(request):
     user = request.user.name
     q = request.GET.get('q')
@@ -217,7 +216,7 @@ def reply_comment(request, pk):
                'comment_reply': comment_reply, 'form': form}
     return render(request, 'base/reply.html', context)
 
-@login_required
+
 def delete_comment(request, pk):
     if request.method == "DELETE":
         comment = get_object_or_404(Comment, id=pk)
@@ -228,6 +227,8 @@ def delete_comment(request, pk):
             return HttpResponse(status=200, reason="comment deleted succesfully")
 
     return redirect('post', pk=comment.post.id)
+
+
 def contact_us(request):
 
     return render(request, 'base/contact_us.html')

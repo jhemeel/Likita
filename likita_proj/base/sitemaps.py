@@ -18,7 +18,7 @@ class PostModelSitemap(Sitemap):
     
     
     def location(self, obj):
-        return '/post/%s' % (obj.pk)
+        return '/blog/'
     
     
 class LikedPostModelSitemap(Sitemap):

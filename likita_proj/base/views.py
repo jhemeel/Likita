@@ -85,8 +85,7 @@ def create_post(request):
 
     raise TypeError("Object of type Comment is not Json serializale pls")
     
-    
-@login_required(login_url='login')
+  
 def post(request, pk):
     tips = HealthTips.objects.all()
     posts = Post.objects.filter(id=pk, status=Post.Status.PUBLISHED)

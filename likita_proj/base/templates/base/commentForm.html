@@ -1,5 +1,9 @@
 <form hx-post="{% url 'post' post.id %}" hx-swap="afterbegin" hx-trigger="submit"  hx-target = "#comment-list" hx-on::after-request="this.reset()" class="form" >
-    <h3 style="">Leave Comment</h3>
+    {% if request.user.is_authenticated %}
+    <h3>Leave a comment*</h3>
+    {% else %}
+    <h3 style="" aria-label="required"><em><a style="color: var(--tertiary-bg)" href="{% url "login" %}">Sign In*</a></em> to leave a comment</h3>
+    {% endif %}
             
     <textarea name="body" id="form-control" required></textarea>
         

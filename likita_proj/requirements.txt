@@ -25,6 +25,7 @@ django-js-asset==2.0.0
 django-libs==2.0.3
 django-quill-editor==0.1.40
 django-realtime==1.1
+django-social-share==2.3.0
 Django-Verify-Email==2.0.3
 djangorestframework==3.14.0
 fontawesomefree==6.4.0
@@ -43,11 +44,14 @@ psycopg2-binary==2.9.9
 PyJWT==2.7.0
 pyrsistent==0.19.3
 pytz==2023.3
+rcssmin==1.1.1
 redis==4.5.5
 requests==2.31.0
+rjsmin==1.2.1
 six==1.16.0
 soupsieve==2.4.1
 sqlparse==0.4.4
+tinycss2==1.1.1
 tqdm==4.65.0
 typing_extensions==4.6.3
 tzdata==2023.3
@@ -55,3 +59,5 @@ urllib3==2.0.2
 webencodings==0.5.1
 whitenoise==6.4.0
 yarl==1.9.2
+
+

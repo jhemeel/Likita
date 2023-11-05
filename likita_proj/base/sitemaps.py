@@ -6,7 +6,7 @@ import environ, os
 
 class PostModelSitemap(Sitemap):
     changefreq = "always"
-    priority = 0.8
+    priority = 0.85
     protocol = os.environ.get('PROTOCOL')
     
     def items(self):

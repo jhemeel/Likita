@@ -60,7 +60,10 @@ INSTALLED_APPS = [
 
     'django_bleach',
     'django_quill',
-     "django_htmx",
+    "django_htmx",
+    "django_social_share",
+    
+    'compressor',
 ]
 
 SITE_ID = 1
@@ -277,3 +280,4 @@ QUILL_CONFIGS = {
         }
     }
 }
+

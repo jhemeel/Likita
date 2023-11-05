@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
+{% load social_share %}
 
 {% load static %}
+
 {% block content %}
+
 <div class="post-detail-comments">
-    <div class="post-detail-view" >
+    <div class="post-detail-view">
         <div class="main-content">
             <div class="post-image">
                 <img src="{{post.image.url}}" alt="">
@@ -15,6 +18,7 @@
                 </span>
                 {% endif %}
             </div>
+
             <div class="Post-details">
                 <div class="Post-categories">
                     {% for categories in post.categories.all %}
@@ -36,14 +40,43 @@
                 </h2>
                 <div class="Post-description">
                     {{post.body.html | safe}}
-                </div>    
+                </div>
+                <div class="likes-btn">
+                    {% include "base/post-likes.html" %}
+                </div>
             </div>
-            {% include "base/post-likes.html" %}
         </div>
-        {% include "base/rightbar.html" %}
+        <div class="rightbar-content">
+            {% include "base/rightbar.html" %}
+        </div>
+
+
     </div>
-    {% include "base/comments.html" %}
+
+    <div id="social-share">
+        <div class="share">Share <i class="fa fa-share"></i></div>
+        <div class="social-share-icons">
+
+            <span>
+                {% post_to_facebook object_or_url '<i class=" fab fa-facebook fa-2x"></i>' %}
+            </span>
+
+            <span> 
+               {% post_to_twitter "New Post: {{post.headline}}. Check it out!" object_or_url '<i class="fa-brands fa-twitter fa-2x"></i>' %}
+            </span>
+
+            <span>
+                {% post_to_whatsapp object_or_url '<i class="fa-brands fa-whatsapp fa-2x"></i>' %}
+            </span>
+
+            <span>
+            {% post_to_linkedin  object_or_url  %}
+            </span>
+        </div>
+    </div>
+    <div class="post-comments-view">
+        {% include "base/comments.html" %}
+    </div>
 </div>
 
-
-{% endblock content %}
+{% endblock  %}

@@ -63,7 +63,6 @@ INSTALLED_APPS = [
     "django_htmx",
     "django_social_share",
     
-    'compressor',
 ]
 
 SITE_ID = 1

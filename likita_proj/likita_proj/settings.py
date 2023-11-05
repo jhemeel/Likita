@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django_quill',
     "django_htmx",
     "django_social_share",
+    'simple_open_graph',
     
 ]
 

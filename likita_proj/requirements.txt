@@ -25,6 +25,7 @@ django-js-asset==2.0.0
 django-libs==2.0.3
 django-quill-editor==0.1.40
 django-realtime==1.1
+django-simple-open-graph==0.1
 django-social-share==2.3.0
 Django-Verify-Email==2.0.3
 djangorestframework==3.14.0

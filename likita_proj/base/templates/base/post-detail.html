@@ -2,6 +2,13 @@
 
 {% load social_share %}
 
+{% load simple_open_graph %}
+
+{% block extra_head %}
+    {% thumbnail object.user.image 150x150 as uimage %} <!-- as example for use easy_thumbnails package -->
+    {% opengraph_meta "url=object.get_absolute_url, title=object.title, type='website', image=uimage.url" %}
+{% endblock %}
+
 {% load static %}
 
 {% block content %}

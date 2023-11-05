@@ -6,7 +6,7 @@
 
 {% block extra_head %}
     {% thumbnail object.user.image 150x150 as uimage %} <!-- as example for use easy_thumbnails package -->
-    {% opengraph_meta "url=object.get_absolute_url, title=object.title, type='website', image=uimage.url" %}
+    {% opengraph_meta "url={% url "post" post.id %}, title=post.topic.title, type='website', image=post.image.url" %}
 {% endblock %}
 
 {% load static %}

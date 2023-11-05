@@ -1,15 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% load social_share %}
-
-{% load simple_open_graph %}
-
-{% block extra_head %}
-    {% thumbnail object.user.image 150x150 as uimage %} <!-- as example for use easy_thumbnails package -->
-    {% opengraph_meta "url={% url "post" post.id %}, title=post.topic.title, type='website', image=post.image.url" %}
-{% endblock %}
-
-{% load static %}
 
 {% block content %}
 

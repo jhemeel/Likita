@@ -35,14 +35,15 @@
     <title>{% block title %} {% endblock title %}</title>
     {% if post.id %}
     <title>{{post.topic.title}}</title>
-    <meta property="og:title" content="{{post.topic.title}}">
-    <meta name="description" property="og:description" content="{{post.overview.html|safe|striptags|truncatewords:20}}">
-    <meta property="og:image" content="{{post.image.url}}">
-    <meta property="og:image:alt" content="{{post.topic.subtitle}}">
-    <meta property="og:url" content="https://www.dokto.com.ng/post/{{post.id}}">
-    <meta property="og:type" content="article" />
-    <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="270" />
+    <meta name="title" property="og:title" content="{{post.topic.title}}">
+    <meta name="description" name="description" property="og:description" content="{{post.overview.html|safe|striptags|truncatewords:20}}">
+    <meta name="image" property="og:image" content="{{post.image.url}}">
+    <meta name="image_alt" property="og:image:alt" content="{{post.topic.subtitle}}">
+    <meta name="url" property="og:url" content="https://www.dokto.com.ng/post/{{post.id}}">
+    <meta name="type" property="og:type" content="website" />
+    <meta name="width" property="og:image:width" content="300" />
+    <meta name="height" property="og:image:height" content="270" />
+
     <meta name="author" content="{{post.owner.name}}">
     <meta name="publication_date" content="{{post.published_at | timesince}}">
 

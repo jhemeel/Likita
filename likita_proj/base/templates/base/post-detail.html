@@ -62,7 +62,7 @@
             </span>
 
             <span> 
-               {% post_to_twitter "New Post: {{post.headline}}. Check it out!" object_or_url '<i class="fa-brands fa-twitter fa-2x"></i>' %}
+               {% post_to_twitter "New Post: {{post.headline}}: {{post.overview.html|safe}}. Check it out!" object_or_url '<i class="fa-brands fa-twitter fa-2x"></i>' %}
             </span>
 
             <span>

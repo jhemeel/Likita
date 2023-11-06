@@ -14,7 +14,7 @@
         <ul class="menu">
             <ul class="menu-item">
                 <li class="nav-items"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
-                <li class="nav-items"><a href="{% url 'about-me' %}" class="nav-link">About</a></li>
+                {% comment %} <li class="nav-items"><a href="{% url 'about-me' %}" class="nav-link">About</a></li> {% endcomment %}
                 <li class="nav-items "><a href="{% url 'booking' %}" class="nav-link btn" style="display: flex; gap: 10px"><i class="fa fa-book"></i>Book Appointment</a></li>
                 <li class="nav-items"><a href="{% url 'contact-us' %}" class="nav-link btn" style="display: flex; gap: 10px"><i class="fa fa-address-book"></i> Contact Us </a></li>
 

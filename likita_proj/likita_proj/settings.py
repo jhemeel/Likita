@@ -242,7 +242,7 @@ EMAIL_PAGE_DOMAIN = 'https://www.dokto.com.ng/'
 EXPIRE_AFTER = "7d"  # Will expire after seven day from link generation
 MAX_RETRIES = 3
 
-SUBJECT = f'Activate Your DRKAYMD account'
+SUBJECT = f'Activate Your DOKTO MEDICS account'
 REQUEST_NEW_EMAIL_TEMPLATE = 'authy/request_new_email.html'
 HTML_MESSAGE_TEMPLATE = "authy/email_message.html"
 

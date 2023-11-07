@@ -8,18 +8,27 @@
     
     {% if page == 'register' %}
     <div class="login-register-page-wrapper">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" name="myRegisterForm" enctype="multipart/form-data"  onsubmit="return validCheck()" novalidate>
+
+            <span id="emsg"></span>
+
             {% csrf_token %}
             <h3  aria-label="required">Register With Us</h3>
-     
-            <div class="form-fields">
+            <div class="form-fields register-form-fields">
                 {% for fields in form %}
                 <div class="floatedFormContainer" id="floatedFormContainer" >
                     <div class="fieldWrapper">
-                        {{ field.errors }}
-                        {{field.help_text}}
                         {{fields.label_tag}}
                         {{fields}}
+                        {% if fields.errors %}
+                        {% for errors in fields.errors %}
+                        <small  class="form-text  error-massage">{{errors}}</small>
+                         {% endfor %}
+                         {% endif %}
+
+                        {% if fields.help_text %}
+                        <small class="form-text text-muted help-text">{{ fields.help_text }}</small>
+                        {% endif %}
                     </div>            
                 </div>
                 {% endfor %}
@@ -33,14 +42,14 @@
     </div>
     {% else %}
     <div class="login-register-page-wrapper">
-        <form action="" method="post" enctype="multipart/form-data" >
+        <form action="" method="post" name="loginForm" enctype="multipart/form-data" >
             {% csrf_token %}
             <h3>Login</h3>
        
-                <div class="form-fields">
+                <div class="form-fields login-form-fields">
                     <div class="floatedFormContainer" id="floatedFormContainer">
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" data-placeholder="Enter your email..." required>
+                        <label for="lg_email">Email:</label>
+                        <input type="email" name="email" id="lg_email" data-placeholder="Enter your email..." required>
                     </div>
                     <div class="floatedFormContainer" id="floatedFormContainer">
                         <label for="pwd">Password:</label>
@@ -60,7 +69,6 @@
         </form>
     </div>
     {% endif %}
-
 
 </div>
 {% endblock content %}

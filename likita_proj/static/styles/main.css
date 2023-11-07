@@ -346,9 +346,8 @@ header .navbar .nav-link:hover {
   position: fixed;
   display: flex;
   flex-direction: column;
-  top: 320px;
   left: 0;
-  bottom: 0;
+  bottom: 10px;
   margin: auto;
   height: fit-content;
   padding: 5px 8px;
@@ -935,7 +934,7 @@ form h3 {
 
 #login-register-form{
   font-weight: 900;
-   height: calc(100vh);
+   min-height: 100vh;
    width: 100%;
  }
  
@@ -950,6 +949,7 @@ form h3 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:50%;
+  background-attachment: fixed;
 
 }
 
@@ -964,13 +964,15 @@ form h3 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
+  background-attachment: fixed;
+
 }
 
 .floatedFormContainer{
-  border-bottom: 1px solid var(--primary-color);
   position: relative;
-  padding: 0 8px;
+  margin-bottom: 10px;
 }
+
 
 .floatedFormContainer label {
   font-size: var(--font-size);
@@ -979,19 +981,21 @@ form h3 {
   width: 100%;
   position: absolute;
   transform-origin: top left;
-  transform: translate(0, 10px) scale(1);
+  transform: translate(0, 12px) scale(1);
 }
 .active label{
-  transform: translate(-3px, 0) scale(0.8);
-  color: #797979;
+  transform: translate(0, 0) scale(0.7);
+  color: #9b9b9b;
 }
 
 .floatedFormContainer input{
   border: none;
   outline: none;
+  border-bottom: 2px solid var(--primary-color);
   padding: 16px 0 8px;
   font-size: var(--font-size);
   width: 100%;
+  height: 45px;
   background-color: transparent;
   font-family: "Poppins", sans-serif;
   letter-spacing:  1px;
@@ -1005,6 +1009,7 @@ form h3 {
   background-color: transparent;
 
 }
+
 
 input[type="submit"] {
   width: 100%;
@@ -1027,6 +1032,14 @@ flex-direction: column;
 align-items: center;
 gap: 15px;
 margin-top: 15px;
+}
+
+.error-massage, .err{
+  color: var(--tertiary-bg);
+}
+
+.success {
+    color: green;
 }
 
 /* create-update */
@@ -2927,17 +2940,16 @@ button:hover {
 .dots:hover {
   background: #696969 !important;
 }
-
-/* @media screen and (max-width:600px) {
-.slide{
-  height:fit-content;
+#emsg{
+  font-family: "Poppins", sans-serif;
+  color: red;
+  /* background-color: var(--primary-bg); */
+  padding: 8px;
+  margin-bottom: 40px;
 }
-.container{
-height:200px;}
-button {
-  top: 50%;
+.form-text{
+  font-family: "Catamaran", sans-serif;
 }
-} */
 
 /* carouse for post images ends */
 
@@ -2977,6 +2989,7 @@ button {
 
 @media screen and (min-width: 768.1px) {
 
+  
   p {
     line-height: 1.7;
   }
@@ -3151,10 +3164,12 @@ button {
   /* forms start */
 
 
-.login-register-page-wrapper{
+/* .login-register-page-wrapper{
   width: 600px;
   margin: auto;
-}
+} */
+
+
 #login-register-form.login{
   background: linear-gradient(
     to bottom,
@@ -3169,6 +3184,46 @@ button {
 
 }
 
+.register-form-fields{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
+  justify-content: center;
+}
+.floatedFormContainer{
+  margin-bottom: initial;
+}
+.register-form-fields .floatedFormContainer:first-child{
+  grid-area: 1 / 1 / 2 / 5;
+}
+
+.register-form-fields .floatedFormContainer:nth-child(2){
+  grid-area: 1 / 5 / 2 / 9;
+}
+
+.register-form-fields .floatedFormContainer:nth-child(3){
+  grid-area: 1 / 9 / 2 / -1;
+}
+.register-form-fields .floatedFormContainer:nth-child(4){
+  grid-area: 2 / 1 / 3 / 5;
+}
+.register-form-fields .floatedFormContainer:nth-child(5){
+  grid-area: 2 / 5 / 3 / 9;
+}
+.register-form-fields .floatedFormContainer:nth-child(6){
+  grid-area: 2 / 9 / 3 / -1;
+}
+
+.register-form-fields .form-btn{
+  grid-area: 5 / 1 / 6 / -1;
+  justify-self: center;
+}
+
+.login-form-fields{
+  max-width: 600px;
+  margin: auto;
+}
 .postForm{
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto  auto auto minmax(100px, auto) minmax(100px, auto) 50px;

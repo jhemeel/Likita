@@ -64,7 +64,7 @@ class Post(models.Model):
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    categories =models.ManyToManyField(Categories, related_name='post_categories')
+    categories =models.ManyToManyField(Categories)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     headline = models.CharField(max_length=100)
     overview =  QuillField()

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required, permission_required
@@ -33,12 +33,17 @@ def blog(request):
         Q(body__icontains=q) ,
          status= Post.Status.PUBLISHED                                       
     )
+    post_categories = Categories.objects.filter(
+        Q(post__topic__title__icontains=q)|
+        Q(post__owner__username__icontains=q)
+           
+    )
     
     tips = HealthTips.objects.order_by('-created_at').all()
     
     
     topics = Topic.objects.filter(post__status = Post.Status.PUBLISHED)
-    context = {'posts': posts, 'topics': topics, "tips": tips }
+    context = {'posts': posts, 'topics': topics, "tips": tips, 'post_categories': post_categories }
     return render(request, 'base/blog.html', context)
 
 @login_required(login_url='login')

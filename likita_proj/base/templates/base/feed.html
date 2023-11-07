@@ -52,11 +52,14 @@
         </h3>
         {% for topic in topics %}
         <h3>
-            <a href="{% url 'blog' %}?q={{topic.title}}">{{topic.title}} </a> 
+            <a href="{% url 'blog' %}?q={{topic.title}}">
+              {% for p in topic.post_set.all %}
+             {{p.headline}}
+              {% endfor %}
+             </a> 
             <span>{{topic.post_set.count}}</span>
          </h3>
-        {% endfor %}
-       
+        {% endfor %}    
       </div>
     </div>
 

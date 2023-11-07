@@ -1,11 +1,14 @@
 {% load static %}
 
  <div class="hero-section">
-  <div class="hero-page">
+  <div class="hero-page" id="hero-page">
      <div class="hero-page-wrapper">
-      <h2 >
-        <strong> Welcome to My Dokto </strong> 
-        <span>Bringing Safe, Easy and Secure <br/> Online Health Care <br/> Delivery To Your Doorstep</span>
+      <div class='hero' >
+        <h1> Welcome to Dokto medics </h1> 
+        <h3>We are a group of talented professionals</h3>
+        <h2>Bringing Safe, Easy and Secure Online Health Care Delivery 
+          To Your Doorstep
+        </h2>
         <a
           href=""
           class="typewrite"
@@ -14,10 +17,10 @@
         >
           <span class="wrap"></span>
         </a>
-      </h2>
-      <div id="scene-box">
-            <img src="{% static "images/onlinedr.png" %} " alt="hero-image" class="scroll-element js-scroll fade-in">
       </div>
+      {% comment %} <div id="scene-box">
+            <img src="{% static "images/onlinedr.png" %} " alt="hero-image" class="scroll-element js-scroll fade-in">
+      </div> {% endcomment %}
      </div>
 
       <div class="blog">

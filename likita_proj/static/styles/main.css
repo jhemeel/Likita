@@ -19,7 +19,7 @@
   --tertiary-color: #decac3;
   --overview-color: royalblue;
   --btn-bg-teal: teal;
-  --btn-color: #1e9cd2;
+  --btn-color: #1977cc;;
   --section-pad: 130px 10% 50px;
   --page-pad: 50px 10% 0;
   --blog-pad-mb: 20px 10%;
@@ -33,11 +33,11 @@
   --big-font-size: clamp(32px, calc(2vw + 1rem), 40px);
   --background-image: linear-gradient(
     171deg,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 1)
-  );
-  /* url("/static/images/herobg.png"); */
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0)
+  ),
+  url("/static/images/hero-bg.jpg");
 
 /* preload */
   --hue: 3;
@@ -409,100 +409,143 @@ header .navbar .nav-link:hover {
 
 .hero-section {
   position: relative;
-  top: 100px;
   width: 100%;
+  height: 90vh;
   margin: 0 auto;
   background-image: var(--background-image);
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  background-attachment: fixed;
+  background-position: top center;
 }
 
-.hero-page {
-  color: var(--tertiary-color);
+#hero-page {
+  padding-top: 100px;
   max-width: 100%;
   width: 100%;
 }
 
-.hero-page-wrapper {
-  display: block;
-  text-align: center;
-}
 
-.hero-page #scene-box {
-  width: 100%;
-  height: 320px;
-
-}
-
-.hero-page #scene-box img {
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-.hero-page h2 {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+#hero-page .hero {
   font-family: "Poppins", "catamaran", sans-serif;
-  font-weight: 800;
-  text-align: center;
-  margin: auto;
   padding:0 3%;
-  max-width: 480px;
-  height: 400px;
   text-transform: capitalize;
-  /* line-height: 1.5; */
+  line-height: 1.5;
 }
-.hero-page h2  strong{
-  font-size: calc(var(--big-font-size) + 6px);
+#hero-page .hero  h1{
+ font-size:calc(var(--font-size-md) ) ;
+  color: var(--heading-color);
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 56px;
+}
+#hero-page h3{
   color: var(--tertiary-bg);
-  font-weight: 800;
-  text-align: center;
+  margin-bottom: 30px;
 }
-.hero-page h2 > span{
-  font-size: calc(var(--big-font-size) - 5px);
-  text-align: center;
+#hero-page .hero h2{
+  font-size: calc(var(--font-size-md) - 5px);
   color: var(--primary-color);
-  line-height: 1.4;
-
+  line-height: 1.8;
 
 }
-.hero-page h2 a {
-  color: var(--primary-color);
-  text-align: left;
+#hero-page .hero a {
+  margin-top: 30px;
   margin-left: 4ch;
   font-size:calc( var(--font-size) + 6px);
 }
 
-.hero-page .blog {
-  position: absolute;
-  font-family: "Bluebird", "Aubade", "Catamaran", "Montserrat", "Poppins",
-    sans-serif;
-  right: 5%;
-  top: 320px;
-  margin: auto;
-font-weight: 700;
-  height: fit-content;
-  display: none;
+.blog {
+width: fit-content;
+margin:50px auto 0;
+
+  
 }
 
-.hero-page .blog a {
-  font-size: var(--font-size-md);
+#hero-page .blog a {
+  font-size: 15px;
   border: 2px solid transparent;
-  padding:0 0.5rem;
   cursor: pointer;
-  color: white;
   text-align: center;
   background-color: var(--btn-color);
+
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 12px 35px;
+  transition: 0.5s;
+  color: #fff;
 }
-.hero-page .blog a:hover {
+
+#hero-page .blog a:hover {
   color: var(--primary-bg);
   background-color: var(--tertiary-bg);
   border: 2px solid;
+}
+
+
+/*--------------------------------------------------------------
+# Why Us
+--------------------------------------------------------------*/
+.why-us .content {
+  padding: 30px;
+  background: #1977cc;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.why-us .content h3 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.why-us .content p {
+  margin-bottom: 30px;
+}
+
+.why-us .content .more-btn {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 30px 8px 30px;
+  color: #fff;
+  border-radius: 50px;
+  transition: all ease-in-out 0.4s;
+}
+
+.why-us .content .more-btn i {
+  font-size: 14px;
+}
+
+.why-us .content .more-btn:hover {
+  color: #1977cc;
+  background: #fff;
+}
+
+.why-us .icon-boxes .icon-box {
+  text-align: center;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  width: 100%;
+}
+
+.why-us .icon-boxes .icon-box i {
+  font-size: 40px;
+  color: #1977cc;
+  margin-bottom: 30px;
+}
+
+.why-us .icon-boxes .icon-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+}
+
+.why-us .icon-boxes .icon-box p {
+  font-size: 15px;
+  color: #848484;
 }
 
 .feed .topics {
@@ -2201,7 +2244,7 @@ width: 100%;
     ),
     url("/static/images/service-demo-bg.jpg");
   background-size: cover;
-
+  background-position: top center;
   box-shadow: initial;
 }
 #services .section-title,
@@ -2246,7 +2289,7 @@ width: 100%;
   gap: 50px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  padding: var(--section-pad);
+  padding: var(--page-pad);
 }
 
 #services .services-demo,
@@ -3020,10 +3063,8 @@ button:hover {
 
 @media screen and (min-width: 480.1px) and (max-width: 768px) {
   
-  .hero-page h2 {
-    text-align: left;
-    margin: auto;
-    width: 100%;
+  .hero-page .hero {
+    /* width: 100%; */
     padding-left: 5%;
   
   }
@@ -3139,48 +3180,28 @@ button:hover {
     font-size: var(--big-font-size);
   }
 
-  .hero-page-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: calc(100vh - 60px);
-    
-  }
-
-  .hero-page h2 {
-    margin: unset;
+  
+  #hero-page .hero {
     padding: 0 0 0 5%;
     height: 100%;
     position: relative;
   }
-  .hero-page h2  strong{
- text-align: center;
+  #hero-page .hero h1{
  line-height: 1.8;
+ font-size: calc(var(--big-font-size) + 6px);
+
   }
  
-  .hero-page h2 > span{
-    font-size: calc(var(--font-size-md));
-    text-align: center;
-    line-height: 1.6;
+  #hero-page .hero  h2{
+  font-size: calc(var(--font-size-md));
+    max-width: 200px;
+    line-height: 1.5;
   }
 
-  .hero-page #scene-box {
-    height: 580px;
-  }
-
-  .hero-page #scene-box img {
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center center;
-  }
-
+ 
   .hero-page .blog {
-    left: 5%;
-    bottom: 10%;
-    right: initial;
-    top: initial;
-    display: block;
+  padding-left: 5%;
+  margin: 30px 0 0;
   }
 
   

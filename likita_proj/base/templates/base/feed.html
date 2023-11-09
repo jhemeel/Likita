@@ -4,7 +4,14 @@
   <div class="feed">
     <div class="h1">
       <h1>Dokto Blogs</h1>
-        <i class="fa fa-search" role="search"></i>
+        {% comment %} <i class="fa fa-search" role="search"></i>
+        <form action="" method="get" id="search-form">
+          <input type="search" name="q" id="" aria-label="search" placeholder="Search Topics">
+          <input type="submit" value="Search">
+          <button type="submit" class="mobile-search">
+          <i class="fa fa-search" role="submit"></i>
+          </button>
+      </form> {% endcomment %}
     </div>
     <div class="screen">
         <div class="container" data-autoplay="true">
@@ -46,15 +53,11 @@
      </div>
 
         <div class="topics" id="topics">
-          <h2>Blog Topics</h2>
+          <h2>Blog Categories</h2>
+          <h3><a href="{% url "blog" %}">All</a></h3>
+          {% for category in categories %}
           <h3>
-            <a href="{% url 'blog' %}">All</a>
-          </h3>
-          {% for category in post_categories %}
-          <h3>
-            {% for post in posts %}
-            <a href="{% url "blog" %}?q={{post.topic.title}}">{{category.title}}</a>
-            {% endfor %}   
+            {{category.title}}
           </h3>
           {% endfor %}
 

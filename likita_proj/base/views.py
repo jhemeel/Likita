@@ -26,11 +26,12 @@ def home(request):
 
 def blog(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
+    categories = Categories.objects.all()
     posts = Post.objects.order_by('-created_at').filter(
         Q(topic__title__icontains=q) |
         Q(owner__username__icontains=q) |
         Q(headline__icontains=q) |
-        Q(body__icontains=q) ,
+        Q(body__icontains=q)
          status= Post.Status.PUBLISHED                                       
     )
     post_categories = Categories.objects.filter(
@@ -39,14 +40,13 @@ def blog(request):
        post__status = Post.Status.PUBLISHED
            
     )
-    categories = Categories.objects.filter()
        
     
     tips = HealthTips.objects.order_by('-created_at')
     
     
     topics = Topic.objects.filter(post__status = Post.Status.PUBLISHED)
-    context = {'posts': posts, 'topics': topics, "tips": tips, 'post_categories': categories }
+    context = {'posts': posts, 'topics': topics, "tips": tips, 'categories': categories }
     return render(request, 'base/blog.html', context)
 
 @login_required(login_url='login')

@@ -591,6 +591,7 @@ margin:50px auto 0;
 
 .feed .topics > h3:hover {
   background-color: var(--heading-color);
+  color: var(--primary-bg);
 }
 
 .feed .topics > h3 a {

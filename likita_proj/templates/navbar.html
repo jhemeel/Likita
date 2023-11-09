@@ -30,7 +30,11 @@
 
                 {% else %}
                 <li class="nav-items"><a href="{% url 'login' %}" style="display: flex; gap: 10px" class="nav-link"> <i class="fa fa-key"></i> Sign Up/Login</a></li>
-                {% endif %}              
+                {% endif %}  
+                <div class="mode" id="mode">
+                    <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                </div>            
             </ul>
         </ul>
 
@@ -45,11 +49,7 @@
        
     </div>
     <div class="social-nav">
-        <div class="mode" id="mode">
-            <i class="fa-solid fa-moon" aria-hidden="true"></i>
-            <i class="fa-solid fa-sun" aria-hidden="true"></i>
-        </div>
-
+       
         <a href="//web.facebook.com/adekunlejemeel">
         <i class="fa-brands fa-facebook" aria-hidden="true"></i>
             

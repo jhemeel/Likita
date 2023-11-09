@@ -46,21 +46,19 @@
      </div>
 
         <div class="topics" id="topics">
-        <h2>Blog Topics</h2>
-        <h3>
+          <h2>Blog Topics</h2>
+          <h3>
             <a href="{% url 'blog' %}">All</a>
-        </h3>
-        {% for topic in topics %}
-        <h3>
-            <a href="{% url 'blog' %}?q={{topic.title}}">
-              {% for p in topic.post_set.all %}
-             {{p.headline}}
-              {% endfor %}
-             </a> 
-            <span>{{topic.post_set.count}}</span>
-         </h3>
-        {% endfor %}    
-      </div>
+          </h3>
+          {% for category in post_categories %}
+          <h3>
+            {% for post in posts %}
+            <a href="{% url "blog" %}?q={{post.topic.title}}">{{category.title}}</a>
+            {% endfor %}   
+          </h3>
+          {% endfor %}
+
+        </div>
     </div>
 
     {% include "base/rightbar.html" %}

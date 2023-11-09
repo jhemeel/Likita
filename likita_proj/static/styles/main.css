@@ -9,6 +9,7 @@
 @import url("https://fonts.cdnfonts.com/css/type-ra?styles=4703");
 
 :root {
+  
   --primary-bg: #ffffff;
   --primary-color: #107896;
   --ink: #183246;
@@ -55,11 +56,12 @@
   --secondary-color-darker: #050517;
   --background-image: linear-gradient(
       171deg,
-      rgba(255, 255, 255),
-      rgba(255, 255, 255),
-      rgba(255, 255, 255)
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
     ),
-    url("/static/images/bg.jpg");
+  url("/static/images/hero-bg.jpg");
+    
   --box-shadow: 0px 1px 3px 1px rgba(80, 60, 255, 0.75);
 }
 
@@ -402,6 +404,7 @@ header .navbar .nav-link:hover {
 #mode{
   color: var(--primary-color);
   display: none;
+  cursor: pointer;
 }
 #mode .fa-moon{
   display: none;
@@ -1294,6 +1297,33 @@ form small {
 .newsletter-container h3{
   font-size: var(--font-size);
   font-weight: 900;
+
+}
+
+.newsletter form{
+  display: grid;
+  gap: 20px;
+  margin: auto;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+.newsletter .form-group{
+  margin-bottom: 20px;
+}
+.newsletter label{
+  font-size: var(--font-size);
+  color: var(--ink);
+}
+.newsletter textarea{
+  border: none;
+  outline: 0;
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  padding: 0 8px;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: var(--font-size);
+  color: var(--ink);
 
 }
 
@@ -3717,7 +3747,14 @@ form input[type="submit"] {
   font-size: var(--font-size-md);
   transform: translateX(-350px);
   transform: translateY(initial);
+  
+}
 
+  /* newslwtter form */
+
+.newsletter form{
+  margin: auto;
+  width: 600px;
 }
 
 

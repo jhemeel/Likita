@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect, get_list_or_404
 from django.contrib import messages
 from django.http import HttpResponse
 from django.conf import settings
@@ -25,12 +25,12 @@ def profile(request, pk):
     strdeltatime = deltatime.strftime('%Y-%m-%d')
     maxDate = strdeltatime
     #Only show the Appointments 21 days from today
-    # items = Appointment.objects.filter(day__range=[minDate, maxDate]).order_by('day', 'time')
     items = Appointment.objects.filter(
         Q( name__name__icontains=q)|
         Q(time__icontains = q) |
         Q(day__icontains = q)|
-        Q(service__icontains = q)
+        Q(service__icontains = q),
+        day__range=[minDate, maxDate]
         ).order_by('day', 'time')
     appointments = Appointment.objects.filter(name=user_profile.id).order_by('day', 'time')
     form = ProfileForm(instance=user_profile)
@@ -131,14 +131,22 @@ def reply_contacts(request, pk):
 def subscribe(request):
     
     if request.method == "POST":
-        from_email = request.POST['newsletter']
-        subscription = Subscribe.objects.create(
-            email = from_email,
+        email = request.POST['newsletter']
+        subscription, created = Subscribe.objects.get_or_create(
+            email = email,
         )
-        to_email = settings.EMAIL_HOST_USER      
-        from_email = subscription.email
-        subscribe_me = EmailMessage(subject="Newsletter Subscription", body='profiles/subscribe.html',
-                                            from_email=from_email, to=[to_email])
+        subscription.save()
+        from_email = settings.EMAIL_HOST_USER      
+        to_email = subscription.email
+        html_template = get_template("profiles/subscribe.html")
+        context={'to_email': to_email}
+        html_content = html_template.render(context)
+        
+        subscribe_me = EmailMessage(
+            subject="Newsletter Subscription",
+            body=html_content,
+            from_email=from_email, to=[to_email]
+            )
         subscribe_me.send()
         return redirect('home')
 
@@ -148,41 +156,42 @@ def unsubscribe(request):
     pass
 
 
-# connection = mail.get_connection()  
-# connection.open()   
+connection = mail.get_connection()  
+connection.open()   
 def send_newsletter(request):
     form = NewsletterForm()
-    recipients_mails = Subscribe.objects.all()
+    recipients_mails = get_list_or_404(Subscribe)
     from_mail = settings.EMAIL_HOST_USER
-    
+
     if request.method == "POST":
         form = NewsletterForm(request.POST, request.FILES)
         if form.is_valid():
             letter = form.cleaned_data['letter']
             attach = form.cleaned_data['attachment']
             
-        newsletter = SendNewsletter.objects.create(
-            sender = request.user if request.user.is_superuser else request.user,
+            newsletter = SendNewsletter.objects.create(
+            sender = request.user if request.user.is_staff else messages.warning(request, 'Permission denied'),
             letter = letter,
             attachment=attach
-        )
-        html_template = get_template('profiles/newsletter.html')
-        context = {'newsletter': newsletter}
-        html_content = html_template.render(context)
-        for email in  recipients_mails:
-            to_mail = email
-            mail = EmailMessage(
-                subject="Todays Newsletter", 
-                body=html_content,
-                from_email=from_mail, to=[to_mail]
-                )
-            mail.attach(attach.name, attach.read(), attach.content_type)
-            mail.content_subtype = "html"
-            # mail.send()
-            # connection.send_messages([mail])
+            )
+        
+            for email in  recipients_mails:     
+                to_mail = email     
+                context = {'newsletter': newsletter, 'to_mail': to_mail}
+                html_template = get_template('profiles/newsletter.html')
+                html_content = html_template.render(context)
+                mail = EmailMessage(
+                    subject="Todays Newsletter", 
+                    body=html_content,
+                    from_email=from_mail, to=[to_mail]
+                    )
+                mail.attach(attach.name, attach.read(), attach.content_type)
+                mail.content_subtype = "html"
+                # mail.send()
+                connection.send_messages([mail])
     
     
     context = {'form': form}
     return render(request, 'profiles/send_newsletter.html', context)
-# connection.close()
+connection.close()
 

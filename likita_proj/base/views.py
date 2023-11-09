@@ -35,15 +35,18 @@ def blog(request):
     )
     post_categories = Categories.objects.filter(
         Q(post__topic__title__icontains=q)|
-        Q(post__owner__username__icontains=q)
+        Q(post__owner__username__icontains=q),
+       post__status = Post.Status.PUBLISHED
            
     )
+    categories = Categories.objects.filter()
+       
     
-    tips = HealthTips.objects.order_by('-created_at').all()
+    tips = HealthTips.objects.order_by('-created_at')
     
     
     topics = Topic.objects.filter(post__status = Post.Status.PUBLISHED)
-    context = {'posts': posts, 'topics': topics, "tips": tips, 'post_categories': post_categories }
+    context = {'posts': posts, 'topics': topics, "tips": tips, 'post_categories': categories }
     return render(request, 'base/blog.html', context)
 
 @login_required(login_url='login')

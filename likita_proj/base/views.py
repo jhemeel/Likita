@@ -31,7 +31,7 @@ def blog(request):
         Q(topic__title__icontains=q) |
         Q(owner__username__icontains=q) |
         Q(headline__icontains=q) |
-        Q(body__icontains=q)
+        Q(body__icontains=q),
          status= Post.Status.PUBLISHED                                       
     )
     post_categories = Categories.objects.filter(

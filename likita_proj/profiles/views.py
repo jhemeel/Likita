@@ -156,8 +156,8 @@ def unsubscribe(request):
     pass
 
 
-connection = mail.get_connection()  
-connection.open()   
+# connection = mail.get_connection()  
+# connection.open()   
 def send_newsletter(request):
     form = NewsletterForm()
     recipients_mails = get_list_or_404(Subscribe)
@@ -187,11 +187,11 @@ def send_newsletter(request):
                     )
                 mail.attach(attach.name, attach.read(), attach.content_type)
                 mail.content_subtype = "html"
-                # mail.send()
-                connection.send_messages([mail])
+                mail.send()
+                # connection.send_messages([mail])
     
     
     context = {'form': form}
     return render(request, 'profiles/send_newsletter.html', context)
-connection.close()
+# connection.close()
 

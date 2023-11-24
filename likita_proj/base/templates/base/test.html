@@ -1,0 +1,27 @@
+
+<div class="authy">
+    <form action="{% url "post-categories" %}" method="get" id="search-form">
+        <input type="search" name="q" id="" aria-label="search" placeholder="Search Topics">
+        <input type="submit" value="Search">
+        <button type="submit" class="mobile-search">
+        <i class="fa fa-search" role="submit"></i>
+        </button>
+    </form>
+    
+<ul>
+    {% for c in categories %}
+    <li>
+        <a href="">{{c.title}}</a>
+    </li>
+    {% endfor %}
+</ul>
+<p>
+    {% for cat in categories %}
+    <p>
+        {% for p in cat.post_set.all %}
+        <p>{{p.topic.title}}</p>
+        {% endfor %}
+    </p>
+    {% endfor %}
+</p>
+

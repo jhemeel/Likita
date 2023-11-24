@@ -29,17 +29,17 @@ function validCheck() {
         document.myRegisterForm.email.focus()
         return false
     }
-    
+
 
     if (password1.length < 8) {
         error.classList.add('err')
         error.textContent = "Invalid Password, Your password length must be at least 8"
-        document.myRegisterForm.password.focus()
+        document.myRegisterForm.password1.focus()
         return false
     } else if (password1 !== password2) {
         error.classList.add('err')
         error.textContent = "Passwords Does not match"
-        document.registerForm.passwords.focus()
+        document.registerForm.password1.focus()
         return false
     }
 

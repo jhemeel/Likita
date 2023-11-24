@@ -24,12 +24,15 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('create-post/', views.create_post, name="create-post"),
     path('post/<str:pk>/', views.post, name="post"),
+    path('post-categories/', views.post_categories, name="post-categories"),
     path('update-post/<str:pk>/', views.update_post, name="update-post"),
     path('liked-post/', views.liked_post, name='liked-post'),
     path('delete-post/<str:pk>/', views.delete_post, name='delete-post'),
     path('replies/<str:pk>/', views.reply_comment, name='replies'),
     path('delete-comment/<str:pk>/', views.delete_comment, name='delete-comment'),
     path('contact-us', views.contact_us, name='contact-us'),
+    path('topics/', views.topicsPage, name="topics"),
+    
     
 ]
 

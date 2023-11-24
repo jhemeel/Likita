@@ -2,13 +2,16 @@
 
 <div class="rightbar">
     <div class="health-tips">
+      {% if tips %}
       <img src="{% static "images/ht.png" %}" alt="">
       {% for tip in tips %}
       <div class="tips-container">
         {{tip.content | safe}}
       </div>
       {% endfor %}
+      {% endif %}
     </div>
+
     <div class="advert">
       <div class="advert-wrapper">
         <small>advertisement box...

@@ -23,31 +23,34 @@ def home(request):
 
     return render(request, 'base/home.html', context)
     
+    
+def post_categories(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ""
+    
+    categories = get_list_or_404(Categories,  post__topic__title__icontains = q)
+   
+       
+    context = {'categories': categories }
+    
+    return render(request, 'base/test.html', context)
+    
 
 def blog(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
     categories = Categories.objects.all()
     posts = Post.objects.order_by('-created_at').filter(
         Q(topic__title__icontains=q) |
-        Q(owner__username__icontains=q) |
         Q(headline__icontains=q) |
         Q(body__icontains=q),
          status= Post.Status.PUBLISHED                                       
-    )
-    post_categories = Categories.objects.filter(
-        Q(post__topic__title__icontains=q)|
-        Q(post__owner__username__icontains=q),
-       post__status = Post.Status.PUBLISHED
-           
-    )
-       
-    
+    )[:6]
+    post_count = posts.count()
+    topics = Topic.objects.all()[:5]
     tips = HealthTips.objects.order_by('-created_at')
     
-    
-    topics = Topic.objects.filter(post__status = Post.Status.PUBLISHED)
-    context = {'posts': posts, 'topics': topics, "tips": tips, 'categories': categories }
+    context = {'posts': posts, 'topics': topics, "tips": tips, 'categories': categories, 'post_count': post_count }
     return render(request, 'base/blog.html', context)
+
 
 @login_required(login_url='login')
 def create_post(request):
@@ -91,9 +94,7 @@ def create_post(request):
                }
     return render(request, 'base/create-update-post.html', context)
 
-    raise TypeError("Object of type Comment is not Json serializale pls")
-    
-  
+      
 def post(request, pk):
     tips = HealthTips.objects.all()
     posts = Post.objects.filter(id=pk, status=Post.Status.PUBLISHED)
@@ -120,6 +121,7 @@ def post(request, pk):
 
     context={'post': post, 'tips': tips, 'comment': comment}    
     return render(request, 'base/post-detail.html', context)
+
 
 @login_required(login_url='login')
 def update_post(request, pk):
@@ -185,7 +187,14 @@ def liked_post(request):
         likes_html = render_to_string("base/likes.html", context)
         return HttpResponse(likes_html)         
     return redirect('post', pk=post.id)
-    
+  
+
+def topicsPage(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    topics = Topic.objects.filter(title__icontains=q)     
+                                
+    return render(request, 'base/topics.html', {'topics': topics})  
+  
     
 @login_required(login_url='login')
 def delete_post(request, pk):
@@ -245,3 +254,5 @@ def contact_us(request):
 # custom 404 view
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
+
+
